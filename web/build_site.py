@@ -15,7 +15,7 @@ def provider_for(model, given=None):
         p=str(given)
         if p in ('Microsoft','GitHub','xAI','OpenAI','Anthropic','Google','Alibaba','DeepSeek','Moonshot AI','MiniMax','ByteDance','Z.ai'):return p
     m=model.lower()
-    if 'fusion' in m:return 'GitHub'
+    if 'fusion' in m or m.startswith('raptor'):return 'GitHub'
     if m.startswith(('gpt','o1','o3','o4','codex')):return 'OpenAI'
     if m.startswith('claude'):return 'Anthropic'
     if m.startswith('gemini'):return 'Google'
@@ -122,6 +122,81 @@ for id,_,_,_,_ in chart_defs:
 # These zoom defaults match the fixed four Python production charts.
 zoom={'aa_coding_agent_v21':4.8,'aa_coding_agent_v20':3.2,'fusion_deepswe_11':1.6,'fusion_terminal_bench_40':3.0}
 for entry in charts:entry['zoom_max']=zoom.get(entry['id'],5)
+# Platform support is platform-specific, not inferred from cross-harness benchmark scores.
+# Dates and source URLs are retained so historical entries cannot masquerade as live availability.
+COUNTRIES={'OpenAI':'US','Anthropic':'US','Google':'US','Microsoft':'US','GitHub':'US','xAI':'US',
+ 'Alibaba':'CN','DeepSeek':'CN','Moonshot AI':'CN','MiniMax':'CN','Z.ai':'CN','ByteDance':'CN'}
+COPILOT_SOURCE='https://docs.github.com/en/copilot/reference/ai-models/supported-models'
+COPILOT_PRICES='https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing'
+KIRO_SOURCE='https://kiro.dev/docs/models/available-models/'
+KIRO_PRICES='https://kiro.dev/pricing/'
+CLAUDE_SOURCE='https://code.claude.com/docs/en/model-config'
+CLAUDE_PRICES='https://platform.claude.com/docs/en/about-claude/pricing'
+COPILOT_CURRENT={
+ 'GPT-5 mini','GPT-5.3-Codex','GPT-5.4','GPT-5.4 mini','GPT-5.4 nano','GPT-5.5',
+ 'GPT-5.6 Luna','GPT-5.6 Sol','GPT-5.6 Terra','GPT-6.1 Sol','GPT-6.1 Terra','GPT-6.2 Sol','GPT-6.2 Astra','GPT-6 Astra','GPT-6 Luna',
+ 'Claude Fable 5','Claude Fable 5.2','Claude Opus 4.5','Claude Opus 4.6','Claude Opus 4.7','Claude Opus 4.8','Claude Opus 5','Claude Opus 5.5',
+ 'Claude Sonnet 4.5','Claude Sonnet 4.6','Claude Sonnet 5','Claude Sonnet 5.5','Claude Haiku 4.5','Claude Haiku 5.5',
+ 'Gemini 3.1 Pro','Gemini 3.5 Flash','Gemini 3.6 Flash','Gemini 3.8 Flash','Gemini 4 Argon','Gemini 4 Carbon','Gemini 4 Hydrogen',
+ 'Grok 4.5','Grok 4.7','Kimi K2.7 Code','Kimi K3','MAI-Code-1-Flash','MAI-Code-1.1-Flash','MAI Code 2','MAI Code 2 Flash','Raptor mini',
+ 'Copilot Fusion', 'Qwen3-Coder','DeepSeek V3.2','GLM-4.7','MiniMax M2'
+}
+KIRO_CURRENT={'GPT-5.6 Sol','GPT-5.6 Terra','GPT-5.6 Luna','Claude Opus 5','Claude Opus 5.5','Claude Opus 4.8',
+ 'Claude Opus 4.7','Claude Opus 4.6','Claude Opus 4.5','Claude Sonnet 5','Claude Sonnet 5.5','Claude Sonnet 4.6',
+ 'Claude Sonnet 4.5','Claude Haiku 4.5','Claude Haiku 5.5','Claude Fable 5.1','Grok 4.7',
+ 'DeepSeek V3.2','MiniMax M2','GLM-4.7','Qwen3-Coder','Kimi K3'}
+CLAUDE_CURRENT={'Claude Fable 5','Claude Fable 5.1','Claude Fable 5.2','Claude Opus 4.5','Claude Opus 4.6',
+ 'Claude Opus 4.7','Claude Opus 4.8','Claude Opus 5','Claude Opus 5.5', 'Claude Sonnet 4.5','Claude Sonnet 4.6',
+ 'Claude Sonnet 5','Claude Sonnet 5.5','Claude Haiku 4.5','Claude Haiku 5.5'}
+for n in COPILOT_CURRENT:addmodel(n,source=COPILOT_SOURCE)
+for n in KIRO_CURRENT:addmodel(n,source=KIRO_SOURCE)
+for n in CLAUDE_CURRENT:addmodel(n,source=CLAUDE_SOURCE)
+# First-party platform rates, carefully kept separate from benchmark API task estimates.
+kiro_rates={}
+for r in readcsv(SRC/'v21'/'platform_rates_2026-11-18.csv'):
+ if r.get('platform')=='Kiro' and r.get('tier') in ('default','enterprise'):
+  kiro_rates[r['model']]={'credits_multiplier':num(r['credit_multiplier']), 'source':r['rate_source'], 'tier':r['tier']}
+claude_prices={'Claude Fable 5':(10,50),'Claude Fable 5.1':(10,50),'Claude Opus 5':(5,25),
+ 'Claude Opus 5.5':(4,20),'Claude Opus 4.8':(5,25),'Claude Opus 4.7':(5,25),'Claude Opus 4.6':(5,25),
+ 'Claude Sonnet 5':(3,15),'Claude Sonnet 5.5':(2,10),'Claude Haiku 4.5':(1,5)}
+for (pr,model),m in catalog.items():
+ m['country']=COUNTRIES.get(pr,'Unknown')
+ m['platforms']={}
+ if model in COPILOT_CURRENT or m.get('rate',{} ) and m['rate'].get('platform')=='Copilot':
+  m['platforms']['Copilot']={'status':'documented / benchmark-era','source':COPILOT_SOURCE,'pricing_source':COPILOT_PRICES,
+   'rate':m['rate'] if m.get('rate') and m['rate'].get('platform')=='Copilot' else None}
+ if model in KIRO_CURRENT:
+  m['platforms']['Kiro']={'status':'documented' if model in kiro_rates else 'documented, credits unavailable',
+   'source':KIRO_SOURCE,'pricing_source':KIRO_PRICES,'rate':kiro_rates.get(model)}
+ if model in CLAUDE_CURRENT:
+  inp,out=claude_prices.get(model,(None,None))
+  m['platforms']['Claude Code']={'status':'documented / historical' if inp is None else 'documented',
+   'source':CLAUDE_SOURCE,'pricing_source':CLAUDE_PRICES,
+   'rate':{'input':inp,'output':out,'tier':'API', 'platform':'Claude Code'} if inp is not None else None}
+
+# AA scored examples for Kiro and native Claude Code harness are preserved on separate platform tabs.
+for ver,srcfile in [('2.1',SRC/'v21'/'coding_agent_data_2026-11-18.csv'),('2.0',SRC/'v2'/'coding_agent_data_2026-10-30.csv')]:
+ for platform in ('Kiro','Claude Code'):
+  pts=[]
+  for r in readcsv(srcfile):
+   if platform=='Kiro':
+    if r.get('platform')!='Kiro' or r.get('reference_included')!='True':continue
+   else:
+    if r.get('platform')!='Copilot' or r.get('harness')!='Claude Code' or r.get('provider')!='Anthropic':continue
+   model=r.get('model'); score=num(r.get('score')); cost=num(r.get('api_cost_usd_task'))
+   if score is None or cost is None:continue
+   pt=record_to_point(model,r.get('provider'),r.get('effort'),score,cost,r.get('source'),r.get('harness'))
+   if pt:pts.append(pt)
+  if pts:
+   chartid=('kiro' if platform=='Kiro' else 'claude_code')+'_aa_v'+ver.replace('.','')
+   charts.append({'id':chartid,'label':'AA Coding Agent Index v'+ver,
+     'snapshot':'2026-11-18' if ver=='2.1' else '2026-10-30', 'version':ver,
+     'benchmark':'AA Coding Agent Index', 'platforms':[platform], 'cost_basis':'AA cross-harness reference, USD/task',
+     'points':pts,'zoom_max':4.8 if ver=='2.1' else 3.2})
+for c in charts:
+ c.setdefault('platforms',['Copilot'])
+ c.setdefault('cost_basis','Benchmark API estimate, USD/task')
+ c['points']=[dict(p, country=COUNTRIES.get(p['provider'],'Unknown')) for p in c['points']]
 # Deduplicate models but preserve multiple effort points and all snapshots.
 D={'generated_from':'Versioned Copilot Pareto repository snapshots','catalog':sorted(catalog.values(),key=lambda r:(r['provider'],r['model'])),'charts':charts,'static_charts':static,'promos':promos,'last_snapshot':'2026-11-18','repository':'https://github.com/ChrisTorng/coding-agent-pareto'}
 (DEST/'data.json').write_text(json.dumps(D,ensure_ascii=False,separators=(',',':')),encoding='utf-8')

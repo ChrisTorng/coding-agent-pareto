@@ -1,16 +1,34 @@
-# Coding Agent Pareto — Interactive Site
+# Coding Agent Pareto — interactive model explorer
 
-Static, dependency-free browser dashboard generated from versioned repository datasets using `python web/build_site.py`. The separate original Python/Matplotlib renderer is never replaced.
+Live: https://coding-agent-pareto.christorng.idv.tw/  
+Source: https://github.com/ChrisTorng/coding-agent-pareto
 
-- Default: every provider and every model is selected; "Exclude China" deselects the China-based vendors in `web/build_site.py`.
-- Provider and model checkboxes; search models; choose benchmark and historical snapshot.
-- Two-panel interactive SVG chart (complete cost range and low-cost zoom), focus/hover tooltips, Pareto frontier, effort variants, downloadable filtered CSV.
-- Data gaps remain visible as unscored models in the model catalog; an unscored model is never plotted at an invented score.
-- Four original approved Python charts are copied verbatim to `dist/site/charts/*.png` and `*.svg`.
-- GHA upload provides reproducible website and chart assets; GitHub Pages deployment is prepared but skipped until Pages is enabled in repository Settings.
-- **Live**: https://coding-agent-pareto.christorng.idv.tw/ — Cloudflare Worker currently serves the versioned public `web/` files from GitHub, including the latest GHA-generated `web/data.json` and `web/charts/` images. The Worker source is under `deploy/cloudflare-proxy-worker.js`.
-- **GitHub Pages option**: after **Settings → Pages → Build and deployment → Source: GitHub Actions** is enabled once, the existing `publish-site.yml` deploy job runs automatically. To move the custom hostname to GitHub Pages directly, configure the Pages custom domain and change DNS to CNAME `christorng.github.io` (replacing the existing Worker Domain).
+## Interface
 
-Published site is public; repository is public. Current source/frozen results are from dated versions; live data updates are intentionally not fabricated.
+- First choose **GitHub Copilot**, **Kiro**, or **Claude Code**. Each platform has a separately verified model catalog and benchmark snapshots. Platforms do not share pricing.
+- Select companies and child models; a partially selected company has an indeterminate checkbox. **All models selected** is the default. **Exclude China** filters by company country, not model name.
+- Select any benchmark or historical snapshot available for the platform. A missing score remains a catalog entry, never an invented plotted point.
+- Large single interactive SVG graph: X minimum/maximum selectors below the axis, Y minimum/maximum selectors beside the axis, numeric fields, Pareto frontier, SVG hover/focus details, score/price clipping, reset axes.
+- Fullscreen keeps benchmark selector, platform selector, axis controls and exports available. Export the current view as **PNG/SVG/CSV** or download the **original approved two-panel PNG/SVG** on the four Copilot benchmarks.
+- Official promotional rates/expiration are surfaced for Copilot, model-level Kiro credit multipliers for Kiro, and official Claude API pricing for Claude Code where available. Benchmark task costs remain benchmark estimates, not transformed into made-up cross-platform prices.
+- Light/dark mode styles align the chart with the surrounding page, including Dark Reader detection.
 
-Local: `python copilot_pareto/run_four_charts_2026-11-18.py && python web/build_site.py && python scripts/check_site.py`.
+## Sources and matching
+
+- GitHub Copilot supported models: https://docs.github.com/en/copilot/reference/ai-models/supported-models
+- GitHub Copilot prices and promotions: https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing
+- Copilot Fusion: https://docs.github.com/en/copilot/concepts/models/copilot-fusion
+- Kiro models: https://kiro.dev/docs/models/available-models/
+- Kiro billing: https://kiro.dev/pricing/
+- Claude Code available model aliases: https://code.claude.com/docs/en/model-config
+- Claude API pricing: https://platform.claude.com/docs/en/about-claude/pricing
+
+Model availability is explicitly limited to the declared platform. Archived model versions remain cataloged when the underlying benchmark is historical. Some current model releases lack an AA score and consequently appear only in the catalog. The build uses pinned inputs: there is no invented live score or dynamic price scraping.
+
+## Build and deployment
+
+`python copilot_pareto/run_four_charts_2026-11-18.py && python web/build_site.py && python scripts/check_site.py`
+
+Optional local browser smoke test: `python scripts/browser_smoke.py` (requires Playwright and Chromium).
+
+`publish-site.yml` produces all four preserved Python/Matplotlib static white, English, two-panel charts plus the interactive site, and publishes `web/data.json` and `web/charts/` in this public repository. Every successful run also uploads a GitHub Actions Artifact. GitHub Pages is optional until enabled in Settings; the live custom hostname is currently hosted via Cloudflare Worker `deploy/cloudflare-proxy-worker.js`, proxying the generated public GitHub assets.

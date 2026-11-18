@@ -35,10 +35,10 @@ The four figures preserve the approved **2026-10-28 white-background, English-on
 
 Historical approved PNG/SVG files remain in the Library backup bundle; only code and source datasets are versioned here. CI generates new chart assets for each run. Previous artifacts may expire, so retain key approved images in Git or a Release for long-term preservation if needed.
 
-## Interactive GitHub Pages dashboard
+## Live interactive website
 
-The [Coding Agent Pareto](https://christorng.github.io/coding-agent-pareto/) dashboard selects all providers and models by default, supports one-click **Exclude China**, provider/model checkboxes, benchmark/historical snapshot switching, SVG tooltips, price-performance Pareto fronts and CSV exports. [GitHub Pages deployment workflow](.github/workflows/publish-site.yml) builds site JSON from version-controlled CSV/JSON and preserves the four original Python/Matplotlib charts as downloadable PNG/SVG. For custom-domain hosting set `coding-agent-pareto.christorng.idv.tw` in GitHub Pages settings, with a CNAME to `christorng.github.io`.
+**https://coding-agent-pareto.christorng.idv.tw/** · [Source and interface details](web/README.md)
 
-All benchmark sources and historical snapshots remain in the repository. Models without comparable benchmark scores remain catalog-only, not fabricated plot points.
+The interactive dashboard offers a single large graph with live price and score axis limits, fullscreen chart controls, benchmark history, GitHub Copilot / Kiro / Claude Code tabs, hierarchical company/model selection (including indeterminate state and Exclude China), company countries, and per-view PNG/SVG/CSV export. Original approved double-panel Python images remain available separately.
 
-Live interactive website: **https://coding-agent-pareto.christorng.idv.tw/**. GitHub Actions builds updated data and the same approved Python charts into public `web/data.json` and `web/charts/`; the Cloudflare Worker source is version-controlled in `deploy/`. GitHub Pages deployment is prepared but requires a one-time enablement at GitHub Settings → Pages.
+The repository preserves platform-specific model catalogs, historical benchmarks and official pricing sources. The build and chart generation are reproducible with `publish-site.yml`. The live site currently uses the versioned Cloudflare Worker proxy. GitHub Pages deployment is optional after it is enabled in repository Settings.

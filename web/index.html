@@ -1,37 +1,77 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Coding Agent Pareto · Model Explorer</title>
-<meta name="description" content="Interactive coding agent model benchmarks, historical Pareto frontiers and cost comparisons.">
-<link rel="stylesheet" href="./style.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Coding Agent Pareto · Interactive Benchmarks</title>
+  <meta name="description" content="Compare coding agent models by benchmark, company, effort and cost with interactive axis filters.">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<header class="site-header"><div class="head-wrap"><div class="logo"><span class="logomark">∿</span><div><strong>Coding Agent Pareto</strong><small>Model efficiency explorer</small></div></div><nav><a href="https://github.com/ChrisTorng/coding-agent-pareto" target="_blank" rel="noopener">Source / GHA</a><a href="https://christorng.idv.tw/" target="_blank" rel="noopener">About</a></nav></div></header>
+<header class="site-header">
+  <div class="head-wrap">
+    <a class="brand" href="./"><span class="mark">∿</span><span><strong>Coding Agent Pareto</strong><small>Cost × coding ability</small></span></a>
+    <nav class="platform-switch" aria-label="Coding agent platform">
+      <button type="button" class="platform-btn active" data-platform="Copilot">GitHub Copilot</button>
+      <button type="button" class="platform-btn" data-platform="Kiro">Kiro</button>
+      <button type="button" class="platform-btn" data-platform="Claude Code">Claude Code</button>
+    </nav>
+    <nav class="links"><a target="_blank" rel="noopener" href="https://github.com/ChrisTorng/coding-agent-pareto">GitHub</a><a target="_blank" rel="noopener" href="https://christorng.idv.tw/">About</a></nav>
+  </div>
+</header>
 <main>
-<section class="intro"><div class="eyebrow">COST × CAPABILITY · VERSIONED BENCHMARKS</div><h1>Find the model that delivers<br><span>more for less.</span></h1><p>Compare model and effort variants on the same benchmark. Filter any provider, or exclude all China-based providers with one click. Historical snapshots remain available.</p></section>
-<div class="layout">
-<aside class="filters card"><div class="section-head"><h2>Models & providers</h2><span id="filter-total" class="minor">Loading…</span></div>
-<div class="actions"><button id="select-all" class="subtle">Select all</button><button id="exclude-china" class="subtle">Exclude China</button></div>
-<div class="row-compact"><label for="model-search">Search models</label><input id="model-search" type="search" placeholder="Provider, model, effort…" autocomplete="off"></div>
-<div class="section-label">PROVIDERS <span id="provider-count"></span></div><div id="providers" class="provider-list" aria-label="Filter providers"></div>
-<div class="section-label model-title">MODELS <span id="model-count"></span></div><div id="models" class="model-list" aria-label="Filter models"></div>
-<p class="helptext">All models are selected initially. Unscored catalog models remain visible but do not create artificial points.</p>
-</aside>
-<div class="main-column">
-<section class="card controls"><div class="section-head"><div><div class="eyebrow">CHART SELECTION</div><h2>Benchmark & history</h2></div><span id="point-count" class="pill"></span></div>
-<div class="selectors"><div><label for="chart-picker">Benchmark / historical snapshot</label><select id="chart-picker"></select></div><div><label for="label-mode">Point labels</label><select id="label-mode"><option value="auto">Smart labels</option><option value="all">Show all</option><option value="none">Hide labels</option></select></div></div>
-<div class="promo-line" id="promo-line"></div>
-</section>
-<section class="card chart-card"><div class="chart-top"><div><h2 id="chart-title">Loading chart…</h2><p id="chart-meta"></p></div><div class="chart-actions"><button class="subtle" id="reset-filter">Reset filters</button><button class="primary" id="export-csv">Export CSV</button></div></div>
-<div id="chart-area" class="chart-area"><div class="empty">Loading chart data…</div></div><div class="chart-bottom"><span id="chart-legend"></span><span>Hover or focus on a point for details</span></div>
-<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
-</section>
-<section class="card table-card"><div class="section-head"><h2>Selected benchmark variants</h2><span id="table-meta" class="minor"></span></div><div class="table-wrap"><table><thead><tr><th>Provider</th><th>Model / effort</th><th>Score</th><th>Est. USD / task</th><th>Cost factor</th></tr></thead><tbody id="rows"></tbody></table></div></section>
-<section class="card table-card catalog-card"><div class="section-head"><h2>All selected models</h2><span id="catalog-meta" class="minor"></span></div><p class="catalog-explain">Models with no score in the selected benchmark remain listed. Token prices are USD per 1M tokens where recorded.</p><div class="table-wrap"><table><thead><tr><th>Provider</th><th>Model</th><th>Score status</th><th>Input / 1M</th><th>Output / 1M</th><th>Promo until</th></tr></thead><tbody id="catalog-rows"></tbody></table></div></section>
-<section class="card assets"><div class="section-head"><h2>Reproducible exports</h2><span class="minor">Python / Matplotlib output</span></div><p>Static white-background, two-panel charts remain available separately. GitHub Actions publishes dated PNG, SVG and CSV artifacts.</p><div id="asset-links" class="asset-links"></div></section>
-</div></div>
+  <div class="layout">
+    <aside id="filters" class="filters card" aria-label="Company and model filters">
+      <div class="section-head"><h2>Companies & models</h2><span id="filter-total" class="minor"></span></div>
+      <div class="actions"><button id="select-all" class="subtle" type="button">Select all</button><button id="exclude-china" class="subtle" type="button">Exclude China</button></div>
+      <label class="search-label" for="model-search">Search companies / models</label>
+      <input id="model-search" type="search" placeholder="Model or company" autocomplete="off">
+      <div id="providers" class="company-tree" aria-label="Company and model hierarchy"></div>
+      <p class="helptext">Company selections become partial when only some child models are checked. All available models are selected by default.</p>
+    </aside>
+    <div class="main-column">
+      <section class="chart-card card" id="chart-card">
+        <div class="chart-heading">
+          <div class="chart-identity"><strong id="platform-heading">GitHub Copilot</strong><h1 id="chart-title">Loading benchmark…</h1><p id="chart-meta"></p></div>
+          <div class="chart-actions"><button id="fullscreen-toggle" class="subtle" type="button" aria-label="Fullscreen chart">⛶ Fullscreen</button></div>
+        </div>
+        <div class="selectors">
+          <label>Benchmark / historical snapshot<select id="chart-picker"></select></label>
+          <label>Point labels<select id="label-mode"><option value="auto">Smart</option><option value="all">All</option><option value="none">None</option></select></label>
+          <label class="fullscreen-platform">Coding agent<select id="platform-full"><option value="Copilot">GitHub Copilot</option><option>Kiro</option><option>Claude Code</option></select></label>
+          <label class="export-control">Export
+            <span class="export-set"><select id="export-kind" aria-label="Export format"><option value="view-png">Current view · PNG</option><option value="view-svg">Current view · SVG</option><option value="view-csv">Current view · CSV</option><option value="original-png">Original two-panel · PNG</option><option value="original-svg">Original two-panel · SVG</option></select><button class="primary" type="button" id="export-action">Export</button></span>
+          </label>
+        </div>
+        <div id="promo-line" class="promo-line"></div>
+        <div class="chart-content">
+          <div class="axis-y" aria-label="Score axis bounds"><span class="axis-name">Score (%)</span>
+            <label>Max <input id="y-max-value" type="number" step="1" min="0" max="100"></label>
+            <input class="y-slide" id="y-max" type="range" min="0" max="100" step="1" aria-label="Maximum score">
+            <input class="y-slide" id="y-min" type="range" min="0" max="100" step="1" aria-label="Minimum score">
+            <label>Min <input id="y-min-value" type="number" step="1" min="0" max="100"></label>
+          </div>
+          <div class="plot-main"><div id="chart-area" class="chart-area" aria-live="polite">Loading…</div>
+            <div class="axis-x"><div class="axis-label"><b>Cost per benchmark task (USD)</b><span id="axis-summary"></span></div>
+              <div class="axis-x-controls"><label>Min $ <input id="x-min-value" type="number" min="0" step="any"></label>
+                <div class="x-range"><input id="x-min" type="range" min="0" max="10" step="0.01" aria-label="Minimum cost"><input id="x-max" type="range" min="0" max="10" step="0.01" aria-label="Maximum cost"></div>
+                <label>Max $ <input id="x-max-value" type="number" min="0" step="any"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-footer"><span id="chart-legend"></span><span id="point-count"></span><button id="reset-range" type="button" class="text-button">Reset axes</button></div>
+        <div id="platform-note" class="platform-note"></div>
+        <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+      </section>
+      <div class="bottom-grid">
+        <section class="card table-card"><div class="section-head"><h2>Visible scored variants</h2><span id="table-meta" class="minor"></span></div><div class="table-wrap"><table><thead><tr><th>Company / country</th><th>Model / effort</th><th>Score</th><th>Cost / task</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+        <section class="card table-card"><div class="section-head"><h2>Selected model catalog</h2><span id="catalog-meta" class="minor"></span></div><div class="table-wrap"><table><thead><tr><th>Company / country</th><th>Model</th><th>Score</th><th>Rate / credits</th><th>Promo / status</th></tr></thead><tbody id="catalog-rows"></tbody></table></div></section>
+      </div>
+      <section class="card assets"><div class="section-head"><h2>Original Python charts</h2><span class="minor">Unchanged white, English, two-panel Matplotlib assets</span></div><div id="asset-links" class="asset-links"></div></section>
+    </div>
+  </div>
 </main>
-<footer>Source snapshots are versioned in <a href="https://github.com/ChrisTorng/coding-agent-pareto">GitHub</a>. © 2026 <a href="https://christorng.idv.tw/">ChrisTorng</a>.</footer>
+<footer>Data & historical source files: <a href="https://github.com/ChrisTorng/coding-agent-pareto">GitHub</a> · <a href="https://christorng.idv.tw/">About</a></footer>
 <script src="./app.js" defer></script>
-</body></html>
+</body>
+</html>

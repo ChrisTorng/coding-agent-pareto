@@ -98,6 +98,10 @@ for v, p in [('v2',SRC/'v2'/'coding_agent_data_2026-10-30.csv'),('v21',SRC/'v21'
 current={'Microsoft':['MAI Code 2','MAI Code 2 Flash','MAI-Code-1.1-Flash'],'Google':['Gemini 3.8 Flash','Gemini 4 Argon','Gemini 4 Carbon','Gemini 4 Hydrogen'],'OpenAI':['GPT-6.2 Astra','GPT-6.2 Sol','GPT-6.1 Terra','GPT-6 Luna'],'Anthropic':['Claude Opus 5.5','Claude Fable 5.2','Claude Sonnet 5.5'],'Moonshot AI':['Kimi K2.7 Code','Kimi K3'],'Alibaba':['Qwen3-Coder'],'DeepSeek':['DeepSeek V3.2'],'Z.ai':['GLM-4.7'],'MiniMax':['MiniMax M2']}
 for pr,models in current.items():
     for model in models:addmodel(model,pr,'https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing')
+# Official promotional GitHub Copilot token pricing for new, not-yet-benchmarked MAI models.
+for model,inp,cached,out in [('MAI Code 2',0.50,0.025,2.50),('MAI Code 2 Flash',0.05,0.005,0.25)]:
+    addmodel(model,'Microsoft','https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing',
+             {'platform':'Copilot','input':inp,'cached_input':cached,'output':out,'promo_end':'2027-05-17','tier':'promotional'})
 
 promos=[{'label':'Copilot Fusion','discount':'30%','until':'2026-11-30','source':'https://docs.github.com/en/copilot/concepts/models/copilot-fusion'},
 {'label':'Gemini 4 Argon / Carbon','discount':'promotional rate','until':'2026-12-01','source':'https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing'},

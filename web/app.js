@@ -71,9 +71,17 @@ function tooltip(p,e){const box=$('tooltip');box.hidden=false;box.innerHTML=`<st
 function moveTip(e){let b=$('tooltip');if(b.hidden)return;const x=e.clientX??innerWidth/2,y=e.clientY??innerHeight/2;b.style.left=Math.max(8,Math.min(x+12,innerWidth-290))+'px';b.style.top=Math.max(8,Math.min(y+12,innerHeight-125))+'px'}
 function hideTip(){$('tooltip').hidden=true}
 function drawTable(points){const sorted=[...points].sort((a,b)=>a.cost-b.cost);$('rows').replaceChildren(...sorted.map(p=>{let tr=document.createElement('tr');for(const v of [p.provider,p.model+' / '+p.effort,fmt(p.score),costfmt(p.cost),'×'+fmt(p.discount)]){let td=document.createElement('td');td.textContent=v;tr.append(td)}return tr}));$('table-meta').textContent=points.length+' results';}
+function drawCatalog(points){
+ const scored=new Set(points.map(pointKey));const selected=checkedModels().sort((a,b)=>a.provider.localeCompare(b.provider)||a.model.localeCompare(b.model));let lacking=0;
+ $('catalog-rows').replaceChildren(...selected.map(m=>{
+  const r=m.rate||{};const hit=scored.has(modelKey(m));if(!hit)lacking++;
+  const tr=document.createElement('tr');for(const v of [m.provider,m.model,hit?'Scored':'No score',r.input!=null?costfmt(r.input):'—',r.output!=null?costfmt(r.output):'—',r.promo_end||'—']){const td=document.createElement('td');td.textContent=v;tr.append(td)}return tr;
+ }));
+ $('catalog-meta').textContent=selected.length+' models · '+lacking+' unscored in this benchmark';
+}
 function draw(){if(!db)return;redrawSelectors();const c=chart(),points=currentPoints();$('point-count').textContent=points.length+' scored variants';$('chart-title').textContent=c.label;$('chart-meta').textContent=c.snapshot+' · '+c.benchmark+' · '+c.version+' · '+c.points.length+' scored points available';
  $('promo-line').textContent=db.promos.map(p=>`${p.label}: ${p.discount} until ${p.until}`).join('   ·   ');
- drawGraph(points);drawTable(points);const imageId=c.id;
+ drawGraph(points);drawTable(points);drawCatalog(points);const imageId=c.id;
  const staticFiles=db.static_charts?.[imageId];$('asset-links').replaceChildren();if(staticFiles){for(const [ext,url] of Object.entries(staticFiles)){let a=document.createElement('a');a.href=url;a.textContent='Download '+ext.toUpperCase();a.target='_blank';a.rel='noopener';$('asset-links').append(a)}}
  let act=document.createElement('a');act.href='https://github.com/ChrisTorng/coding-agent-pareto/actions';act.textContent='All GHA artifacts';act.target='_blank';act.rel='noopener';$('asset-links').append(act);
 }

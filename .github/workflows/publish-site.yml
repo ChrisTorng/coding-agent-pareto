@@ -11,7 +11,7 @@ on:
       - '.github/workflows/publish-site.yml'
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -21,6 +21,8 @@ concurrency:
 
 jobs:
   build:
+    outputs:
+      pages_enabled: ${{ steps.pages_status.outputs.enabled }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -42,9 +44,28 @@ jobs:
         run: python scripts/check_site.py
       - name: Check browser script syntax
         run: node --check web/app.js
-      - name: Configure Pages
+      - name: Publish latest site JSON and chart images to public repository
+        shell: bash
+        run: |
+          mkdir -p web/charts
+          cp dist/site/data.json web/data.json
+          cp dist/site/charts/* web/charts/
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add web/data.json web/charts/
+          if ! git diff --cached --quiet; then
+            git commit -m "Update browser dataset and approved charts [skip ci]"
+            git push
+          fi
+      - name: Configure Pages (optional until Pages is enabled in repository Settings)
+        id: pages_setup
+        continue-on-error: true
         uses: actions/configure-pages@v5
+      - name: Pages availability
+        id: pages_status
+        run: echo "enabled=${{ steps.pages_setup.outcome == 'success' }}" >> "$GITHUB_OUTPUT"
       - name: Upload Pages artifact
+        if: steps.pages_setup.outcome == 'success'
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist/site
@@ -55,6 +76,7 @@ jobs:
           path: dist/site/
           retention-days: 90
   deploy:
+    if: needs.build.outputs.pages_enabled == 'true'
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10

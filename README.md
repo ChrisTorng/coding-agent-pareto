@@ -34,3 +34,9 @@ The four figures preserve the approved **2026-10-28 white-background, English-on
 **The current workflow is deliberately reproducible from pinned 2026 datasets.** It does not fetch or fabricate new AA benchmark values or platform Credits. Future automated model monitoring and data refresh will be designed separately after this CI has been verified. Price promotions are annotated as archived snapshot terms, not assumed to extend beyond their dates.
 
 Historical approved PNG/SVG files remain in the Library backup bundle; only code and source datasets are versioned here. CI generates new chart assets for each run. Previous artifacts may expire, so retain key approved images in Git or a Release for long-term preservation if needed.
+
+## Interactive GitHub Pages dashboard
+
+The [Coding Agent Pareto](https://christorng.github.io/coding-agent-pareto/) dashboard selects all providers and models by default, supports one-click **Exclude China**, provider/model checkboxes, benchmark/historical snapshot switching, SVG tooltips, price-performance Pareto fronts and CSV exports. [GitHub Pages deployment workflow](.github/workflows/publish-site.yml) builds site JSON from version-controlled CSV/JSON and preserves the four original Python/Matplotlib charts as downloadable PNG/SVG. For custom-domain hosting set `coding-agent-pareto.christorng.idv.tw` in GitHub Pages settings, with a CNAME to `christorng.github.io`.
+
+All benchmark sources and historical snapshots remain in the repository. Models without comparable benchmark scores remain catalog-only, not fabricated plot points.

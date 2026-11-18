@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coding Agent Pareto · Model Explorer</title>
+<meta name="description" content="Interactive coding agent model benchmarks, historical Pareto frontiers and cost comparisons.">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="site-header"><div class="head-wrap"><div class="logo"><span class="logomark">∿</span><div><strong>Coding Agent Pareto</strong><small>Model efficiency explorer</small></div></div><nav><a href="https://github.com/ChrisTorng/coding-agent-pareto" target="_blank" rel="noopener">Source / GHA</a><a href="https://christorng.idv.tw/" target="_blank" rel="noopener">About</a></nav></div></header>
+<main>
+<section class="intro"><div class="eyebrow">COST × CAPABILITY · VERSIONED BENCHMARKS</div><h1>Find the model that delivers<br><span>more for less.</span></h1><p>Compare model and effort variants on the same benchmark. Filter any provider, or exclude all China-based providers with one click. Historical snapshots remain available.</p></section>
+<div class="layout">
+<aside class="filters card"><div class="section-head"><h2>Models & providers</h2><span id="filter-total" class="minor">Loading…</span></div>
+<div class="actions"><button id="select-all" class="subtle">Select all</button><button id="exclude-china" class="subtle">Exclude China</button></div>
+<div class="row-compact"><label for="model-search">Search models</label><input id="model-search" type="search" placeholder="Provider, model, effort…" autocomplete="off"></div>
+<div class="section-label">PROVIDERS <span id="provider-count"></span></div><div id="providers" class="provider-list" aria-label="Filter providers"></div>
+<div class="section-label model-title">MODELS <span id="model-count"></span></div><div id="models" class="model-list" aria-label="Filter models"></div>
+<p class="helptext">All models are selected initially. Unscored catalog models remain visible but do not create artificial points.</p>
+</aside>
+<div class="main-column">
+<section class="card controls"><div class="section-head"><div><div class="eyebrow">CHART SELECTION</div><h2>Benchmark & history</h2></div><span id="point-count" class="pill"></span></div>
+<div class="selectors"><div><label for="chart-picker">Benchmark / historical snapshot</label><select id="chart-picker"></select></div><div><label for="label-mode">Point labels</label><select id="label-mode"><option value="auto">Smart labels</option><option value="all">Show all</option><option value="none">Hide labels</option></select></div></div>
+<div class="promo-line" id="promo-line"></div>
+</section>
+<section class="card chart-card"><div class="chart-top"><div><h2 id="chart-title">Loading chart…</h2><p id="chart-meta"></p></div><div class="chart-actions"><button class="subtle" id="reset-filter">Reset filters</button><button class="primary" id="export-csv">Export CSV</button></div></div>
+<div id="chart-area" class="chart-area"><div class="empty">Loading chart data…</div></div><div class="chart-bottom"><span id="chart-legend"></span><span>Hover or focus on a point for details</span></div>
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+</section>
+<section class="card table-card"><div class="section-head"><h2>Selected benchmark variants</h2><span id="table-meta" class="minor"></span></div><div class="table-wrap"><table><thead><tr><th>Provider</th><th>Model / effort</th><th>Score</th><th>Est. USD / task</th><th>Cost factor</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<section class="card assets"><div class="section-head"><h2>Reproducible exports</h2><span class="minor">Python / Matplotlib output</span></div><p>Static white-background, two-panel charts remain available separately. GitHub Actions publishes dated PNG, SVG and CSV artifacts.</p><div id="asset-links" class="asset-links"></div></section>
+</div></div>
+</main>
+<footer>Source snapshots are versioned in <a href="https://github.com/ChrisTorng/coding-agent-pareto">GitHub</a>. © 2026 <a href="https://christorng.idv.tw/">ChrisTorng</a>.</footer>
+<script src="./app.js" defer></script>
+</body></html>

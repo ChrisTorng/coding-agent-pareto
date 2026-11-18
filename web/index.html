@@ -36,13 +36,15 @@
           <div class="chart-identity"><strong id="platform-heading">GitHub Copilot</strong><h1 id="chart-title">Loading benchmark…</h1><p id="chart-meta"></p></div>
           <div class="chart-actions"><button id="fullscreen-toggle" class="subtle" type="button" aria-label="Fullscreen chart">⛶ Fullscreen</button></div>
         </div>
-        <div class="selectors">
-          <label>Benchmark<select id="benchmark-picker"></select></label>
-          <label>Snapshot<select id="snapshot-picker"></select></label>
-          <label>Cost scale<select id="cost-scale"><option value="linear">Linear</option><option value="log">Logarithmic</option></select></label>
-          <label>Point labels<select id="label-mode"><option value="on">On</option><option value="none">Off</option></select></label>
-          <label class="fullscreen-platform">Coding agent<select id="platform-full"><option value="Copilot">GitHub Copilot</option><option>Kiro</option><option>Claude Code</option></select></label>
-
+        <div class="selectors" role="group" aria-label="Chart settings">
+          <label class="select-field benchmark-field">Benchmark<select id="benchmark-picker"></select></label>
+          <label class="select-field snapshot-field">Snapshot<select id="snapshot-picker"></select></label>
+          <fieldset class="compact-choice"><legend>Cost scale</legend><label><input type="radio" name="cost-scale" value="linear" checked> Linear</label><label><input type="radio" name="cost-scale" value="log"> Log</label></fieldset>
+          <label class="choice-field"><input id="label-mode" type="checkbox" checked> Labels</label>
+          <label class="select-field range-field">Axis range<select id="range-mode"><option value="pareto">Pareto range</option><option value="all">All points range</option></select></label>
+          <label class="select-field point-field">Draw points<select id="point-mode"><option value="all">All visible</option><option value="pareto">Pareto only</option></select></label>
+          <label class="choice-field"><input id="pareto-labels" type="checkbox"> Pareto labels only</label>
+          <label class="select-field fullscreen-platform">Coding agent<select id="platform-full"><option value="Copilot">GitHub Copilot</option><option>Kiro</option><option>Claude Code</option></select></label>
         </div>
         <div class="chart-content">
           <div class="axis-y" aria-label="Score axis bounds"><span class="axis-name">Score (%)</span>
@@ -59,7 +61,7 @@
             </div>
           </div>
         </div>
-        <div class="chart-footer"><span id="chart-legend"></span><span id="point-count"></span><button id="reset-range" type="button" class="text-button">Reset axes</button></div>
+        <div class="chart-footer"><span id="chart-legend" class="chart-legend" aria-label="Vendor marker shapes and model family colors"></span><span id="point-count"></span><button id="reset-range" type="button" class="text-button">Reset axes</button></div>
         <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
       </section>
       <div class="bottom-grid">

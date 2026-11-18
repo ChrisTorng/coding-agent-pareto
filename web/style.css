@@ -87,3 +87,49 @@ html[data-darkreader-mode]{--bg:#141b22;--surface:#1d2730;--ink:#e8f0f5;--muted:
 .chart-card:fullscreen .selectors label,.chart-card.fullscreen-fallback .selectors label{font-size:11px}
 .chart-card:fullscreen .selectors select,.chart-card.fullscreen-fallback .selectors select{margin-top:2px;padding:4px 6px}
 @media(max-width:820px){.selectors{grid-template-columns:repeat(2,minmax(0,1fr))}.chart-card:fullscreen .selectors{grid-template-columns:repeat(2,minmax(0,1fr))}.chart-card:fullscreen .chart-content{grid-template-columns:58px minmax(0,1fr)}.reference-export .export-control{flex-wrap:wrap}}
+
+/* Interactive explorer v7: compact controls and fully responsive plot without lost side margins. */
+.chart-card .selectors{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:end;margin:8px 0 5px}
+.chart-card .selectors>*{min-width:0;margin:0;white-space:nowrap}
+.chart-card .selectors .benchmark-field{flex:2 1 205px;max-width:420px}
+.chart-card .selectors .snapshot-field{flex:1.3 1 185px;max-width:320px}
+.chart-card .selectors .range-field{flex:1 1 142px;max-width:220px}
+.chart-card .selectors .point-field{flex:1 1 140px;max-width:200px}
+.chart-card .selectors select{width:100%;min-height:31px}
+.compact-choice{display:flex;align-items:center;gap:8px;flex:0 0 auto;padding:0;margin:0;border:0;min-width:156px}
+.compact-choice legend{font-size:11px;color:var(--muted);font-weight:700;margin:0 0 3px}
+.compact-choice label,.choice-field{font-size:12px!important;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font-weight:600;color:var(--ink)}
+.choice-field input,.compact-choice input{margin:0;accent-color:var(--accent)}
+.chart-card:fullscreen .selectors,.chart-card.fullscreen-fallback .selectors{display:flex;flex-wrap:wrap;gap:5px 12px;margin:5px 0}
+.chart-card:fullscreen .fullscreen-platform,.chart-card.fullscreen-fallback .fullscreen-platform{display:block;flex:1 1 180px}
+.chart-card:fullscreen .chart-area svg,.chart-card.fullscreen-fallback .chart-area svg{height:100%;width:100%;max-height:none}
+.chart-card:not(:fullscreen) .chart-area svg{max-height:none;min-height:0;height:auto;width:100%}
+.chart-content{gap:2px;grid-template-columns:75px minmax(0,1fr)}
+.chart-card{padding:12px 9px}
+.chart-card:fullscreen{padding:9px 10px}
+.axis-x{padding:1px 2%}
+.svg-point{stroke:var(--plot);transition:opacity .09s linear,filter .09s linear;cursor:crosshair}
+.model-series .effort-connector{fill:none;stroke-width:1.6;stroke-opacity:.53;pointer-events:none;stroke-linejoin:round}
+.model-series.faded-series{opacity:.10}
+.model-series.emphasis-series .svg-point{stroke-width:3;filter:drop-shadow(0 0 3px currentColor)}
+.model-series.emphasis-series .effort-connector{stroke-width:5;stroke-opacity:1}
+.model-series.emphasis-series .svg-label{font-weight:800;font-size:17px}
+.svg-label{font-size:13px;pointer-events:none}
+.svg-point{touch-action:manipulation}
+.chart-legend{display:flex;flex-wrap:wrap;gap:5px 12px;align-items:center;min-width:0}
+.legend-section{display:flex;align-items:center;flex-wrap:wrap;gap:4px 9px}
+.legend-section>b{font-size:11px;color:var(--muted);margin-right:4px}
+.legend-item{font-size:10px;color:var(--muted);display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+.legend-item svg{width:15px;height:15px;overflow:visible}
+.legend-item i{display:inline-block;width:10px;height:10px;flex:none;border-radius:3px}
+.chart-footer{gap:5px;padding:2px 0}
+@media(max-width:1000px){.chart-card .selectors{gap:5px 8px}.chart-card .selectors .benchmark-field,.chart-card .selectors .snapshot-field{flex:1 1 175px}}
+/* Keep each compact filter's label and its control aligned without overlap. */
+.chart-card .selectors .select-field{display:flex;flex-direction:column;align-items:stretch;justify-content:end;gap:3px;line-height:1.2}
+.chart-card .selectors .select-field select{margin:0;min-width:0;min-height:33px;max-width:100%;text-overflow:ellipsis}
+.chart-card .selectors .compact-choice{align-self:end;min-height:45px;display:flex;flex-wrap:wrap;align-content:center;column-gap:9px;row-gap:3px}
+.chart-card .selectors .compact-choice legend{float:left;width:100%;padding:0;line-height:1}
+.chart-card .selectors .choice-field{align-self:end;min-height:33px;padding:0 2px;display:inline-flex;align-items:center}
+.chart-card .selectors .fullscreen-platform{display:none}
+.chart-card:fullscreen .selectors .fullscreen-platform,.chart-card.fullscreen-fallback .selectors .fullscreen-platform{display:flex}
+.model-series.emphasis-series{filter:brightness(1.25)}

@@ -1,0 +1,7 @@
+# Coding Agent Source Monitor
+
+`source_registry.json` records **official first-stage sources** and **conditional second-stage source pages** needed by the ChatGPT automation `Coding Agent 模型／價格變更監測及 GHA 發布` (Tue–Sat 07:30 Asia/Taipei).
+
+Each run: compare primary sources with reviewed/versioned benchmark and platform rate snapshots. Only when a material model availability/effort, USD-per-token or credit multiplier, promotion/expiry, or benchmark version/value change is detected, retrieve affected detailed model/comparison sources, cross-check the facts and update the corresponding historical snapshots. Preserve all providers including China and old historical rows; do not assign scores where none exist. If no real change: no commit, GitHub Actions run or notification. If changed: commit via the GitHub connector, verify GitHub Actions rendered the four original Python charts and interactive site, then verify the public site.
+
+This file is a **source inventory**, not a claim that GitHub Actions itself refreshes price information automatically. Last reviewed rate snapshot remains the versioned CSV tracked in the repository. No external fetch results or hashes are fabricated in this manifest.

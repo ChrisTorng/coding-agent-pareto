@@ -50,3 +50,11 @@ assert '<option value="on">On</option><option value="none">Off</option>' in page
 assert page.index('id="export-action"') > page.index('id="reference-info"'), 'Export must stay out of fullscreen'
 for token in ('writeQuery','restoreQuery','saveExclusions','logFloor','niceStep'):
     assert token in js, token
+
+registry=Path('monitor/source_registry.json')
+assert registry.exists(), 'Missing external source monitoring registry'
+watch=json.loads(registry.read_text(encoding='utf-8'))
+assert len(watch['primary_sources'])>=12 and len(watch['conditional_detail_sources'])>=30
+assert all(x['url'].startswith('https://') for x in watch['primary_sources'])
+assert not any('raw.githubusercontent.com/ChrisTorng' in x['url'] for x in watch['primary_sources'])
+print('Source-monitor registry:',len(watch['primary_sources']),'primary /',len(watch['conditional_detail_sources']),'conditional')

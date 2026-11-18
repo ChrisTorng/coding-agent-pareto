@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "source_of_truth": "GitHub Copilot / Kiro / Claude Code primary official sources; benchmark primary leaderboards; checked comparison/model pages only when a primary page indicates new data",
+  "source_snapshot_date": "2026-11-18",
+  "policy": "Compare prior saved source content/ETag and structured facts. Fetch secondary complete model/effort/score/cost data when a primary source contains a material update. Preserve history, include all vendor countries, do not fabricate missing scores. A markup-only change is not a model price or benchmark change. The monitoring ChatGPT automation is responsible for interpretation and committing; GitHub Actions only builds/redeploys committed data.",
+  "primary_sources": [
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Copilot",
+      "label": "GitHub: Supported Copilot models",
+      "url": "https://docs.github.com/en/copilot/reference/ai-models/supported-models",
+      "check_on_every_run": true
+    },
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Copilot",
+      "label": "GitHub: Model prices and promotions",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing",
+      "check_on_every_run": true
+    },
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Copilot",
+      "label": "GitHub: Fusion discount and billing",
+      "url": "https://docs.github.com/en/copilot/concepts/models/copilot-fusion",
+      "check_on_every_run": true
+    },
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Kiro",
+      "label": "Kiro: Available models and credit multipliers",
+      "url": "https://kiro.dev/docs/models/available-models/",
+      "check_on_every_run": true
+    },
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Kiro",
+      "label": "Kiro: Pricing and plans",
+      "url": "https://kiro.dev/pricing/",
+      "check_on_every_run": true
+    },
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Kiro",
+      "label": "Kiro: Model changes",
+      "url": "https://kiro.dev/changelog/models/",
+      "check_on_every_run": true
+    },
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Claude Code",
+      "label": "Claude Code: Model selection",
+      "url": "https://code.claude.com/docs/en/model-config",
+      "check_on_every_run": true
+    },
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Claude Code",
+      "label": "Anthropic: API pricing",
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "check_on_every_run": true
+    },
+    {
+      "category": "platform_models_prices_promos",
+      "platform": "Claude Code",
+      "label": "Claude Code: Usage and costs",
+      "url": "https://code.claude.com/docs/en/costs",
+      "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "Artificial Analysis: Coding Agent leaderboard",
+      "url": "https://artificialanalysis.ai/agents/coding-agents",
+      "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "Artificial Analysis: Index and model leaderboard",
+      "url": "https://artificialanalysis.ai/",
+      "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "Artificial Analysis methodology",
+      "url": "https://artificialanalysis.ai/methodology/coding-agents-benchmarking",
+      "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "GitHub Copilot Benchmarks (Fusion DeepSWE and Terminal-Bench)",
+      "url": "https://benchmarks.github.com/",
+      "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "Terminal-Bench project",
+      "url": "https://www.tbench.ai/",
+      "check_on_every_run": true
+    }
+  ],
+  "conditional_detail_sources": [
+    "https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-cli-vs-claude-code",
+    "https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-cli-vs-grok-build",
+    "https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-sdk-vs-github-copilot",
+    "https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex",
+    "https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-github-copilot",
+    "https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-devin-fusion-cli",
+    "https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot",
+    "https://artificialanalysis.ai/models/claude-fable-5-1",
+    "https://artificialanalysis.ai/models/claude-fable-5-1-high",
+    "https://artificialanalysis.ai/models/claude-fable-5-1-low",
+    "https://artificialanalysis.ai/models/claude-fable-5-1-medium",
+    "https://artificialanalysis.ai/models/claude-fable-5-1-xhigh",
+    "https://artificialanalysis.ai/models/claude-haiku-5-5",
+    "https://artificialanalysis.ai/models/claude-haiku-5-5-high",
+    "https://artificialanalysis.ai/models/claude-haiku-5-5-low",
+    "https://artificialanalysis.ai/models/claude-haiku-5-5-medium",
+    "https://artificialanalysis.ai/models/claude-haiku-5-5-xhigh",
+    "https://artificialanalysis.ai/models/claude-opus-5-5",
+    "https://artificialanalysis.ai/models/claude-opus-5-5-high",
+    "https://artificialanalysis.ai/models/claude-opus-5-5-low",
+    "https://artificialanalysis.ai/models/claude-opus-5-5-medium",
+    "https://artificialanalysis.ai/models/claude-opus-5-5-xhigh",
+    "https://artificialanalysis.ai/models/claude-sonnet-5-5",
+    "https://artificialanalysis.ai/models/claude-sonnet-5-5-high",
+    "https://artificialanalysis.ai/models/claude-sonnet-5-5-low",
+    "https://artificialanalysis.ai/models/claude-sonnet-5-5-medium",
+    "https://artificialanalysis.ai/models/claude-sonnet-5-5-xhigh",
+    "https://artificialanalysis.ai/models/gemini-3-8-flash",
+    "https://artificialanalysis.ai/models/gemini-3-8-flash-medium",
+    "https://artificialanalysis.ai/models/gemini-4-argon",
+    "https://artificialanalysis.ai/models/gpt-5-6-terra",
+    "https://artificialanalysis.ai/models/gpt-5-6-terra-high",
+    "https://artificialanalysis.ai/models/gpt-5-6-terra-low",
+    "https://artificialanalysis.ai/models/gpt-5-6-terra-medium",
+    "https://artificialanalysis.ai/models/gpt-5-6-terra-non-reasoning",
+    "https://artificialanalysis.ai/models/gpt-5-6-terra-xhigh",
+    "https://artificialanalysis.ai/models/gpt-6-1-sol",
+    "https://artificialanalysis.ai/models/gpt-6-1-sol-high",
+    "https://artificialanalysis.ai/models/gpt-6-1-sol-low",
+    "https://artificialanalysis.ai/models/gpt-6-1-sol-medium",
+    "https://artificialanalysis.ai/models/gpt-6-1-sol-xhigh",
+    "https://artificialanalysis.ai/models/gpt-6-1-terra",
+    "https://artificialanalysis.ai/models/gpt-6-1-terra-high",
+    "https://artificialanalysis.ai/models/gpt-6-1-terra-low",
+    "https://artificialanalysis.ai/models/gpt-6-1-terra-medium",
+    "https://artificialanalysis.ai/models/gpt-6-1-terra-non-reasoning",
+    "https://artificialanalysis.ai/models/gpt-6-1-terra-xhigh",
+    "https://artificialanalysis.ai/models/gpt-6-astra",
+    "https://artificialanalysis.ai/models/gpt-6-astra-high",
+    "https://artificialanalysis.ai/models/gpt-6-astra-low",
+    "https://artificialanalysis.ai/models/gpt-6-astra-medium",
+    "https://artificialanalysis.ai/models/gpt-6-astra-xhigh",
+    "https://artificialanalysis.ai/models/gpt-6-luna",
+    "https://artificialanalysis.ai/models/gpt-6-luna-high",
+    "https://artificialanalysis.ai/models/gpt-6-luna-low",
+    "https://artificialanalysis.ai/models/gpt-6-luna-medium",
+    "https://artificialanalysis.ai/models/gpt-6-luna-non-reasoning",
+    "https://artificialanalysis.ai/models/gpt-6-luna-xhigh",
+    "https://artificialanalysis.ai/models/grok-4-7",
+    "https://artificialanalysis.ai/models/grok-4-7-high",
+    "https://artificialanalysis.ai/models/grok-4-7-low",
+    "https://artificialanalysis.ai/models/kimi-k3",
+    "https://artificialanalysis.ai/models/kimi-k3-low",
+    "https://artificialanalysis.ai/models/releases/claude-opus-5",
+    "https://artificialanalysis.ai/models/releases/claude-sonnet-5",
+    "https://artificialanalysis.ai/models/releases/gpt-5-6-luna",
+    "https://artificialanalysis.ai/models/releases/gpt-5-6-sol",
+    "https://artificialanalysis.ai/models/releases/gpt-6-sol",
+    "https://artificialanalysis.ai/models/releases/grok-4-6"
+  ],
+  "private_or_repo_sources_are_not_external_checks": true
+}

@@ -46,3 +46,14 @@ html[data-darkreader-mode]{--bg:#141b22;--surface:#1d2730;--ink:#e8f0f5;--muted:
 .source-meta{font-size:11px;color:var(--muted);display:block;margin-top:6px}
 @media(max-width:1300px){.selectors{grid-template-columns:repeat(3,minmax(0,1fr))}.selectors .export-control{grid-column:span 2}}
 @media(max-width:780px){.layout,.layout.sidebar-hidden{display:flex;flex-direction:column}.layout #sidebar-resizer{display:none}.layout .filters{width:100%}.selectors,.chart-card:fullscreen .selectors{grid-template-columns:repeat(2,minmax(0,1fr))}.selectors .export-control{grid-column:1 / -1}.source-links{grid-template-columns:1fr}.dual-range.vertical{flex-basis:160px;min-height:160px}.dual-range.vertical input[type=range]{height:160px}}
+
+/* Pointer-safe double-ended sliders: two explicit draggable grips share one track. */
+.dual-range input[type=range]{display:none!important}
+.dual-range .range-grip{position:absolute;z-index:4;padding:0;width:18px;height:18px;border:2px solid var(--surface);border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--accent);touch-action:none;cursor:grab}
+.dual-range .range-grip:active{cursor:grabbing}
+.dual-range.horizontal .range-grip{top:50%;transform:translate(-50%,-50%)}
+.dual-range.horizontal .range-grip.min{left:var(--lo)}
+.dual-range.horizontal .range-grip.max{left:var(--hi)}
+.dual-range.vertical .range-grip{left:50%;transform:translate(-50%,50%)}
+.dual-range.vertical .range-grip.min{bottom:var(--lo)}
+.dual-range.vertical .range-grip.max{bottom:var(--hi)}

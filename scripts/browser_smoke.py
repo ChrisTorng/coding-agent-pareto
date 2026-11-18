@@ -38,6 +38,15 @@ with sync_playwright() as pw:
     assert p.locator('#x-dual input[type=range]').count()==2 and p.locator('#y-dual input[type=range]').count()==2
     assert p.locator('#x-dual').evaluate('(e)=>e.style.getPropertyValue("--hi")')
     p.locator('#reset-range').click()
+    before=p.locator('#x-max-value').input_value()
+    grip=p.locator('#x-max-grip');grip.scroll_into_view_if_needed();bb=grip.bounding_box();xx=bb['x']+bb['width']/2;yy=bb['y']+bb['height']/2
+    p.mouse.move(xx,yy);p.mouse.down();p.mouse.move(xx-120,yy,steps=10);p.mouse.up()
+    assert float(p.locator('#x-max-value').input_value()) < float(before), 'X high handle must respond to a real pointer drag'
+    prior=float(p.locator('#y-min-value').input_value())
+    grip=p.locator('#y-min-grip');grip.scroll_into_view_if_needed();bb=grip.bounding_box();xx=bb['x']+bb['width']/2;yy=bb['y']+bb['height']/2
+    p.mouse.move(xx,yy);p.mouse.down();p.mouse.move(xx,yy-45,steps=10);p.mouse.up()
+    assert float(p.locator('#y-min-value').input_value()) > prior, 'Y low handle must respond to a real pointer drag'
+    p.locator('#reset-range').click()
     p.locator('#hide-filters').click()
     assert p.locator('#filters').is_hidden()
     assert json.loads(p.evaluate('localStorage.getItem("coding-agent-pareto.sidebar.v1")'))['hidden']

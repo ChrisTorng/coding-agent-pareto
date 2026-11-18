@@ -50,13 +50,13 @@
         <div class="chart-content">
           <div class="axis-y" aria-label="Score axis bounds"><span class="axis-name">Score (%)</span>
             <label>Max <input id="y-max-value" type="number" step="1" min="0" max="100"></label>
-<div class="dual-range vertical" id="y-dual"><div class="range-base"></div><div class="range-selected"></div><input class="y-slide" id="y-max" type="range" min="0" max="100" step="1" aria-label="Maximum score"><input class="y-slide" id="y-min" type="range" min="0" max="100" step="1" aria-label="Minimum score"></div>
+<div class="dual-range vertical" id="y-dual"><div class="range-base"></div><div class="range-selected"></div><input class="y-slide" id="y-max" type="range" min="0" max="100" step="1" aria-label="Maximum score"><input class="y-slide" id="y-min" type="range" min="0" max="100" step="1" aria-label="Minimum score"><button type="button" id="y-max-grip" class="range-grip max" role="slider" aria-label="Maximum score"></button><button type="button" id="y-min-grip" class="range-grip min" role="slider" aria-label="Minimum score"></button></div>
             <label>Min <input id="y-min-value" type="number" step="1" min="0" max="100"></label>
           </div>
           <div class="plot-main"><div id="chart-area" class="chart-area" aria-live="polite">Loading…</div>
             <div class="axis-x"><div class="axis-label"><b>Cost per benchmark task (USD)</b><span id="axis-summary"></span></div><div class="axis-tip" id="scale-explainer">Linear: compare absolute task costs directly. Logarithmic: separate clustered low-cost points.</div>
               <div class="axis-x-controls"><label>Min $ <input id="x-min-value" type="number" min="0" step="any"></label>
-                <div class="dual-range horizontal" id="x-dual"><div class="range-base"></div><div class="range-selected"></div><input id="x-min" type="range" min="0" max="10" step="0.01" aria-label="Minimum cost"><input id="x-max" type="range" min="0" max="10" step="0.01" aria-label="Maximum cost"></div>
+                <div class="dual-range horizontal" id="x-dual"><div class="range-base"></div><div class="range-selected"></div><input id="x-min" type="range" min="0" max="10" step="0.01" aria-label="Minimum cost"><input id="x-max" type="range" min="0" max="10" step="0.01" aria-label="Maximum cost"><button type="button" id="x-min-grip" class="range-grip min" role="slider" aria-label="Minimum cost"></button><button type="button" id="x-max-grip" class="range-grip max" role="slider" aria-label="Maximum cost"></button></div>
                 <label>Max $ <input id="x-max-value" type="number" min="0" step="any"></label>
               </div>
             </div>

@@ -33,15 +33,28 @@ function syncAxisInputs(){for(const a of ['x','y']){
   for(const side of ['min','max']){const slider=$(a+'-'+side);slider.min=min;slider.max=max;slider.step=step;slider.value=scaleValue(a,bounds[a+side]);$(a+'-'+side+'-value').value=a==='x'?Number(bounds[a+side].toPrecision(5)):Number(bounds[a+side].toFixed(1));}
   const span=Math.max(1e-9,max-min),lo=100*(scaleValue(a,bounds[a+'min'])-min)/span,hi=100*(scaleValue(a,bounds[a+'max'])-min)/span;
   $(a+'-dual').style.setProperty('--lo',Math.max(0,Math.min(100,lo))+'%');$(a+'-dual').style.setProperty('--hi',Math.max(0,Math.min(100,hi))+'%');
+  for(const side of ['min','max']){const g=$(a+'-'+side+'-grip');g.setAttribute('aria-valuemin',String(limits[a+'min']));g.setAttribute('aria-valuemax',String(limits[a+'max']));g.setAttribute('aria-valuenow',String(Number(bounds[a+side].toPrecision(7))));g.setAttribute('aria-valuetext',a==='x'?money(bounds[a+side]):fmt(bounds[a+side])+' percent');}
  }}
 function bindAxes(){for(const a of ['x','y'])for(const side of ['min','max']){
- const prop=a+side,slider=$(a+'-'+side),number=$(a+'-'+side+'-value');
- const on=(v,isSlider)=>{let n=Number(v);if(!Number.isFinite(n))return;if(isSlider)n=unscaleValue(a,n);
-  n=Math.max(limits[a+'min'],Math.min(limits[a+'max'],n));
-  const delta=a==='y'?.1:(costScale==='log'?Math.max(.0000001,bounds.xmax*.00001):.000001);
-  if(side==='min')n=Math.min(n,bounds[a+'max']-delta);else n=Math.max(n,bounds[a+'min']+delta);
-  n=Math.max(limits[a+'min'],Math.min(limits[a+'max'],n));bounds[prop]=n;syncAxisInputs();renderContent();};
- slider.addEventListener('input',()=>on(slider.value,true));number.addEventListener('change',()=>on(number.value,false));
+  const number=$(a+'-'+side+'-value'),grip=$(a+'-'+side+'-grip');let pointerActive=false;
+  const on=value=>{let n=Number(value);if(!Number.isFinite(n))return;
+    const minimum=scaleValue(a,limits[a+'min']),maximum=scaleValue(a,limits[a+'max']);
+    let v=Math.max(minimum,Math.min(maximum,scaleValue(a,n)));const minGap=a==='y'?.1:Math.max((maximum-minimum)*0.0001,0.000001);
+    if(side==='min')v=Math.min(v,scaleValue(a,bounds[a+'max'])-minGap);
+    else v=Math.max(v,scaleValue(a,bounds[a+'min'])+minGap);
+    bounds[a+side]=unscaleValue(a,Math.max(minimum,Math.min(maximum,v)));syncAxisInputs();renderContent();};
+  number.addEventListener('change',()=>on(number.value));
+  function pointerValue(e){const box=$(a+'-dual').getBoundingClientRect();let fraction=a==='x'?(e.clientX-box.left)/box.width:(box.bottom-e.clientY)/box.height;
+    fraction=Math.max(0,Math.min(1,fraction));return unscaleValue(a,scaleValue(a,limits[a+'min'])+fraction*(scaleValue(a,limits[a+'max'])-scaleValue(a,limits[a+'min'])))}
+  grip.addEventListener('pointerdown',e=>{pointerActive=true;grip.setPointerCapture(e.pointerId);on(pointerValue(e));e.preventDefault()});
+  grip.addEventListener('pointermove',e=>{if(pointerActive)on(pointerValue(e))});
+  grip.addEventListener('pointerup',()=>{pointerActive=false});
+  grip.addEventListener('pointercancel',()=>{pointerActive=false});
+  grip.addEventListener('keydown',e=>{const delta=a==='x'?Math.max(.001,(limits.xmax-limits.xmin)/100):1;
+    let target=bounds[a+side];if(e.key==='Home')target=limits[a+'min'];else if(e.key==='End')target=limits[a+'max'];
+    else if(e.key==='ArrowLeft'||e.key==='ArrowDown')target=costScale==='log'&&a==='x'?target/1.2:target-delta;
+    else if(e.key==='ArrowRight'||e.key==='ArrowUp')target=costScale==='log'&&a==='x'?target*1.2:target+delta;
+    else return;e.preventDefault();on(target)});
  }}
 function setCostScale(mode){if(!['log','linear'].includes(mode))return;costScale=mode;$('cost-scale').value=mode;
  const ps=chart().points.filter(p=>p.cost>0);if(mode==='log'){

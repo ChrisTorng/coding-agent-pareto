@@ -29,7 +29,7 @@ assert 'https://christorng.idv.tw/' in (p/'index.html').read_text(encoding='utf-
 print(json.dumps({'charts':len(d['charts']),'catalog_models':len(d['catalog']),'china_models':sum(m['china'] for m in d['catalog']),'benchmark_points':sum(len(c['points']) for c in d['charts']),'static_images':sum(len(v) for v in d['static_charts'].values())},indent=2))
 
 html=(p/'index.html').read_text(encoding='utf-8')
-for x in ('x-max-value','y-min-value','platform-full','fullscreen-toggle','export-kind','benchmark-picker','snapshot-picker','cost-scale','collapse-all','expand-all','hide-filters','show-filters','sidebar-resizer','x-dual','y-dual','benchmark-sources','pricing-sources'):
+for x in ('x-max-value','y-min-value','platform-full','fullscreen-toggle','export-kind','benchmark-picker','snapshot-picker','cost-scale','collapse-all','expand-all','hide-filters','show-filters','sidebar-resizer','x-dual','y-dual','x-min-grip','x-max-grip','y-min-grip','y-max-grip','benchmark-sources','pricing-sources'):
     assert f'id="{x}"' in html, f'Missing UI: {x}'
 
 assert d.get('data_update_mode') == 'frozen-reviewed-snapshots', 'Never describe reviewed 2026 snapshots as live price polling'

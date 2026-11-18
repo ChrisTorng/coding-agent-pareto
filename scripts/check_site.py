@@ -22,12 +22,21 @@ for chartid,files in d['static_charts'].items():
         assert fmt in files, (chartid,fmt)
         assert (p/files[fmt].replace('./','')).is_file(), (chartid,fmt)
 js=(p/'app.js').read_text(encoding='utf-8')
-for text in ('exclude-china','select-all','chart-picker','model-search','svg','export-action','catalog-rows','fullscreen-toggle'):
+for text in ('exclude-china','select-all','benchmark-picker','snapshot-picker','cost-scale','collapse-all','expand-all','hide-filters','sidebar-resizer','model-search','svg','export-action','catalog-rows','fullscreen-toggle'):
     assert text in js, f'Missing control: {text}'
 assert 'https://github.com/ChrisTorng/coding-agent-pareto' in (p/'index.html').read_text(encoding='utf-8')
 assert 'https://christorng.idv.tw/' in (p/'index.html').read_text(encoding='utf-8')
 print(json.dumps({'charts':len(d['charts']),'catalog_models':len(d['catalog']),'china_models':sum(m['china'] for m in d['catalog']),'benchmark_points':sum(len(c['points']) for c in d['charts']),'static_images':sum(len(v) for v in d['static_charts'].values())},indent=2))
 
 html=(p/'index.html').read_text(encoding='utf-8')
-for x in ('x-max-value','y-min-value','platform-full','fullscreen-toggle','export-kind'):
+for x in ('x-max-value','y-min-value','platform-full','fullscreen-toggle','export-kind','benchmark-picker','snapshot-picker','cost-scale','collapse-all','expand-all','hide-filters','show-filters','sidebar-resizer','x-dual','y-dual','benchmark-sources','pricing-sources'):
     assert f'id="{x}"' in html, f'Missing UI: {x}'
+
+assert d.get('data_update_mode') == 'frozen-reviewed-snapshots', 'Never describe reviewed 2026 snapshots as live price polling'
+assert set(d.get('platform_sources',{})) == {'Copilot','Kiro','Claude Code'}
+for platform,info in d['platform_sources'].items():
+    assert len(info['links']) >= 2 and all(link['url'].startswith('https://') for link in info['links']), platform
+for c in d['charts']:
+    assert c['sources'] and all(s['url'].startswith('https://') for s in c['sources']), c['id']
+    assert c['version'] and c['snapshot'] and c['benchmark'], c['id']
+print('Historical benchmark and price source links: validated')

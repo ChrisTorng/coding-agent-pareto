@@ -19,15 +19,17 @@
   </div>
 </header>
 <main>
-  <div class="layout">
+  <div class="layout" id="layout">
+  <button id="show-filters" class="subtle" type="button" aria-controls="filters" aria-expanded="true" hidden>☰ Show model filters</button>
     <aside id="filters" class="filters card" aria-label="Company and model filters">
-      <div class="section-head"><h2>Companies & models</h2><span id="filter-total" class="minor"></span></div>
+      <div class="section-head"><h2>Companies & models</h2><span id="filter-total" class="minor"></span><button id="hide-filters" class="subtle panel-control" type="button" aria-label="Hide model filters" title="Hide model filters">◀</button></div>
       <div class="actions"><button id="select-all" class="subtle" type="button">Select all</button><button id="exclude-china" class="subtle" type="button">Exclude China</button></div>
+      <div class="actions tree-actions"><button id="collapse-all" class="subtle" type="button">Collapse all</button><button id="expand-all" class="subtle" type="button">Expand all</button></div>
       <label class="search-label" for="model-search">Search companies / models</label>
       <input id="model-search" type="search" placeholder="Model or company" autocomplete="off">
       <div id="providers" class="company-tree" aria-label="Company and model hierarchy"></div>
-      <p class="helptext">Company selections become partial when only some child models are checked. All available models are selected by default.</p>
     </aside>
+    <div id="sidebar-resizer" role="separator" aria-label="Resize model filters sidebar" aria-orientation="vertical" tabindex="0" aria-valuemin="210" aria-valuemax="620" aria-valuenow="275"></div>
     <div class="main-column">
       <section class="chart-card card" id="chart-card">
         <div class="chart-heading">
@@ -35,7 +37,9 @@
           <div class="chart-actions"><button id="fullscreen-toggle" class="subtle" type="button" aria-label="Fullscreen chart">⛶ Fullscreen</button></div>
         </div>
         <div class="selectors">
-          <label>Benchmark / historical snapshot<select id="chart-picker"></select></label>
+          <label>Benchmark<select id="benchmark-picker"></select></label>
+          <label>Snapshot<select id="snapshot-picker"></select></label>
+          <label>Cost scale<select id="cost-scale"><option value="linear">Linear — compare absolute costs</option><option value="log">Logarithmic — spread low costs</option></select></label>
           <label>Point labels<select id="label-mode"><option value="auto">Smart</option><option value="all">All</option><option value="none">None</option></select></label>
           <label class="fullscreen-platform">Coding agent<select id="platform-full"><option value="Copilot">GitHub Copilot</option><option>Kiro</option><option>Claude Code</option></select></label>
           <label class="export-control">Export
@@ -46,14 +50,13 @@
         <div class="chart-content">
           <div class="axis-y" aria-label="Score axis bounds"><span class="axis-name">Score (%)</span>
             <label>Max <input id="y-max-value" type="number" step="1" min="0" max="100"></label>
-            <input class="y-slide" id="y-max" type="range" min="0" max="100" step="1" aria-label="Maximum score">
-            <input class="y-slide" id="y-min" type="range" min="0" max="100" step="1" aria-label="Minimum score">
+<div class="dual-range vertical" id="y-dual"><div class="range-base"></div><div class="range-selected"></div><input class="y-slide" id="y-max" type="range" min="0" max="100" step="1" aria-label="Maximum score"><input class="y-slide" id="y-min" type="range" min="0" max="100" step="1" aria-label="Minimum score"></div>
             <label>Min <input id="y-min-value" type="number" step="1" min="0" max="100"></label>
           </div>
           <div class="plot-main"><div id="chart-area" class="chart-area" aria-live="polite">Loading…</div>
-            <div class="axis-x"><div class="axis-label"><b>Cost per benchmark task (USD)</b><span id="axis-summary"></span></div>
+            <div class="axis-x"><div class="axis-label"><b>Cost per benchmark task (USD)</b><span id="axis-summary"></span></div><div class="axis-tip" id="scale-explainer">Linear: compare absolute task costs directly. Logarithmic: separate clustered low-cost points.</div>
               <div class="axis-x-controls"><label>Min $ <input id="x-min-value" type="number" min="0" step="any"></label>
-                <div class="x-range"><input id="x-min" type="range" min="0" max="10" step="0.01" aria-label="Minimum cost"><input id="x-max" type="range" min="0" max="10" step="0.01" aria-label="Maximum cost"></div>
+                <div class="dual-range horizontal" id="x-dual"><div class="range-base"></div><div class="range-selected"></div><input id="x-min" type="range" min="0" max="10" step="0.01" aria-label="Minimum cost"><input id="x-max" type="range" min="0" max="10" step="0.01" aria-label="Maximum cost"></div>
                 <label>Max $ <input id="x-max-value" type="number" min="0" step="any"></label>
               </div>
             </div>
@@ -61,6 +64,10 @@
         </div>
         <div class="chart-footer"><span id="chart-legend"></span><span id="point-count"></span><button id="reset-range" type="button" class="text-button">Reset axes</button></div>
         <div id="platform-note" class="platform-note"></div>
+        <section class="source-links" aria-label="Benchmark and cost provenance">
+          <div><h2>Benchmark sources</h2><div id="benchmark-sources"></div></div>
+          <div><h2>Pricing sources</h2><div id="pricing-sources"></div></div>
+        </section>
         <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
       </section>
       <div class="bottom-grid">

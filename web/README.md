@@ -32,3 +32,13 @@ Model availability is explicitly limited to the declared platform. Archived mode
 Optional local browser smoke test: `python scripts/browser_smoke.py` (requires Playwright and Chromium).
 
 `publish-site.yml` produces all four preserved Python/Matplotlib static white, English, two-panel charts plus the interactive site, and publishes `web/data.json` and `web/charts/` in this public repository. Every successful run also uploads a GitHub Actions Artifact. GitHub Pages is optional until enabled in Settings; the live custom hostname is currently hosted via Cloudflare Worker `deploy/cloudflare-proxy-worker.js`, proxying the generated public GitHub assets.
+
+## 2026-11-18 interactive controls and source provenance
+
+- Default company rows are collapsed; **Expand all / Collapse all** work at the vendor level, and a partial parent checkbox remains indeterminate.
+- Sidebar width, hidden state and scroll position are saved in browser `localStorage` under `coding-agent-pareto.sidebar.v1`. Drag the separator or use arrow keys; restore the sidebar using **Show model filters**.
+- **Benchmark** and **Snapshot** are separate selections. Snapshot options show index version and historical capture date, such as `v2.1 (2026-11-18)`. Different benchmarks have independent scores.
+- X axis can be **linear** (comparing absolute cost) or **logarithmic** (spreading low-cost points); X and Y ranges use one visual track per axis with two independently movable end handles plus precise numeric bound inputs.
+- **Benchmark sources** link original methodology, leaderboard or comparison pages and downloadable versioned repository CSV/JSON; **Pricing sources** link the selected platform's official docs and saved price CSV when available. The source URLs are not real-time feeds.
+- **Freshness limitation:** the GHA render/deploy pipeline reads the *reviewed frozen* repository snapshots. It does **not** automatically discover every new benchmark, model, token rate, promotion or deadline. Provider documentation changes structure, availability varies by plan/region, and benchmarks often lack stable export APIs. Future automation may fetch official pages and flag diffs, but promotion/price changes need verification (human or assisted) before acceptance to avoid silent incorrect graphs.
+- Keep original four approved Matplotlib charts unchanged; the website is an additional interactive view.

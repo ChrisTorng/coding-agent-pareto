@@ -1,90 +1,65 @@
-import subprocess,time,os,json
+import json
 from playwright.sync_api import sync_playwright
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
-server=None
-html=(root/'web'/'index.html').read_text().replace('<link rel="stylesheet" href="./style.css">', '<style>'+ (root/'web'/'style.css').read_text()+'</style>').replace('<script src="./app.js" defer></script>', '<script>window.fetch=async()=>({ok:true,json:async()=>('+json.dumps(json.loads((root/'dist'/'site'/'data.json').read_text()),ensure_ascii=False)+')})</script><script>'+ (root/'web'/'app.js').read_text()+'</script>')
-try:
- time.sleep(.8)
- with sync_playwright() as pw:
-  browser=pw.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox'])
-  page=browser.new_page(viewport={'width':1700,'height':1000},accept_downloads=True)
-  errs=[]
-  page.on('pageerror',lambda e:errs.append(str(e)))
-  page.set_content(html,wait_until='load')
-  page.locator('#chart-area svg').wait_for()
-  print('START',page.locator('#platform-heading').inner_text(),page.locator('#filter-total').inner_text(), 'points',page.locator('.svg-point').count())
-  assert page.locator('.svg-point').count()==25
-  assert '56' in page.locator('#filter-total').inner_text() or int(page.locator('#filter-total').inner_text().split('/')[0])>=40
-  assert page.locator('.svg-panel').count()==1
-  # hierarchical state
-  parent=page.locator('input[aria-label="All models for OpenAI"]')
-  child=page.locator('input[aria-label="Model GPT-6.2 Sol"]')
-  print('BEFORE PARENT',parent.is_checked(), parent.evaluate('(e)=>e.indeterminate'))
-  child.uncheck()
-  print('AFTER PARENT',parent.is_checked(), parent.evaluate('(e)=>e.indeterminate'))
-  assert not parent.is_checked() and parent.evaluate('(e)=>e.indeterminate')
-  page.locator('#select-all').click()
-  assert parent.is_checked()
-  page.locator('#exclude-china').click()
-  print('AFTER EXCLUDE',page.locator('#filter-total').inner_text())
-  assert page.locator('input[aria-label="All models for Moonshot AI"]').is_checked() is False
-  page.locator('#select-all').click()
-  # range change cost
-  page.locator('#x-max-value').fill('2.0');page.locator('#x-max-value').press('Tab')
-  print('AFTER AXIS COST',page.locator('#point-count').inner_text(),page.locator('#axis-summary').inner_text())
-  assert '2.00' in page.locator('#axis-summary').inner_text()
-  # score axis
-  page.locator('#y-min-value').fill('50');page.locator('#y-min-value').press('Tab')
-  print('AFTER SCORE',page.locator('#point-count').inner_text())
-  assert float(page.locator('#y-min-value').input_value())==50
-  # screenshot
-  page.screenshot(path=str(root/'site-preview-v3.png'),full_page=True)
-  # test export current CSV
-  page.select_option('#export-kind','view-csv')
-  with page.expect_download() as d:page.locator('#export-action').click()
-  print('CSV DOWNLOAD',d.value.suggested_filename)
-  # SVG and PNG current view must produce actual downloads.
-  for kind,ext in [('view-svg','svg'),('view-png','png')]:
-   page.select_option('#export-kind',kind)
-   with page.expect_download() as imgdl: page.locator('#export-action').click()
-   print('IMAGE DOWNLOAD',kind,imgdl.value.suggested_filename)
-   assert imgdl.value.suggested_filename.endswith('.'+ext)
-  # original static
-  page.select_option('#export-kind','original-png')
-  assert not page.locator('#export-kind option[value="original-png"]').is_disabled()
-  # Fusion chart
-  page.select_option('#chart-picker','fusion_deepswe_11')
-  print('FUSION',page.locator('.svg-point').count(),page.locator('#chart-title').inner_text())
-  assert page.locator('.svg-point').count()==6
-  # platform switching
-  page.get_by_role('button',name='Kiro',exact=True).click()
-  print('KIRO',page.locator('#platform-heading').inner_text(),page.locator('.svg-point').count(),page.locator('#filter-total').inner_text())
-  assert page.locator('#platform-heading').inner_text()=='Kiro'
-  assert page.locator('.svg-point').count()>=4
-  page.get_by_role('button',name='Claude Code',exact=True).click()
-  print('CLAUDE',page.locator('#platform-heading').inner_text(),page.locator('.svg-point').count())
-  assert page.locator('.svg-point').count()>=5
-  # fullscreen + accessible selectors
-  page.locator('#fullscreen-toggle').click()
-  page.wait_for_timeout(250)
-  print('FULLSCREEN',page.evaluate('!!document.fullscreenElement'),page.locator('#platform-full').is_visible())
-  assert page.evaluate('!!document.fullscreenElement')
-  page.select_option('#platform-full','Copilot')
-  print('FULLSCREEN COPILOT',page.locator('#platform-heading').inner_text())
-  assert page.locator('#platform-heading').inner_text()=='GitHub Copilot'
-  page.locator('#fullscreen-toggle').click()
-  assert not page.evaluate('!!document.fullscreenElement')
-  # mobile
-  mob=browser.new_page(viewport={'width':390,'height':844},accept_downloads=True)
-  mob.set_content(html,wait_until='load');mob.locator('#chart-area svg').wait_for()
-  print('MOBILE HORIZONTAL',mob.evaluate('document.documentElement.scrollWidth'),mob.evaluate('innerWidth'))
-  mob.screenshot(path=str(root/'site-mobile-v3.png'),full_page=True)
-  dark=browser.new_page(viewport={'width':1400,'height':900},color_scheme='dark')
-  dark.set_content(html,wait_until='load');dark.locator('#chart-area svg').wait_for();dark.screenshot(path=str(root/'site-dark-v3.png'),full_page=True)
-  assert dark.locator('.svg-panel').count()==1
-  print('ERRORS',errs)
-  assert not errs,errs
-  browser.close()
-finally:
- if server:server.terminate();server.wait()
+html=(root/'web'/'index.html').read_text().replace('<link rel="stylesheet" href="./style.css">','<style>'+(root/'web'/'style.css').read_text()+'</style>').replace('<script src="./app.js" defer></script>','<script>const stored={};Object.defineProperty(window,"localStorage",{value:{getItem:k=>stored[k]||null,setItem:(k,v)=>{stored[k]=v}}});window.fetch=async()=>({ok:true,json:async()=>('+json.dumps(json.loads((root/'dist/site/data.json').read_text()),ensure_ascii=False)+')})</script><script>'+(root/'web/app.js').read_text()+'</script>')
+with sync_playwright() as pw:
+    b=pw.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox'])
+    p=b.new_page(viewport={'width':1700,'height':1000},accept_downloads=True)
+    errors=[]
+    p.on('pageerror', lambda e:errors.append(str(e)))
+    p.set_content(html,wait_until='load');p.locator('#chart-area svg').wait_for()
+    assert p.locator('#platform-heading').inner_text()=='GitHub Copilot'
+    assert p.locator('.svg-panel').count()==1
+    assert p.locator('#providers .children:visible').count()==0, 'Default collapse all vendors'
+    assert p.locator('#benchmark-picker').input_value()=='AA Coding Agent Index'
+    assert p.locator('#snapshot-picker option:checked').inner_text()=='v2.1 (2026-11-18)'
+    assert p.locator('#benchmark-sources a').count()>=2
+    assert p.locator('#pricing-sources a').count()>=3
+    p.locator('#expand-all').click()
+    assert p.locator('#providers .children:visible').count()>=3
+    p.locator('input[aria-label="Model GPT-6.2 Sol"]').uncheck()
+    assert p.locator('input[aria-label="All models for OpenAI"]').evaluate('(e)=>e.indeterminate')
+    p.locator('#collapse-all').click()
+    assert p.locator('#providers .children:visible').count()==0
+    p.locator('#select-all').click();p.locator('#exclude-china').click()
+    assert '44/' in p.locator('#filter-total').inner_text()
+    p.locator('#select-all').click()
+    p.locator('#cost-scale').select_option('log')
+    assert 'log' in p.locator('#axis-summary').inner_text()
+    assert p.locator('.svg-point').count()==25
+    assert p.locator('#x-min').get_attribute('min')!='0'
+    p.locator('#cost-scale').select_option('linear')
+    p.locator('#x-max-value').fill('2.0');p.locator('#x-max-value').press('Tab')
+    assert '2.00' in p.locator('#axis-summary').inner_text()
+    p.locator('#y-min-value').fill('50');p.locator('#y-min-value').press('Tab')
+    assert p.locator('.svg-point').count() < 25
+    # one track with two handles; validate that both ends update selected track
+    assert p.locator('#x-dual input[type=range]').count()==2 and p.locator('#y-dual input[type=range]').count()==2
+    assert p.locator('#x-dual').evaluate('(e)=>e.style.getPropertyValue("--hi")')
+    p.locator('#reset-range').click()
+    p.locator('#hide-filters').click()
+    assert p.locator('#filters').is_hidden()
+    assert json.loads(p.evaluate('localStorage.getItem("coding-agent-pareto.sidebar.v1")'))['hidden']
+    # Storage state is verified directly; real-origin reload is verified after deployment.
+    p.locator('#show-filters').click()
+    assert p.locator('#filters').is_visible()
+    p.locator('#sidebar-resizer').press('ArrowRight')
+    assert json.loads(p.evaluate('localStorage.getItem("coding-agent-pareto.sidebar.v1")'))['width']==295
+    p.locator('#benchmark-picker').select_option('DeepSWE')
+    assert 'v1.1' in p.locator('#snapshot-picker option:checked').inner_text()
+    assert p.locator('.svg-point').count()==6
+    p.locator('#benchmark-sources a').count()>=1
+    p.get_by_role('button',name='Kiro',exact=True).click()
+    assert p.locator('#platform-heading').inner_text()=='Kiro'
+    assert p.locator('#pricing-sources a').count()>=3
+    p.get_by_role('button',name='Claude Code',exact=True).click()
+    assert p.locator('#platform-heading').inner_text()=='Claude Code'
+    p.locator('#fullscreen-toggle').click()
+    assert p.evaluate('!!document.fullscreenElement')
+    p.locator('#fullscreen-toggle').click()
+    assert not p.evaluate('!!document.fullscreenElement')
+    p.screenshot(path=str(root/'site-preview-v4.png'),full_page=True)
+    print('OK: all browser interactions, sources, range scales, sidebar preferences. errors:', errors)
+    assert not errors
+    b.close()

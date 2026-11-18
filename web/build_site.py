@@ -197,8 +197,57 @@ for c in charts:
  c.setdefault('platforms',['Copilot'])
  c.setdefault('cost_basis','Benchmark API estimate, USD/task')
  c['points']=[dict(p, country=COUNTRIES.get(p['provider'],'Unknown')) for p in c['points']]
+# Source provenance for each historical series (published benchmark pages and repository CSV/JSON).
+# No source below is a live scraping endpoint or an assertion that prices update automatically.
+REPO='https://github.com/ChrisTorng/coding-agent-pareto'
+RAW='https://raw.githubusercontent.com/ChrisTorng/coding-agent-pareto/main'
+def source(label,url): return {'label':label,'url':url}
+def benchmark_sources(c):
+    b=c['benchmark']; id=c['id']; result=[]
+    if b=='AA Coding Agent Index':
+        result=[source('Artificial Analysis: Coding Agent leaderboard','https://artificialanalysis.ai/agents/coding-agents'),
+                source('Official benchmark methodology','https://artificialanalysis.ai/methodology/coding-agents-benchmarking')]
+    elif b=='AA Intelligence Index':
+        result=[source('Artificial Analysis: model Intelligence leaderboard','https://artificialanalysis.ai/'),
+                source('Repository historical snapshot files',REPO+'/tree/main/copilot_pareto')]
+    elif b=='DeepSWE':
+        result=[source('GitHub Copilot benchmarks','https://benchmarks.github.com/')]
+    elif b=='Terminal-Bench':
+        result=[source('GitHub Copilot benchmarks','https://benchmarks.github.com/'),
+                source('Terminal-Bench project','https://www.tbench.ai/')]
+    # Preserve the original per-point sources; these may be agent harness comparisons, not native platform scores.
+    for url in sorted({p.get('source','') for p in c['points'] if p.get('source','').startswith('https://')}):
+        if url not in {r['url'] for r in result}: result.append(source('Original result / comparison',url))
+    if id.startswith('aa_coding_agent_v21') or id=='kiro_aa_v21' or id=='claude_code_aa_v21':
+        result.append(source('Download frozen v2.1 CSV',RAW+'/copilot_pareto/v21/coding_agent_data_2026-11-18.csv'))
+    elif id.startswith('aa_coding_agent_v20') or id=='kiro_aa_v20' or id=='claude_code_aa_v20':
+        result.append(source('Download frozen v2.0 CSV',RAW+'/copilot_pareto/v2/coding_agent_data_2026-10-30.csv'))
+    elif id in ('fusion_deepswe_11','fusion_terminal_bench_40'):
+        result.append(source('Download reviewed comparison CSV',RAW+'/copilot_pareto/four_charts_2026-11-18/four_chart_points_2026-11-18.csv'))
+    elif id.startswith('intelligence_'):
+        date=c['snapshot']; file='copilot_pareto_data.csv' if id.endswith('-csv') else 'source_snapshot_'+date+'.json'
+        result.append(source('Download historical snapshot',RAW+'/copilot_pareto/'+file))
+    return result
+for c in charts: c['sources']=benchmark_sources(c)
+PLATFORM_SOURCES={
+ 'Copilot':{'snapshot':'2026-11-18','update_method':'Reviewed CSV; not automatically refreshed', 'links':[
+    source('GitHub: Supported Copilot models','https://docs.github.com/en/copilot/reference/ai-models/supported-models'),
+    source('GitHub: Model prices and promotions','https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing'),
+    source('GitHub: Fusion discount and billing','https://docs.github.com/en/copilot/concepts/models/copilot-fusion'),
+    source('Download reviewed platform rates (CSV)',RAW+'/copilot_pareto/v21/platform_rates_2026-11-18.csv')]},
+ 'Kiro':{'snapshot':'2026-11-18','update_method':'Reviewed model multipliers; not automatically refreshed','links':[
+    source('Kiro: Available models and credit multipliers','https://kiro.dev/docs/models/available-models/'),
+    source('Kiro: Pricing and plans','https://kiro.dev/pricing/'),
+    source('Kiro: Model changes','https://kiro.dev/changelog/models/'),
+    source('Download reviewed platform rates (CSV)',RAW+'/copilot_pareto/v21/platform_rates_2026-11-18.csv')]},
+ 'Claude Code':{'snapshot':'2026-11-18','update_method':'Reviewed documentation; not automatically refreshed','links':[
+    source('Claude Code: Model selection','https://code.claude.com/docs/en/model-config'),
+    source('Anthropic: API pricing','https://platform.claude.com/docs/en/about-claude/pricing'),
+    source('Claude Code: Usage and costs','https://code.claude.com/docs/en/costs'),
+    source('Download benchmark source CSV',RAW+'/copilot_pareto/v21/coding_agent_data_2026-11-18.csv')]},
+}
 # Deduplicate models but preserve multiple effort points and all snapshots.
-D={'generated_from':'Versioned Copilot Pareto repository snapshots','catalog':sorted(catalog.values(),key=lambda r:(r['provider'],r['model'])),'charts':charts,'static_charts':static,'promos':promos,'last_snapshot':'2026-11-18','repository':'https://github.com/ChrisTorng/coding-agent-pareto'}
+D={'generated_from':'Versioned Copilot Pareto repository snapshots','catalog':sorted(catalog.values(),key=lambda r:(r['provider'],r['model'])),'charts':charts,'static_charts':static,'promos':promos,'last_snapshot':'2026-11-18','repository':'https://github.com/ChrisTorng/coding-agent-pareto','platform_sources':PLATFORM_SOURCES,'data_update_mode':'frozen-reviewed-snapshots'}
 (DEST/'data.json').write_text(json.dumps(D,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 for name in ('index.html','app.js','style.css'):
     shutil.copy2(WEB/name,DEST/name)

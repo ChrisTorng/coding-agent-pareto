@@ -66,6 +66,11 @@ with sync_playwright() as pw:
     assert p.locator('#platform-heading').inner_text()=='Claude Code'
     p.locator('#fullscreen-toggle').click()
     assert p.evaluate('!!document.fullscreenElement')
+    assert not p.locator('#reference-info').evaluate('(e)=>document.fullscreenElement.contains(e)')
+    assert p.locator('#label-mode option').count()==2
+    dims=p.evaluate('''() => {const card=document.fullscreenElement,r=document.getElementById('x-dual').getBoundingClientRect(),sr=document.querySelector('#chart-area svg').getBoundingClientRect();return {bodyHeight:card.scrollHeight,viewport:innerHeight,axisBottom:r.bottom,graphTop:sr.top}}''')
+    print('Fullscreen:',dims)
+    assert dims['axisBottom']<=dims['viewport']+2, dims
     p.locator('#fullscreen-toggle').click()
     assert not p.evaluate('!!document.fullscreenElement')
     p.screenshot(path=str(root/'site-preview-v4.png'),full_page=True)

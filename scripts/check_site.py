@@ -40,3 +40,13 @@ for c in d['charts']:
     assert c['sources'] and all(s['url'].startswith('https://') for s in c['sources']), c['id']
     assert c['version'] and c['snapshot'] and c['benchmark'], c['id']
 print('Historical benchmark and price source links: validated')
+
+# Keep all references outside fullscreen, and document query-string/model preferences.
+page=(p/'index.html').read_text(encoding='utf-8')
+assert page.index('id="reference-info"') > page.index('id="chart-card"'), 'References must be after plot'
+assert page.count('id="promo-line"')==1 and page.count('id="benchmark-sources"')==1
+assert page.count('id="scale-explainer"')==1
+assert '<option value="on">On</option><option value="none">Off</option>' in page
+assert page.index('id="export-action"') > page.index('id="reference-info"'), 'Export must stay out of fullscreen'
+for token in ('writeQuery','restoreQuery','saveExclusions','logFloor','niceStep'):
+    assert token in js, token

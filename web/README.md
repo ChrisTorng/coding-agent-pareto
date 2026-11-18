@@ -42,3 +42,15 @@ Optional local browser smoke test: `python scripts/browser_smoke.py` (requires P
 - **Benchmark sources** link original methodology, leaderboard or comparison pages and downloadable versioned repository CSV/JSON; **Pricing sources** link the selected platform's official docs and saved price CSV when available. The source URLs are not real-time feeds.
 - **Freshness limitation:** the GHA render/deploy pipeline reads the *reviewed frozen* repository snapshots. It does **not** automatically discover every new benchmark, model, token rate, promotion or deadline. Provider documentation changes structure, availability varies by plan/region, and benchmarks often lack stable export APIs. Future automation may fetch official pages and flag diffs, but promotion/price changes need verification (human or assisted) before acceptance to avoid silent incorrect graphs.
 - Keep original four approved Matplotlib charts unchanged; the website is an additional interactive view.
+
+## Browser preferences and shareable views (2026-11-18 update)
+
+- Fullscreen contains **only** the plot, coding-agent/benchmark/snapshot selectors, cost-scale and point-label toggles, and X/Y range controls. Promotion terms, cost/benchmark references, and download tools are in the final **Data sources, promotions & downloads** section outside the fullscreen container.
+- The X/Y axes use compact tick formatting (1 decimal for score if necessary, 2 decimals for USD at ordinary benchmark prices, up to 3 for very small prices). Log scale begins near the cheapest measured point instead of tenfold below it, with human-readable 1/2/5 logarithmic ticks.
+- Shareable query parameters: `agent`, `benchmark`, `snapshot`, `scale`, `labels`, `xmin`, `xmax`, `ymin`, `ymax`. The view is restored on reload or when opening a copied link.
+- Provider/model checkbox exclusions are stored per agent in `localStorage` (`coding-agent-pareto.model-exclusions.v1`), so new catalog entries are selected by default. Sidebar size, visibility and scroll position are separately persisted in `coding-agent-pareto.sidebar.v1`.
+- Labels have only **On** (collision-aware labeling) and **Off**. The previous Smart/All options were visually redundant. Static original Python charts are not affected.
+
+## Update responsibility
+
+The ChatGPT automation `Coding Agent 模型／價格變更監測及 GHA 發布` (Tue–Sat 07:30 Asia/Taipei) compares official models, effort levels, rates, promotions, historical benchmarks and source links before touching the repository. If actual material differences are verified, it commits new versioned CSV/JSON snapshots and metadata through the GitHub connector, then verifies that existing GHA has rebuilt website JSON/PNG/SVG artifacts. No changes means no commit/no Actions build/no alert. The existing GHA workflow remains a **reproducible build/publish** job, not a claim of automatic live pricing extraction.

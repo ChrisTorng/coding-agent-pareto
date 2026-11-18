@@ -1,0 +1,53 @@
+﻿chart,version,benchmark,model,effort,provider,harness,score,source_estimate_cost_usd,discount_factor,plotted_estimate_cost_usd,promotion,source
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Claude Fable 5.2,xhigh,Anthropic,Claude Code,58,15.4700,1.00,15.4700,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Claude Fable 5.2,high,Anthropic,Claude Code,58,7.5100,1.00,7.5100,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Claude Opus 5.5,max,Anthropic,Claude Code,58,12.6100,1.00,12.6100,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Claude Sonnet 5.5,max,Anthropic,Claude Code,56,11.4000,1.00,11.4000,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Claude Fable 5.2,max,Anthropic,Claude Code,56,44.2200,1.00,44.2200,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Claude Fable 5.2,medium,Anthropic,Claude Code,53,2.8900,1.00,2.8900,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Claude Fable 5.2,low,Anthropic,Claude Code,48,2.4900,1.00,2.4900,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Claude Haiku 5.5,max,Anthropic,Claude Code,30,2.2500,1.00,2.2500,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Astra,max,OpenAI,Codex,53,5.1200,1.00,5.1200,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Astra,xhigh,OpenAI,Codex,53,3.2000,1.00,3.2000,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Astra,high,OpenAI,Codex,52,2.3700,1.00,2.3700,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.1 Sol,max,OpenAI,Codex,52,1.5100,1.00,1.5100,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Sol,xhigh,OpenAI,Codex,50,0.9000,1.00,0.9000,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Astra,medium,OpenAI,Codex,49,1.2000,1.00,1.2000,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.1 Terra,max,OpenAI,Codex,49,1.5300,1.00,1.5300,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6 Luna,max,OpenAI,Codex,26,0.1900,1.00,0.1900,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-devin-fusion-cli
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Sol,max,OpenAI,Codex,49,1.2200,1.00,1.2200,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Sol,high,OpenAI,Codex,47,0.7600,1.00,0.7600,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Sol,medium,OpenAI,Codex,45,0.5700,1.00,0.5700,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Sol,low,OpenAI,Codex,37,0.3300,1.00,0.3300,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,GPT-6.2 Astra,low,OpenAI,Codex,36,0.7000,1.00,0.7000,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-codex
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Gemini 4 Carbon,high,Google,Antigravity CLI,55,7.1300,1.00,7.1300,,https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-cli-vs-claude-code
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Gemini 4 Hydrogen,xhigh,Google,Antigravity CLI,52,4.4500,1.00,4.4500,,https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-cli-vs-claude-code
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Gemini 4 Argon,high,Google,Antigravity CLI,45,6.8400,1.00,6.8400,,https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-cli-vs-claude-code
+aa_coding_agent_v21,2.1,AA Coding Agent Index,Grok 4.7,xhigh,xAI,Grok Build,42,15.3500,1.00,15.3500,,https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-cli-vs-grok-build
+aa_coding_agent_v20,2.0,AA Coding Agent Index,Claude Opus 5.5,max,Anthropic,Claude Code,62,11.4200,1.00,11.4200,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,Claude Sonnet 5.5,max,Anthropic,Claude Code,59,13.3000,1.00,13.3000,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,Claude Fable 5.1,max,Anthropic,Claude Code,58,11.5300,1.00,11.5300,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,Claude Haiku 5.5,max,Anthropic,Claude Code,37,2.6700,1.00,2.6700,,https://artificialanalysis.ai/agents/coding-agents/comparisons/claude-code-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,Copilot Fusion,max,Router,GitHub Copilot,60,5.5900,0.70,3.9130,Fusion -30% to 2026-11-30,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,GPT-6 Astra,max,OpenAI,Codex,55,7.0400,1.00,7.0400,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,GPT-6.1 Sol,max,OpenAI,Codex,54,1.5000,1.00,1.5000,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,GPT-6.1 Terra,xhigh,OpenAI,Codex,48,0.6900,1.00,0.6900,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,GPT-6.1 Terra,max,OpenAI,Codex,48,1.2400,1.00,1.2400,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,GPT-6.1 Terra,high,OpenAI,Codex,46,0.5400,1.00,0.5400,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,GPT-6.1 Terra,medium,OpenAI,Codex,42,0.3900,1.00,0.3900,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,GPT-6.1 Terra,low,OpenAI,Codex,35,0.2000,1.00,0.2000,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,GPT-6 Luna,max,OpenAI,Codex,31,0.1600,1.00,0.1600,,https://artificialanalysis.ai/agents/coding-agents/comparisons/codex-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,Gemini 3.8 Flash,high,Google,Antigravity SDK,33,2.5100,1.00,2.5100,,https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-sdk-vs-github-copilot
+aa_coding_agent_v20,2.0,AA Coding Agent Index,Grok 4.7,xhigh,xAI,Grok Build,47,9.4800,1.00,9.4800,,https://artificialanalysis.ai/agents/coding-agents/comparisons/antigravity-cli-vs-grok-build
+fusion_deepswe_11,DeepSWE 1.1,DeepSWE 1.1,Copilot Fusion,standard,Router,GitHub Benchmarks (third-party snapshot),69.2,0.6100,0.70,0.4270,Fusion -30% to 2026-11-30,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_deepswe_11,DeepSWE 1.1,DeepSWE 1.1,Copilot Fusion,high,Router,GitHub Benchmarks (third-party snapshot),75.4,0.8700,0.70,0.6090,Fusion -30% to 2026-11-30,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_deepswe_11,DeepSWE 1.1,DeepSWE 1.1,Copilot Fusion,max,Router,GitHub Benchmarks (third-party snapshot),78.1,4.9700,0.70,3.4790,Fusion -30% to 2026-11-30,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_deepswe_11,DeepSWE 1.1,DeepSWE 1.1,GPT-6.1 Sol,medium,OpenAI,GitHub Benchmarks (third-party snapshot),74.3,0.5400,1.00,0.5400,,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_deepswe_11,DeepSWE 1.1,DeepSWE 1.1,Claude Opus 5.5,xhigh,Anthropic,GitHub Benchmarks (third-party snapshot),74.5,4.9200,1.00,4.9200,,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_deepswe_11,DeepSWE 1.1,DeepSWE 1.1,GPT-6 Luna,max,OpenAI,GitHub Benchmarks (third-party snapshot),62.3,0.1600,1.00,0.1600,,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_terminal_bench_40,Terminal-Bench 4.0,Terminal-Bench 4.0,Copilot Fusion,standard,Router,GitHub Benchmarks (third-party snapshot),19.1,0.2900,0.70,0.2030,Fusion -30% to 2026-11-30,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_terminal_bench_40,Terminal-Bench 4.0,Terminal-Bench 4.0,Copilot Fusion,high,Router,GitHub Benchmarks (third-party snapshot),53.0,2.5400,0.70,1.7780,Fusion -30% to 2026-11-30,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_terminal_bench_40,Terminal-Bench 4.0,Terminal-Bench 4.0,Copilot Fusion,max,Router,GitHub Benchmarks (third-party snapshot),67.9,7.5300,0.70,5.2710,Fusion -30% to 2026-11-30,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_terminal_bench_40,Terminal-Bench 4.0,Terminal-Bench 4.0,GPT-6.1 Sol,max,OpenAI,GitHub Benchmarks (third-party snapshot),50.9,1.0800,1.00,1.0800,,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_terminal_bench_40,Terminal-Bench 4.0,Terminal-Bench 4.0,Claude Opus 5.5,max,Anthropic,GitHub Benchmarks (third-party snapshot),62.4,11.7100,1.00,11.7100,,https://zenn.dev/mochan_tk/articles/2caab47932dd9e
+fusion_terminal_bench_40,Terminal-Bench 4.0,Terminal-Bench 4.0,Claude Opus 5.5,xhigh,Anthropic,GitHub Benchmarks (third-party snapshot),61.5,6.7400,1.00,6.7400,,https://zenn.dev/mochan_tk/articles/2caab47932dd9e

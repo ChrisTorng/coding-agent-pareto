@@ -1,0 +1,233 @@
+{
+  "Copilot": {
+    "snapshot_date": "2026-10-30",
+    "index_version": "2.0",
+    "rows": 104,
+    "plotted_points": 15,
+    "published_cost_points": 15,
+    "provisional_cost_points": 0,
+    "linear_axes": true,
+    "zoom_source_bounds": {
+      "x": [
+        -0.05,
+        3.2
+      ],
+      "y": [
+        20.0,
+        67.0
+      ]
+    },
+    "model_effort_lines": [
+      {
+        "panel": 0,
+        "model": "GPT-6.1 Terra",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-8"
+      },
+      {
+        "panel": 1,
+        "model": "GPT-6.1 Terra",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-8"
+      }
+    ],
+    "label_count": 15,
+    "label_overlaps": [],
+    "clipped_labels": [],
+    "provisional_frontier_additions": 0,
+    "copilot_promotion_deadlines": [],
+    "frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 31,
+        "cost": 0.16
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "low",
+        "score": 35,
+        "cost": 0.2
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "medium",
+        "score": 42,
+        "cost": 0.39
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "high",
+        "score": 46,
+        "cost": 0.54
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "xhigh",
+        "score": 48,
+        "cost": 0.69
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 54,
+        "cost": 1.5
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "max",
+        "score": 60,
+        "cost": 5.59
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "effort": "max",
+        "score": 62,
+        "cost": 11.42
+      }
+    ],
+    "provisional_frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 31,
+        "cost": 0.16
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "low",
+        "score": 35,
+        "cost": 0.2
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "medium",
+        "score": 42,
+        "cost": 0.39
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "high",
+        "score": 46,
+        "cost": 0.54
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "xhigh",
+        "score": 48,
+        "cost": 0.69
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 54,
+        "cost": 1.5
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "max",
+        "score": 60,
+        "cost": 5.59
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "effort": "max",
+        "score": 62,
+        "cost": 11.42
+      }
+    ],
+    "formal_platform_frontier_complete": false,
+    "formal_points": 0,
+    "reference_points": 15,
+    "cost_definition": "AA pay-per-token API reference only",
+    "independent_frontier_check": true,
+    "png_dimensions": [
+      4140,
+      2052
+    ],
+    "visual_inspection_passed": false,
+    "png_sha256": "488203549c851f584ba019cd83d912e451f51a947090190f4ff2560268cbdb28",
+    "svg_sha256": "17a7e7517c65ef49d1a5fd3a73811aac143cb83ac4fd8fb10777a310e1b8cf3d"
+  },
+  "Kiro": {
+    "snapshot_date": "2026-10-30",
+    "index_version": "2.0",
+    "rows": 104,
+    "plotted_points": 4,
+    "published_cost_points": 4,
+    "provisional_cost_points": 0,
+    "linear_axes": true,
+    "zoom_source_bounds": {
+      "x": [
+        2.3,
+        3.1
+      ],
+      "y": [
+        20.0,
+        67.0
+      ]
+    },
+    "model_effort_lines": [],
+    "label_count": 4,
+    "label_overlaps": [],
+    "clipped_labels": [],
+    "provisional_frontier_additions": 0,
+    "copilot_promotion_deadlines": [],
+    "frontier": [
+      {
+        "model": "Claude Haiku 5.5",
+        "effort": "max",
+        "score": 37,
+        "cost": 2.67
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "effort": "max",
+        "score": 62,
+        "cost": 11.42
+      }
+    ],
+    "provisional_frontier": [
+      {
+        "model": "Claude Haiku 5.5",
+        "effort": "max",
+        "score": 37,
+        "cost": 2.67
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "effort": "max",
+        "score": 62,
+        "cost": 11.42
+      }
+    ],
+    "formal_platform_frontier_complete": false,
+    "formal_points": 0,
+    "reference_points": 4,
+    "cost_definition": "AA pay-per-token API reference only",
+    "independent_frontier_check": true,
+    "png_dimensions": [
+      4140,
+      2052
+    ],
+    "visual_inspection_passed": false,
+    "png_sha256": "1122062e72bf302d41a04192cd4e686f8adde68393e6613d135a49b0064484d4",
+    "svg_sha256": "db66ae87eec8045ddf4e0f89e95f28a60584841cdb00214bff560985c91d250c"
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "snapshot_date": "2026-10-28",
+  "index_version": "4.3.2",
+  "rows": 104,
+  "plotted_points": 48,
+  "published_cost_points": 43,
+  "provisional_cost_points": 5,
+  "linear_axes": true,
+  "zoom_source_bounds": {
+    "x": [
+      -0.012,
+      0.85
+    ],
+    "y": [
+      20.0,
+      60.0
+    ]
+  },
+  "model_effort_lines": [
+    {
+      "panel": 0,
+      "model": "Claude Fable 5.1",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#cf6d42",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-0"
+    },
+    {
+      "panel": 0,
+      "model": "Claude Haiku 5.5",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#cf6d42",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-1"
+    },
+    {
+      "panel": 0,
+      "model": "Claude Opus 5.5",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#cf6d42",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-2"
+    },
+    {
+      "panel": 0,
+      "model": "Claude Sonnet 5.5",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#cf6d42",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-3"
+    },
+    {
+      "panel": 0,
+      "model": "GPT-6 Astra",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#00866a",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-4"
+    },
+    {
+      "panel": 0,
+      "model": "GPT-6 Luna",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#00866a",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-5"
+    },
+    {
+      "panel": 0,
+      "model": "GPT-6.1 Sol",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#00866a",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-6"
+    },
+    {
+      "panel": 0,
+      "model": "GPT-6.1 Terra",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#00866a",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-7"
+    },
+    {
+      "panel": 0,
+      "model": "Gemini 3.8 Flash",
+      "efforts": [
+        "medium",
+        "high"
+      ],
+      "color": "#3979db",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-8"
+    },
+    {
+      "panel": 0,
+      "model": "Grok 4.7",
+      "efforts": [
+        "low",
+        "high",
+        "xhigh"
+      ],
+      "color": "#596473",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-10"
+    },
+    {
+      "panel": 0,
+      "model": "Kimi K3",
+      "efforts": [
+        "low",
+        "max"
+      ],
+      "color": "#7c59ba",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-0-11"
+    },
+    {
+      "panel": 1,
+      "model": "Claude Fable 5.1",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#cf6d42",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-0"
+    },
+    {
+      "panel": 1,
+      "model": "Claude Haiku 5.5",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#cf6d42",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-1"
+    },
+    {
+      "panel": 1,
+      "model": "Claude Opus 5.5",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#cf6d42",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-2"
+    },
+    {
+      "panel": 1,
+      "model": "Claude Sonnet 5.5",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#cf6d42",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-3"
+    },
+    {
+      "panel": 1,
+      "model": "GPT-6 Astra",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#00866a",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-4"
+    },
+    {
+      "panel": 1,
+      "model": "GPT-6 Luna",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#00866a",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-5"
+    },
+    {
+      "panel": 1,
+      "model": "GPT-6.1 Sol",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#00866a",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-6"
+    },
+    {
+      "panel": 1,
+      "model": "GPT-6.1 Terra",
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "color": "#00866a",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-7"
+    },
+    {
+      "panel": 1,
+      "model": "Gemini 3.8 Flash",
+      "efforts": [
+        "medium",
+        "high"
+      ],
+      "color": "#3979db",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-8"
+    },
+    {
+      "panel": 1,
+      "model": "Grok 4.7",
+      "efforts": [
+        "low",
+        "high",
+        "xhigh"
+      ],
+      "color": "#596473",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-10"
+    },
+    {
+      "panel": 1,
+      "model": "Kimi K3",
+      "efforts": [
+        "low",
+        "max"
+      ],
+      "color": "#7c59ba",
+      "linewidth": 0.9,
+      "svg_id": "model-effort-1-11"
+    }
+  ],
+  "label_count": 48,
+  "label_overlaps": [],
+  "clipped_labels": [],
+  "provisional_frontier_additions": 0,
+  "copilot_promotion_deadlines": [
+    "Gemini 3.8 Flash: 2026-12-31",
+    "Gemini 4 Argon: 2026-12-01"
+  ],
+  "frontier": [
+    {
+      "model": "GPT-6 Luna",
+      "effort": "low",
+      "score": 22.0,
+      "cost": 0.0045
+    },
+    {
+      "model": "GPT-6 Luna",
+      "effort": "medium",
+      "score": 30.0,
+      "cost": 0.02
+    },
+    {
+      "model": "GPT-6 Luna",
+      "effort": "high",
+      "score": 33.0,
+      "cost": 0.03
+    },
+    {
+      "model": "GPT-6 Luna",
+      "effort": "xhigh",
+      "score": 35.0,
+      "cost": 0.04
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "effort": "low",
+      "score": 36.0,
+      "cost": 0.05
+    },
+    {
+      "model": "GPT-6 Luna",
+      "effort": "max",
+      "score": 38.0,
+      "cost": 0.07
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "effort": "medium",
+      "score": 41.0,
+      "cost": 0.1
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "effort": "high",
+      "score": 44.0,
+      "cost": 0.13
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "effort": "xhigh",
+      "score": 45.0,
+      "cost": 0.19
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "effort": "medium",
+      "score": 48.0,
+      "cost": 0.21
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "effort": "high",
+      "score": 50.0,
+      "cost": 0.32
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "effort": "xhigh",
+      "score": 51.0,
+      "cost": 0.39
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "effort": "max",
+      "score": 52.0,
+      "cost": 0.72
+    },
+    {
+      "model": "Gemini 4 Argon",
+      "effort": "high",
+      "score": 53.0,
+      "cost": 1.62
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "effort": "high",
+      "score": 54.0,
+      "cost": 1.82
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "effort": "xhigh",
+      "score": 56.0,
+      "cost": 3.46
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "effort": "max",
+      "score": 58.0,
+      "cost": 5.98
+    }
+  ],
+  "provisional_frontier": [
+    {
+      "model": "GPT-6 Luna",
+      "effort": "low",
+      "score": 22.0,
+      "cost": 0.0045
+    },
+    {
+      "model": "GPT-6 Luna",
+      "effort": "medium",
+      "score": 30.0,
+      "cost": 0.02
+    },
+    {
+      "model": "GPT-6 Luna",
+      "effort": "high",
+      "score": 33.0,
+      "cost": 0.03
+    },
+    {
+      "model": "GPT-6 Luna",
+      "effort": "xhigh",
+      "score": 35.0,
+      "cost": 0.04
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "effort": "low",
+      "score": 36.0,
+      "cost": 0.05
+    },
+    {
+      "model": "GPT-6 Luna",
+      "effort": "max",
+      "score": 38.0,
+      "cost": 0.07
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "effort": "medium",
+      "score": 41.0,
+      "cost": 0.1
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "effort": "high",
+      "score": 44.0,
+      "cost": 0.13
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "effort": "xhigh",
+      "score": 45.0,
+      "cost": 0.19
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "effort": "medium",
+      "score": 48.0,
+      "cost": 0.21
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "effort": "high",
+      "score": 50.0,
+      "cost": 0.32
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "effort": "xhigh",
+      "score": 51.0,
+      "cost": 0.39
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "effort": "max",
+      "score": 52.0,
+      "cost": 0.72
+    },
+    {
+      "model": "Gemini 4 Argon",
+      "effort": "high",
+      "score": 53.0,
+      "cost": 1.62
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "effort": "high",
+      "score": 54.0,
+      "cost": 1.82
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "effort": "xhigh",
+      "score": 56.0,
+      "cost": 3.46
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "effort": "max",
+      "score": 58.0,
+      "cost": 5.98
+    }
+  ],
+  "csv_unique_keys": true,
+  "github_catalog_coverage": 28,
+  "source_records_matched": 51,
+  "official_prices_matched": true,
+  "independent_frontier_check": true,
+  "dominance_edge_cases": true,
+  "independent_provisional_frontier_check": true,
+  "lifecycle_and_promotions_verified": true,
+  "direct_successors_verified": true,
+  "audit_provenance_verified": true,
+  "png_verified": true,
+  "png_dimensions": [
+    4140,
+    2052
+  ],
+  "svg_verified": true,
+  "svg_model_labels": 48,
+  "zoom_source_verified": true,
+  "model_effort_lines_verified": 22,
+  "visual_inspection_passed": true,
+  "visual_inspection_note": "Inspected rendered PNG: both linear panels readable, all 48 labels legible; frontier, zoom box, effort lines, legend and promotion footer verified",
+  "verified_at": "2026-10-28T08:04:27+08:00",
+  "artifact_sha256": {
+    "copilot_pareto_data.csv": "3fa85c67d3a86a0743956f925bfbe3c50a1ebf842dcef106ac552f1fb4d4595c",
+    "source_snapshot_2026-10-28.json": "e9881b843cbd187fe0354a840e767c7150823108c6a234cfcd67fd5fe974101a",
+    "plot_copilot_pareto.py": "eae1897908162ab5928eab523ee3cda445e56cba5813fb365f3f273ec909eae7",
+    "verify_copilot_pareto.py": "cafae5607f1cd78e4cc51d4d8c5b47f45bb2f3997f36f0540f4b5030a1660a29",
+    "copilot_model_pareto_2026-10-28_linear.png": "9e423ce54f41ecd73f7fc65f290d533d75eacad3e3e76576f1f2199a21b7a54d",
+    "copilot_model_pareto_2026-10-28_linear.svg": "9536fdc8c2c193b1bd2636daac35e2d5c646b47097961cbf4a564c42428b1369",
+    "README.md": "adf7e63f638fbb7f19b51aa2bad2251cc876ae8a88d94cc8bdccc04670984e37"
+  }
+}

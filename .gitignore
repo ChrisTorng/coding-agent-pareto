@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+# Generated plots and reports are delivered by Actions, not committed.
+copilot_pareto/four_charts_2026-11-18/*.png
+copilot_pareto/four_charts_2026-11-18/*.svg
+copilot_pareto/v2/*.png
+copilot_pareto/v2/*.svg
+copilot_pareto/v21/*.png
+copilot_pareto/v21/*.svg
+dist/

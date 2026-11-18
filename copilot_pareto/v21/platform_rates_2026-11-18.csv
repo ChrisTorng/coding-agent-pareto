@@ -1,0 +1,34 @@
+﻿platform,model,tier,context_threshold,input_usd_per_m,cached_input_usd_per_m,cache_write_usd_per_m,output_usd_per_m,credit_multiplier,promo_end,rate_source,checked_at
+Copilot,GPT-6.2 Astra,default,<=272K,8,0.4,10,40,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6.2 Astra,long,>272K,16,0.8,20,60,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6.2 Sol,default,<=272K,2,0.1,2.5,10,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6.2 Sol,long,>272K,4,0.2,5,15,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6 Astra,default,<=272K,10,1,12.5,50,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6 Astra,long,>272K,20,2,25,75,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6.1 Sol,default,<=272K,2,0.1,2.5,10,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6.1 Sol,long,>272K,4,0.2,5,15,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6.1 Terra,default,<=272K,1,0.05,1.25,5,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,GPT-6.1 Terra,long,>272K,2,0.1,2.5,7.5,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Claude Fable 5.2,default,all,8,0.2,10,40,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Claude Opus 5.5,default,all,4,0.2,5,20,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Claude Sonnet 5.5,default,all,2,0.1,2.5,10,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Claude Haiku 5.5,default,<=100K,0.1,0.01,0.125,0.5,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Claude Haiku 5.5,long,>100K,0.5,0.05,0.625,2.5,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Gemini 4 Argon,default,all,2,0.1,,10,,2026-12-01,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Gemini 4 Carbon,default,all,2,0.1,,10,,2026-12-01,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Gemini 4 Hydrogen,default,all,1.5,0.075,,7.5,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Grok 4.7,default,<=200K,2,0.5,,6,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Copilot,Grok 4.7,long,>200K,4,1,,12,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-18
+Kiro,Claude Opus 5.5,default,all,,,,,2,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,Claude Sonnet 5.5,default,all,,,,,1.3,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,Claude Fable 5.1,enterprise,all,,,,,6,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,Claude Haiku 5.5,default,<=100K,,,,,0.06,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,Claude Haiku 5.5,long,>100K,,,,,0.3,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,Grok 4.7,default,<=200K,,,,,2.7,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,Grok 4.7,long,>200K,,,,,5.4,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,GPT-5.6 Sol,default,<=272K,,,,,4.4,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,GPT-5.6 Sol,long,>272K,,,,,8.8,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,GPT-5.6 Terra,default,<=272K,,,,,2.2,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,GPT-5.6 Terra,long,>272K,,,,,4.4,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,GPT-5.6 Luna,default,<=272K,,,,,0.6,,https://kiro.dev/docs/models/available-models/,2026-11-18
+Kiro,GPT-5.6 Luna,long,>272K,,,,,1.2,,https://kiro.dev/docs/models/available-models/,2026-11-18

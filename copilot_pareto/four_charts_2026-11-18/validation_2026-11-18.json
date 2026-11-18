@@ -1,0 +1,632 @@
+{
+  "aa_coding_agent_v21": {
+    "snapshot_date": "2026-11-18",
+    "index_version": "2.1",
+    "rows": 104,
+    "plotted_points": 25,
+    "published_cost_points": 25,
+    "provisional_cost_points": 0,
+    "linear_axes": true,
+    "zoom_source_bounds": {
+      "x": [
+        -0.08,
+        4.8
+      ],
+      "y": [
+        20.0,
+        65.0
+      ]
+    },
+    "model_effort_lines": [
+      {
+        "panel": 0,
+        "model": "Claude Fable 5.2",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#cf6d42",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-0"
+      },
+      {
+        "panel": 0,
+        "model": "GPT-6.2 Astra",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-7"
+      },
+      {
+        "panel": 0,
+        "model": "GPT-6.2 Sol",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-8"
+      },
+      {
+        "panel": 1,
+        "model": "Claude Fable 5.2",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#cf6d42",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-0"
+      },
+      {
+        "panel": 1,
+        "model": "GPT-6.2 Astra",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-7"
+      },
+      {
+        "panel": 1,
+        "model": "GPT-6.2 Sol",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-8"
+      }
+    ],
+    "label_count": 25,
+    "label_overlaps": [],
+    "clipped_labels": [],
+    "provisional_frontier_additions": 0,
+    "copilot_promotion_deadlines": [],
+    "frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 26.0,
+        "cost": 0.19
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "low",
+        "score": 37.0,
+        "cost": 0.33
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "medium",
+        "score": 45.0,
+        "cost": 0.57
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "high",
+        "score": 47.0,
+        "cost": 0.76
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "xhigh",
+        "score": 50.0,
+        "cost": 0.9
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 52.0,
+        "cost": 1.51
+      },
+      {
+        "model": "Claude Fable 5.2",
+        "effort": "medium",
+        "score": 53.0,
+        "cost": 2.89
+      },
+      {
+        "model": "Gemini 4 Carbon",
+        "effort": "high",
+        "score": 55.0,
+        "cost": 7.13
+      },
+      {
+        "model": "Claude Fable 5.2",
+        "effort": "high",
+        "score": 58.0,
+        "cost": 7.51
+      }
+    ],
+    "provisional_frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 26.0,
+        "cost": 0.19
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "low",
+        "score": 37.0,
+        "cost": 0.33
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "medium",
+        "score": 45.0,
+        "cost": 0.57
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "high",
+        "score": 47.0,
+        "cost": 0.76
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "xhigh",
+        "score": 50.0,
+        "cost": 0.9
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 52.0,
+        "cost": 1.51
+      },
+      {
+        "model": "Claude Fable 5.2",
+        "effort": "medium",
+        "score": 53.0,
+        "cost": 2.89
+      },
+      {
+        "model": "Gemini 4 Carbon",
+        "effort": "high",
+        "score": 55.0,
+        "cost": 7.13
+      },
+      {
+        "model": "Claude Fable 5.2",
+        "effort": "high",
+        "score": 58.0,
+        "cost": 7.51
+      }
+    ],
+    "png_sha256": "7fe0af74079bae4d2dd7379f2176f84969e86b4ab893c4c4ec02ccac44221258",
+    "svg_sha256": "1fdc1150bbe2207a85f28b47e2e8ec4f279bd94d8c455bf9dbbd5cbf123e40cf",
+    "filename": "aa_coding_agent_v21_2026-11-18_linear",
+    "source_note": "AA API task-cost reference (Fusion not measured in AA v2.1)"
+  },
+  "aa_coding_agent_v20": {
+    "snapshot_date": "2026-11-18",
+    "index_version": "2.0",
+    "rows": 104,
+    "plotted_points": 15,
+    "published_cost_points": 15,
+    "provisional_cost_points": 0,
+    "linear_axes": true,
+    "zoom_source_bounds": {
+      "x": [
+        -0.07,
+        3.2
+      ],
+      "y": [
+        20.0,
+        67.0
+      ]
+    },
+    "model_effort_lines": [
+      {
+        "panel": 0,
+        "model": "GPT-6.1 Terra",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-8"
+      },
+      {
+        "panel": 1,
+        "model": "GPT-6.1 Terra",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-8"
+      }
+    ],
+    "label_count": 24,
+    "label_overlaps": [],
+    "clipped_labels": [],
+    "provisional_frontier_additions": 0,
+    "copilot_promotion_deadlines": [],
+    "frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 31.0,
+        "cost": 0.16
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "low",
+        "score": 35.0,
+        "cost": 0.2
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "medium",
+        "score": 42.0,
+        "cost": 0.39
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "high",
+        "score": 46.0,
+        "cost": 0.54
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "xhigh",
+        "score": 48.0,
+        "cost": 0.69
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 54.0,
+        "cost": 1.5
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "max",
+        "score": 60.0,
+        "cost": 3.913
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "effort": "max",
+        "score": 62.0,
+        "cost": 11.42
+      }
+    ],
+    "provisional_frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 31.0,
+        "cost": 0.16
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "low",
+        "score": 35.0,
+        "cost": 0.2
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "medium",
+        "score": 42.0,
+        "cost": 0.39
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "high",
+        "score": 46.0,
+        "cost": 0.54
+      },
+      {
+        "model": "GPT-6.1 Terra",
+        "effort": "xhigh",
+        "score": 48.0,
+        "cost": 0.69
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 54.0,
+        "cost": 1.5
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "max",
+        "score": 60.0,
+        "cost": 3.913
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "effort": "max",
+        "score": 62.0,
+        "cost": 11.42
+      }
+    ],
+    "png_sha256": "b2ed6b0c9a40e4793fe7c2eddd225771179c6038cd9b5d9e1742a7f26ba1096f",
+    "svg_sha256": "6178abb32754a12812c14c2e6b33ba188f77c1116a6f93a23c694650fc3070bf",
+    "filename": "aa_coding_agent_v20_2026-11-18_linear",
+    "source_note": "AA API task-cost reference (Fusion max plotted at 30% off)"
+  },
+  "fusion_deepswe_11": {
+    "snapshot_date": "2026-11-18",
+    "index_version": "DeepSWE 1.1",
+    "rows": 104,
+    "plotted_points": 6,
+    "published_cost_points": 6,
+    "provisional_cost_points": 0,
+    "linear_axes": true,
+    "zoom_source_bounds": {
+      "x": [
+        -0.03,
+        1.17
+      ],
+      "y": [
+        60.0,
+        83.0
+      ]
+    },
+    "model_effort_lines": [
+      {
+        "panel": 0,
+        "model": "Copilot Fusion",
+        "efforts": [
+          "standard",
+          "high",
+          "max"
+        ],
+        "color": "#7753a5",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-1"
+      },
+      {
+        "panel": 1,
+        "model": "Copilot Fusion",
+        "efforts": [
+          "standard",
+          "high",
+          "max"
+        ],
+        "color": "#7753a5",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-1"
+      }
+    ],
+    "label_count": 10,
+    "label_overlaps": [],
+    "clipped_labels": [],
+    "provisional_frontier_additions": 0,
+    "copilot_promotion_deadlines": [],
+    "frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 62.3,
+        "cost": 0.16
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "standard",
+        "score": 69.2,
+        "cost": 0.427
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "medium",
+        "score": 74.3,
+        "cost": 0.54
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "high",
+        "score": 75.4,
+        "cost": 0.609
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "max",
+        "score": 78.1,
+        "cost": 3.4789999999999996
+      }
+    ],
+    "provisional_frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 62.3,
+        "cost": 0.16
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "standard",
+        "score": 69.2,
+        "cost": 0.427
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "medium",
+        "score": 74.3,
+        "cost": 0.54
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "high",
+        "score": 75.4,
+        "cost": 0.609
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "max",
+        "score": 78.1,
+        "cost": 3.4789999999999996
+      }
+    ],
+    "png_sha256": "87e78d75485510904e74f36ca17d57f8aba9edf635f8aee64203f96765bd7957",
+    "svg_sha256": "0a8a05d68ad144b868e015272a1b0fbe6bafc856c6991fa31eab2c92648f9d29",
+    "filename": "fusion_deepswe_11_2026-11-18_linear",
+    "source_note": "2026-11-08 third-party benchmark snapshot; Fusion cost x 0.70"
+  },
+  "fusion_terminal_bench_40": {
+    "snapshot_date": "2026-11-18",
+    "index_version": "Terminal-Bench 4.0",
+    "rows": 104,
+    "plotted_points": 6,
+    "published_cost_points": 6,
+    "provisional_cost_points": 0,
+    "linear_axes": true,
+    "zoom_source_bounds": {
+      "x": [
+        -0.08,
+        3.0
+      ],
+      "y": [
+        15.0,
+        73.0
+      ]
+    },
+    "model_effort_lines": [
+      {
+        "panel": 0,
+        "model": "Claude Opus 5.5",
+        "efforts": [
+          "xhigh",
+          "max"
+        ],
+        "color": "#cf6d42",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-0"
+      },
+      {
+        "panel": 0,
+        "model": "Copilot Fusion",
+        "efforts": [
+          "standard",
+          "high",
+          "max"
+        ],
+        "color": "#7753a5",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-1"
+      },
+      {
+        "panel": 1,
+        "model": "Claude Opus 5.5",
+        "efforts": [
+          "xhigh",
+          "max"
+        ],
+        "color": "#cf6d42",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-0"
+      },
+      {
+        "panel": 1,
+        "model": "Copilot Fusion",
+        "efforts": [
+          "standard",
+          "high",
+          "max"
+        ],
+        "color": "#7753a5",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-1"
+      }
+    ],
+    "label_count": 9,
+    "label_overlaps": [],
+    "clipped_labels": [],
+    "provisional_frontier_additions": 0,
+    "copilot_promotion_deadlines": [],
+    "frontier": [
+      {
+        "model": "Copilot Fusion",
+        "effort": "standard",
+        "score": 19.1,
+        "cost": 0.20299999999999999
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 50.9,
+        "cost": 1.08
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "high",
+        "score": 53.0,
+        "cost": 1.7779999999999998
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "max",
+        "score": 67.9,
+        "cost": 5.271
+      }
+    ],
+    "provisional_frontier": [
+      {
+        "model": "Copilot Fusion",
+        "effort": "standard",
+        "score": 19.1,
+        "cost": 0.20299999999999999
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 50.9,
+        "cost": 1.08
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "high",
+        "score": 53.0,
+        "cost": 1.7779999999999998
+      },
+      {
+        "model": "Copilot Fusion",
+        "effort": "max",
+        "score": 67.9,
+        "cost": 5.271
+      }
+    ],
+    "png_sha256": "27924d974940737ae19ae9fb0aa179b65308383934cfe1c9a73e5a9580ed461a",
+    "svg_sha256": "044f981ef1a122063fa106994707b3cc654d7ec66f35e74febbadd241b6c00d2",
+    "filename": "fusion_terminal_bench_40_2026-11-18_linear",
+    "source_note": "2026-11-08 third-party benchmark snapshot; Fusion cost x 0.70"
+  }
+}

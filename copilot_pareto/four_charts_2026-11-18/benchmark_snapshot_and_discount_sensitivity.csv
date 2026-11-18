@@ -1,0 +1,13 @@
+﻿benchmark,model,success_rate_percent,reported_estimate_usd_per_task,hypothetical_0_7x_usd_only_if_discount_eligible_and_undiscounted,assumptions
+DeepSWE 1.1,Fusion Standard,69.2,0.61,0.427,hypothetical only; benchmark API cost may not equal GitHub model charge; may already include promotion
+DeepSWE 1.1,Fusion High,75.4,0.87,0.609,hypothetical only; benchmark API cost may not equal GitHub model charge; may already include promotion
+DeepSWE 1.1,Fusion Max,78.1,4.97,3.479,hypothetical only; benchmark API cost may not equal GitHub model charge; may already include promotion
+DeepSWE 1.1,GPT-6.1 Sol / medium,74.3,0.54,,fixed model no Fusion discount
+DeepSWE 1.1,Claude Opus 5.5 / xhigh,74.5,4.92,,fixed model no Fusion discount
+DeepSWE 1.1,GPT-6 Luna / max,62.3,0.16,,fixed model no Fusion discount
+Terminal-Bench 4.0,Fusion Standard,19.1,0.29,0.203,hypothetical only; benchmark API cost may not equal GitHub model charge; may already include promotion
+Terminal-Bench 4.0,Fusion High,53.0,2.54,1.778,hypothetical only; benchmark API cost may not equal GitHub model charge; may already include promotion
+Terminal-Bench 4.0,Fusion Max,67.9,7.53,5.271,hypothetical only; benchmark API cost may not equal GitHub model charge; may already include promotion
+Terminal-Bench 4.0,GPT-6.1 Sol / max,50.9,1.08,,fixed model no Fusion discount
+Terminal-Bench 4.0,Claude Opus 5.5 / max,62.4,11.71,,fixed model no Fusion discount
+Terminal-Bench 4.0,Claude Opus 5.5 / xhigh,61.5,6.74,,fixed model no Fusion discount

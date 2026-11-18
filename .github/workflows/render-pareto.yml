@@ -1,0 +1,48 @@
+name: Render Pareto Charts
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "copilot_pareto/**"
+      - "scripts/verify_ci_outputs.py"
+      - ".github/workflows/render-pareto.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout source and snapshot data
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: copilot_pareto/requirements.txt
+      - name: Install plotting dependencies
+        run: python -m pip install -r copilot_pareto/requirements.txt
+      - name: Render four charts using original Python engine
+        run: python copilot_pareto/run_four_charts_2026-11-18.py
+      - name: Validate generated assets
+        run: python scripts/verify_ci_outputs.py
+      - name: Stage reproducible chart assets
+        shell: bash
+        run: |
+          mkdir -p dist
+          cp copilot_pareto/four_charts_2026-11-18/*.png dist/
+          cp copilot_pareto/four_charts_2026-11-18/*.svg dist/
+          cp copilot_pareto/four_charts_2026-11-18/*.csv dist/
+          cp copilot_pareto/four_charts_2026-11-18/validation_2026-11-18.json dist/
+          cp copilot_pareto/four_charts_2026-11-18/README.md dist/
+      - name: Upload downloadable PNG SVG CSV Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: copilot-pareto-charts-${{ github.run_number }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 90

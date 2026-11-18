@@ -1,0 +1,22 @@
+{
+  "snapshot_date": "2026-10-30",
+  "checks": {
+    "unique_text_price_tiers": 40,
+    "unique_kiro_model_names": 17,
+    "aa_v2_reference_records": 5,
+    "aa_same_version": true,
+    "rounded_equal_weight_index_check": true,
+    "china_and_auto_excluded_from_reference_records": true,
+    "platform_costs_left_null": true,
+    "no_false_platform_frontier": true,
+    "source_files_recovered": true
+  },
+  "formal_plot_gates": {
+    "cloud_project_runnable": false,
+    "copilot_effective_task_costs_available": false,
+    "kiro_effective_task_credits_available": false,
+    "both_formal_charts_completed": false
+  },
+  "result": "REFERENCE_DATA_CHECKS_PASSED_FORMAL_PLOT_GATES_BLOCKED",
+  "first_manual_test_passed": false
+}

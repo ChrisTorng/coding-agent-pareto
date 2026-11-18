@@ -1,0 +1,42 @@
+{
+  "aa_coding_agent_v21": {
+    "original_sha256": "7fe0af74079bae4d2dd7379f2176f84969e86b4ab893c4c4ec02ccac44221258",
+    "updated_sha256": "7fe0af74079bae4d2dd7379f2176f84969e86b4ab893c4c4ec02ccac44221258",
+    "unchanged": true,
+    "labels_before": 25,
+    "labels_after": 25,
+    "added_left_panel_labels": 0,
+    "overlaps": [],
+    "clipped": []
+  },
+  "aa_coding_agent_v20": {
+    "original_sha256": "5a3747cce761dc6f3408220711ed219152854d3182c12e67d0bd96a8e645e06c",
+    "updated_sha256": "b2ed6b0c9a40e4793fe7c2eddd225771179c6038cd9b5d9e1742a7f26ba1096f",
+    "unchanged": false,
+    "labels_before": 15,
+    "labels_after": 24,
+    "added_left_panel_labels": 9,
+    "overlaps": [],
+    "clipped": []
+  },
+  "fusion_deepswe_11": {
+    "original_sha256": "bd2795532adc450d4051b324caa441accf228cc1573efb5b7418c9a5e6678eea",
+    "updated_sha256": "87e78d75485510904e74f36ca17d57f8aba9edf635f8aee64203f96765bd7957",
+    "unchanged": false,
+    "labels_before": 6,
+    "labels_after": 10,
+    "added_left_panel_labels": 4,
+    "overlaps": [],
+    "clipped": []
+  },
+  "fusion_terminal_bench_40": {
+    "original_sha256": "d20e2f24b61f1dc26f80b2fe2fe330994b2dfbdc532705d519352c70db746c4e",
+    "updated_sha256": "27924d974940737ae19ae9fb0aa179b65308383934cfe1c9a73e5a9580ed461a",
+    "unchanged": false,
+    "labels_before": 6,
+    "labels_after": 9,
+    "added_left_panel_labels": 3,
+    "overlaps": [],
+    "clipped": []
+  }
+}

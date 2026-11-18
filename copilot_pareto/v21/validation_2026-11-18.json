@@ -1,0 +1,305 @@
+{
+  "Copilot": {
+    "snapshot_date": "2026-11-18",
+    "index_version": "2.1",
+    "rows": 104,
+    "plotted_points": 25,
+    "published_cost_points": 25,
+    "provisional_cost_points": 0,
+    "linear_axes": true,
+    "zoom_source_bounds": {
+      "x": [
+        -0.08,
+        4.8
+      ],
+      "y": [
+        20.0,
+        65.0
+      ]
+    },
+    "model_effort_lines": [
+      {
+        "panel": 0,
+        "model": "Claude Fable 5.2",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#cf6d42",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-0"
+      },
+      {
+        "panel": 0,
+        "model": "GPT-6.2 Astra",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-7"
+      },
+      {
+        "panel": 0,
+        "model": "GPT-6.2 Sol",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-0-8"
+      },
+      {
+        "panel": 1,
+        "model": "Claude Fable 5.2",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#cf6d42",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-0"
+      },
+      {
+        "panel": 1,
+        "model": "GPT-6.2 Astra",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-7"
+      },
+      {
+        "panel": 1,
+        "model": "GPT-6.2 Sol",
+        "efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ],
+        "color": "#00866a",
+        "linewidth": 0.9,
+        "svg_id": "model-effort-1-8"
+      }
+    ],
+    "label_count": 25,
+    "label_overlaps": [],
+    "clipped_labels": [],
+    "provisional_frontier_additions": 0,
+    "copilot_promotion_deadlines": [],
+    "frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 26.0,
+        "cost": 0.19
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "low",
+        "score": 37.0,
+        "cost": 0.33
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "medium",
+        "score": 45.0,
+        "cost": 0.57
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "high",
+        "score": 47.0,
+        "cost": 0.76
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "xhigh",
+        "score": 50.0,
+        "cost": 0.9
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 52.0,
+        "cost": 1.51
+      },
+      {
+        "model": "Claude Fable 5.2",
+        "effort": "medium",
+        "score": 53.0,
+        "cost": 2.89
+      },
+      {
+        "model": "Gemini 4 Carbon",
+        "effort": "high",
+        "score": 55.0,
+        "cost": 7.13
+      },
+      {
+        "model": "Claude Fable 5.2",
+        "effort": "high",
+        "score": 58.0,
+        "cost": 7.51
+      }
+    ],
+    "provisional_frontier": [
+      {
+        "model": "GPT-6 Luna",
+        "effort": "max",
+        "score": 26.0,
+        "cost": 0.19
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "low",
+        "score": 37.0,
+        "cost": 0.33
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "medium",
+        "score": 45.0,
+        "cost": 0.57
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "high",
+        "score": 47.0,
+        "cost": 0.76
+      },
+      {
+        "model": "GPT-6.2 Sol",
+        "effort": "xhigh",
+        "score": 50.0,
+        "cost": 0.9
+      },
+      {
+        "model": "GPT-6.1 Sol",
+        "effort": "max",
+        "score": 52.0,
+        "cost": 1.51
+      },
+      {
+        "model": "Claude Fable 5.2",
+        "effort": "medium",
+        "score": 53.0,
+        "cost": 2.89
+      },
+      {
+        "model": "Gemini 4 Carbon",
+        "effort": "high",
+        "score": 55.0,
+        "cost": 7.13
+      },
+      {
+        "model": "Claude Fable 5.2",
+        "effort": "high",
+        "score": 58.0,
+        "cost": 7.51
+      }
+    ],
+    "formal_platform_frontier_complete": false,
+    "formal_points": 0,
+    "reference_points": 25,
+    "cost_definition": "AA API USD per Coding Agent task; NOT Copilot/Kiro billed task cost",
+    "independent_frontier_check": true,
+    "original_plotter": true,
+    "png_sha256": "78f6b1313611a1a5a42cc135c7650b79e9a7cfa72a490b577257f91a406ad7a6",
+    "svg_sha256": "40bca635d1c84e3d0e068be462f9b1f1a5c22c89caab05c34cf2894d6980c258"
+  },
+  "Kiro": {
+    "snapshot_date": "2026-11-18",
+    "index_version": "2.1",
+    "rows": 104,
+    "plotted_points": 5,
+    "published_cost_points": 5,
+    "provisional_cost_points": 0,
+    "linear_axes": true,
+    "zoom_source_bounds": {
+      "x": [
+        -0.08,
+        13.2
+      ],
+      "y": [
+        20.0,
+        65.0
+      ]
+    },
+    "model_effort_lines": [],
+    "label_count": 5,
+    "label_overlaps": [],
+    "clipped_labels": [],
+    "provisional_frontier_additions": 0,
+    "copilot_promotion_deadlines": [],
+    "frontier": [
+      {
+        "model": "Claude Haiku 5.5",
+        "effort": "max",
+        "score": 30.0,
+        "cost": 2.25
+      },
+      {
+        "model": "Claude Sonnet 5.5",
+        "effort": "max",
+        "score": 56.0,
+        "cost": 11.4
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "effort": "max",
+        "score": 58.0,
+        "cost": 12.61
+      }
+    ],
+    "provisional_frontier": [
+      {
+        "model": "Claude Haiku 5.5",
+        "effort": "max",
+        "score": 30.0,
+        "cost": 2.25
+      },
+      {
+        "model": "Claude Sonnet 5.5",
+        "effort": "max",
+        "score": 56.0,
+        "cost": 11.4
+      },
+      {
+        "model": "Claude Opus 5.5",
+        "effort": "max",
+        "score": 58.0,
+        "cost": 12.61
+      }
+    ],
+    "formal_platform_frontier_complete": false,
+    "formal_points": 0,
+    "reference_points": 5,
+    "cost_definition": "AA API USD per Coding Agent task; NOT Copilot/Kiro billed task cost",
+    "independent_frontier_check": true,
+    "original_plotter": true,
+    "png_sha256": "e7d546b6e3fb99cc114ad1a3b740b39b4b08bc5b211e13a62280c90e6c692345",
+    "svg_sha256": "226c60e047e1255c800c05d3c527ad7cfa621b432b2a7f0b88e1cabc69b8761f"
+  }
+}

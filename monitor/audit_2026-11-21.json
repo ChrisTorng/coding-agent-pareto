@@ -1,0 +1,231 @@
+{
+  "snapshot_date": "2026-11-21",
+  "timezone": "Asia/Taipei",
+  "previous_audit": "monitor/audit_2026-11-20.json",
+  "registry_primary_count": 18,
+  "conditional_registered_count": 72,
+  "scope": "All 18 registered primary URLs opened directly; source readability only, not a full numeric/structured comparison. No response ETag/body hash available.",
+  "source_checks": [
+    {
+      "url": "https://docs.github.com/en/copilot/reference/ai-models/supported-models",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/concepts/models/copilot-fusion",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://kiro.dev/docs/models/available-models/",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://kiro.dev/pricing/",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://kiro.dev/changelog/models/",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://code.claude.com/docs/en/model-config",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://code.claude.com/docs/en/costs",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://artificialanalysis.ai/agents/coding-agents",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://artificialanalysis.ai/",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://artificialanalysis.ai/methodology/coding-agents-benchmarking",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://benchmarks.github.com/",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": false,
+      "fetch_status": "zero readable lines (React)",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://www.tbench.ai/",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://www.tbench.ai/?efforts=all&version=4.1",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://www.tbench.ai/news",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    },
+    {
+      "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
+      "checked_at": "2026-11-21T07:30:00+08:00",
+      "fetch_method": "web.open direct",
+      "http_status": null,
+      "html_readable": true,
+      "fetch_status": "readable",
+      "etag": null,
+      "body_hash": null,
+      "structured_rows_fully_compared": false
+    }
+  ],
+  "coverage": {
+    "primary_urls_opened": 18,
+    "primary_readable": 17,
+    "primary_unreadable": 1,
+    "primary_full_numeric_diff": 0,
+    "conditional_full_numeric_diff": 0,
+    "aa_v5_previous_featured_rows": 28,
+    "aa_v5_public_model_count_now": 157,
+    "aa_coding_agent_public_displayed": 15,
+    "aa_coding_agent_total": 40,
+    "terminal_bench_v4_1_prior_rows": 66
+  },
+  "known_gaps": [
+    "AA v5.0.1 public page states 28 of 157; only 28 featured rows retained; complete score/cost extraction pending",
+    "AA Coding Agent v2.1 public page states 15 of 40; complete per-model score/cost diff pending",
+    "GitHub Benchmarks React data unreadable via text retrieval; API/browser extraction pending",
+    "72 conditional sources not reaudited",
+    "Copilot/Kiro/Claude full structured price/promotion/effort rows not reaudited",
+    "Kiro 25 inventory records but only 15 verified multipliers from previous audit",
+    "Terminal-Bench rounded total submission cost must not be used as per-task",
+    "HTTP status, ETag, body hashes unavailable in this retrieval"
+  ],
+  "substantive_data_updates_published": false
+}

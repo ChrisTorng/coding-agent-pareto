@@ -1,0 +1,398 @@
+{
+  "snapshot_date": "2026-11-20",
+  "source_url": "https://docs.github.com/en/copilot/reference/ai-models/supported-models",
+  "models": [
+    {
+      "model": "GPT-5.3-Codex",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-5.4 nano",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-5.6 Luna",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-5.6 Sol",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-6 Astra",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-6 Luna",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-6 Sol",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-6.2 Astra",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "GPT-6.2 Sol",
+      "provider": "OpenAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Fable 5",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Fable 5.1",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Fable 5.2",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Haiku 4.5",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Haiku 5.5",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Opus 4.8",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Opus 4.8 (fast mode) (preview)",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Sonnet 5",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "provider": "Anthropic",
+      "release_status": "GA"
+    },
+    {
+      "model": "Gemini 3.8 Flash",
+      "provider": "Google",
+      "release_status": "GA"
+    },
+    {
+      "model": "Gemini 4 Argon",
+      "provider": "Google",
+      "release_status": "GA"
+    },
+    {
+      "model": "Gemini 4 Carbon",
+      "provider": "Google",
+      "release_status": "GA"
+    },
+    {
+      "model": "Gemini 4 Hydrogen",
+      "provider": "Google",
+      "release_status": "GA"
+    },
+    {
+      "model": "Gemini 4 Neon",
+      "provider": "Google",
+      "release_status": "GA"
+    },
+    {
+      "model": "MAI-Code-1.1-Flash",
+      "provider": "Microsoft",
+      "release_status": "GA"
+    },
+    {
+      "model": "MAI Code 2",
+      "provider": "Microsoft",
+      "release_status": "GA"
+    },
+    {
+      "model": "MAI Code 2 Flash",
+      "provider": "Microsoft",
+      "release_status": "GA"
+    },
+    {
+      "model": "Kimi K3",
+      "provider": "Moonshot AI",
+      "release_status": "GA"
+    },
+    {
+      "model": "Grok 4.5",
+      "provider": "xAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "Grok 4.6",
+      "provider": "xAI",
+      "release_status": "GA"
+    },
+    {
+      "model": "Grok 4.7",
+      "provider": "xAI",
+      "release_status": "GA"
+    }
+  ],
+  "retirements": [
+    {
+      "model": "Claude Opus 4.8",
+      "retired_on": "2026-11-16",
+      "replacement": "Latest Claude Opus model"
+    },
+    {
+      "model": "Claude Opus 5",
+      "retired_on": "2026-11-16",
+      "replacement": "Latest Claude Opus model"
+    },
+    {
+      "model": "GPT-5.6 Terra",
+      "retired_on": "2026-11-16",
+      "replacement": "Latest GPT Terra model"
+    },
+    {
+      "model": "Gemini 3.7 Flash",
+      "retired_on": "2026-10-19",
+      "replacement": "Latest Gemini Flash model"
+    },
+    {
+      "model": "GPT-5 mini",
+      "retired_on": "2026-10-19",
+      "replacement": "Latest GPT Luna model"
+    },
+    {
+      "model": "GPT-5.4",
+      "retired_on": "2026-10-19",
+      "replacement": "Latest GPT Sol model"
+    },
+    {
+      "model": "GPT-5.4 mini",
+      "retired_on": "2026-10-19",
+      "replacement": "Latest GPT Luna model"
+    },
+    {
+      "model": "GPT-5.5",
+      "retired_on": "2026-10-19",
+      "replacement": "Latest GPT Sol model"
+    },
+    {
+      "model": "Claude Opus 4.7",
+      "retired_on": "2026-10-02",
+      "replacement": "Latest Claude Opus model"
+    },
+    {
+      "model": "Gemini 3.5 Flash",
+      "retired_on": "2026-10-02",
+      "replacement": "Latest Gemini Flash model"
+    },
+    {
+      "model": "Gemini 3.6 Flash",
+      "retired_on": "2026-10-02",
+      "replacement": "Latest Gemini Flash model"
+    },
+    {
+      "model": "Kimi K2.7 Code",
+      "retired_on": "2026-10-02",
+      "replacement": "Latest Kimi model"
+    },
+    {
+      "model": "MAI-Code-1-Flash",
+      "retired_on": "2026-09-10",
+      "replacement": "Latest MAI-Code model"
+    },
+    {
+      "model": "Claude Opus 4.5",
+      "retired_on": "2026-09-01",
+      "replacement": "Latest Claude Opus model"
+    },
+    {
+      "model": "Claude Opus 4.6",
+      "retired_on": "2026-09-01",
+      "replacement": "Latest Claude Opus model"
+    },
+    {
+      "model": "Claude Sonnet 4.5",
+      "retired_on": "2026-09-01",
+      "replacement": "Latest Claude Sonnet model"
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "retired_on": "2026-09-01",
+      "replacement": "Latest Claude Sonnet model"
+    },
+    {
+      "model": "Gemini 3.1 Pro",
+      "retired_on": "2026-09-01",
+      "replacement": "Latest Gemini Flash model"
+    },
+    {
+      "model": "Raptor mini",
+      "retired_on": "2026-09-01",
+      "replacement": "Latest MAI-Code model"
+    },
+    {
+      "model": "Gemini 2.5 Pro",
+      "retired_on": "2026-07-31",
+      "replacement": "Latest Gemini Flash model"
+    },
+    {
+      "model": "Gemini 3 Flash",
+      "retired_on": "2026-07-31",
+      "replacement": "Latest Gemini Flash model"
+    },
+    {
+      "model": "Claude Opus 4.6 (fast mode) (preview)",
+      "retired_on": "2026-06-29",
+      "replacement": "Latest Claude Opus model in fast mode"
+    },
+    {
+      "model": "GPT-5.2",
+      "retired_on": "2026-06-05",
+      "replacement": "Latest GPT model"
+    },
+    {
+      "model": "GPT-5.2-Codex",
+      "retired_on": "2026-06-05",
+      "replacement": "Latest GPT Codex model"
+    },
+    {
+      "model": "GPT-4.1",
+      "retired_on": "2026-06-01",
+      "replacement": "Latest GPT model"
+    },
+    {
+      "model": "Grok Code Fast 1",
+      "retired_on": "2026-05-15",
+      "replacement": "Latest GPT mini model"
+    },
+    {
+      "model": "Claude Sonnet 4",
+      "retired_on": "2026-05-01",
+      "replacement": "Latest Claude Sonnet model"
+    },
+    {
+      "model": "GPT-5.1",
+      "retired_on": "2026-04-15",
+      "replacement": "Latest GPT Codex model"
+    },
+    {
+      "model": "GPT-5.1-Codex",
+      "retired_on": "2026-04-01",
+      "replacement": "Latest GPT Codex model"
+    },
+    {
+      "model": "GPT-5.1-Codex-Max",
+      "retired_on": "2026-04-01",
+      "replacement": "Latest GPT Codex model"
+    },
+    {
+      "model": "GPT-5.1-Codex-Mini",
+      "retired_on": "2026-04-01",
+      "replacement": "Latest GPT Codex model"
+    },
+    {
+      "model": "Gemini 3 Pro",
+      "retired_on": "2026-03-26",
+      "replacement": "Latest Gemini Flash model"
+    },
+    {
+      "model": "Claude Opus 4.1",
+      "retired_on": "2026-02-17",
+      "replacement": "Latest Claude Opus model"
+    },
+    {
+      "model": "GPT-5",
+      "retired_on": "2026-02-17",
+      "replacement": "Latest GPT model"
+    },
+    {
+      "model": "GPT-5-Codex",
+      "retired_on": "2026-02-17",
+      "replacement": "Latest GPT Codex model"
+    },
+    {
+      "model": "Claude Sonnet 3.5",
+      "retired_on": "2025-11-06",
+      "replacement": "Latest Claude Haiku model"
+    },
+    {
+      "model": "Claude Opus 4",
+      "retired_on": "2025-10-23",
+      "replacement": "Latest Claude Opus model"
+    },
+    {
+      "model": "Claude Sonnet 3.7",
+      "retired_on": "2025-10-23",
+      "replacement": "Latest Claude Sonnet model"
+    },
+    {
+      "model": "Claude Sonnet 3.7 Thinking",
+      "retired_on": "2025-10-23",
+      "replacement": "Latest Claude Sonnet model"
+    },
+    {
+      "model": "Gemini 2.0 Flash",
+      "retired_on": "2025-10-23",
+      "replacement": "Latest Gemini Flash model"
+    },
+    {
+      "model": "o1-mini",
+      "retired_on": "2025-10-23",
+      "replacement": "Latest GPT mini model"
+    },
+    {
+      "model": "o3",
+      "retired_on": "2025-10-23",
+      "replacement": "Latest GPT model"
+    },
+    {
+      "model": "o3-mini",
+      "retired_on": "2025-10-23",
+      "replacement": "Latest GPT mini model"
+    },
+    {
+      "model": "o4-mini",
+      "retired_on": "2025-10-23",
+      "replacement": "Latest GPT mini model"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ p = Path('dist/site')
 for asset in ('index.html', 'style.css', 'app.js', 'data.json', '.nojekyll'):
     assert (p/asset).is_file(), f'Missing {asset}'
 d = json.loads((p/'data.json').read_text(encoding='utf-8'))
-assert len(d['charts']) >= 7, 'Missing historical benchmark snapshots'
+assert len(d['charts']) >= 13, 'Missing historical benchmark snapshots'
 assert len(d['catalog']) >= 50, 'Model catalog too small'
 assert any(m['model'].startswith('MAI Code 2') for m in d['catalog']), 'Missing new MAI models'
 assert all(next(m for m in d['catalog'] if m['model']==name)['rate']['output'] == output for name,output in [('MAI Code 2',2.5),('MAI Code 2 Flash',0.25)]), 'Missing promotional MAI rates'
@@ -13,6 +13,18 @@ neon=next(m for m in d['catalog'] if m['model']=='Gemini 4 Neon')
 assert neon['platforms']['Copilot']['rate']['input']==3 and neon['platforms']['Copilot']['rate']['cached_input']==0.15 and neon['platforms']['Copilot']['rate']['output']==15
 fable=next(m for m in d['catalog'] if m['model']=='Claude Fable 5.2')
 assert fable['platforms']['Claude Code']['rate']['input']==8 and fable['platforms']['Claude Code']['rate']['output']==40
+# Official November 20 inventories and versioned score snapshots
+from pathlib import Path as _Path
+assert any(c['version']=='5.0.1' and c['benchmark']=='AA Intelligence Index' for c in d['charts']), 'Missing current AA Intelligence v5.0.1'
+assert any(c['version']=='4.1' and c['benchmark']=='Terminal-Bench' for c in d['charts']), 'Missing independent TB 4.1'
+assert any(c.get('cost_unit')=='USD/full_submission_rounded' for c in d['charts']), 'TB total cost must not be reported as USD/task'
+assert len(json.loads(_Path('copilot_pareto/terminal_bench/terminal_bench_v4_1_2026-11-20.json').read_text())['records'])==66
+assert len(json.loads(_Path('copilot_pareto/v5/intelligence_index_v5_0_1_2026-11-20.json').read_text())['rows'])==28
+assert len(json.loads(_Path('monitor/copilot_available_2026-11-20.json').read_text())['models'])==34
+assert len(json.loads(_Path('monitor/copilot_prices_2026-11-20.json').read_text())['rows'])==48
+assert len(json.loads(_Path('monitor/kiro_available_2026-11-20.json').read_text())['models'])==25
+assert next(m for m in d['catalog'] if m['model']=='Gemini 4 Neon')['platforms']['Copilot']['rate']['output']==15
+assert any(m['model']=='GLM-5' and m['platforms'].get('Kiro') for m in d['catalog'])
 assert any(m['china'] for m in d['catalog']), 'China models must exist for default-all and exclusion controls'
 assert any(not m['china'] for m in d['catalog']), 'Missing non-China models'
 assert set(['Copilot','Kiro','Claude Code']).issubset({p for c in d['charts'] for p in c['platforms']})
@@ -64,7 +76,7 @@ for token in ('writeQuery','restoreQuery','saveExclusions','logFloor','niceStep'
 registry=Path('monitor/source_registry.json')
 assert registry.exists(), 'Missing external source monitoring registry'
 watch=json.loads(registry.read_text(encoding='utf-8'))
-assert len(watch['primary_sources'])>=16 and len(watch['conditional_detail_sources'])>=72
+assert len(watch['primary_sources'])>=18 and len(watch['conditional_detail_sources'])>=72
 assert any('version=4.1' in x['url'] for x in watch['primary_sources'])
 assert any(x['url']=='https://www.tbench.ai/news' for x in watch['primary_sources'])
 assert all(x['url'].startswith('https://') for x in watch['primary_sources'])

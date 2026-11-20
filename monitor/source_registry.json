@@ -115,6 +115,20 @@
       "label": "Terminal-Bench release and correction news",
       "url": "https://www.tbench.ai/news",
       "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "Artificial Analysis: latest Intelligence Index v5.0.1 / model score and cost",
+      "url": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index",
+      "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "Artificial Analysis: Intelligence Index version and detailed evaluation",
+      "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
+      "check_on_every_run": true
     }
   ],
   "conditional_detail_sources": [

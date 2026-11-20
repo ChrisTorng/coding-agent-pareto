@@ -236,11 +236,11 @@ function graph(points){
  for(const v of ticks){const x=xp(v);svg('line',{x1:x,x2:x,y1:plot.y,y2:plot.y+plot.h,class:'svg-grid'},s);txt(s,x,plot.y+plot.h+24,money(v),{'text-anchor':'middle',class:'svg-tick'})}
  const ystep=niceStep((bounds.ymax-bounds.ymin)/7);
  for(let v=Math.ceil(bounds.ymin/ystep)*ystep;v<=bounds.ymax+1e-9;v+=ystep){const y=yp(v);svg('line',{x1:plot.x,x2:plot.x+plot.w,y1:y,y2:y,class:'svg-grid'},s);txt(s,plot.x-11,y+4,pct(v)+'%',{'text-anchor':'end',class:'svg-tick'})}
- txt(s,plot.x+plot.w/2,height-14,'Estimated cost / task (USD, '+costScale+')',{'text-anchor':'middle',class:'svg-axislabel'});
+ txt(s,plot.x+plot.w/2,height-14,(chart().cost_unit==='USD/full_submission_rounded'?'Official total run cost (USD, rounded; '+costScale+')':'Estimated cost / task (USD, '+costScale+')'),{'text-anchor':'middle',class:'svg-axislabel'});
  const scoreAll=scored();const hi=Math.max(...scoreAll.map(p=>p.score)),lo=Math.min(...scoreAll.map(p=>p.score));
  const front=new Set(frontier(scoreAll));const best=points.filter(p=>front.has(p)).sort((a,b)=>a.cost-b.cost);
  if(best.length>1)svg('path',{d:best.map((p,i)=>(i?'L':'M')+xp(p.cost).toFixed(2)+','+yp(p.score).toFixed(2)).join(' '),class:'svg-frontier'},s);
- const groups=new Map();for(const p of points){const k=key(p);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(p)}
+ const groups=new Map();for(const p of points){const k=key(p)+(chart().separate_agents?'\0'+(p.harness||''):'');if(!groups.has(k))groups.set(k,[]);groups.get(k).push(p)}
  const layers=svg('g',{class:'series-root'},s),labelBoxes=[];
  for(const [id,series] of groups){
   const ordered=[...series].sort((a,b)=>effortOrder.indexOf(a.effort)-effortOrder.indexOf(b.effort));const p0=series[0];
@@ -267,7 +267,7 @@ function graph(points){
  const vendorLegend=makeLegend('vendor','Vendors');for(const pr of providers){const e=document.createElement('span');e.className='legend-item';const sample=document.createElementNS($ns,'svg');sample.setAttribute('viewBox','0 0 28 28');const shape=vendorShape(pr);const p=points.find(x=>x.provider===pr);if(shape==='circle')svg('circle',{cx:14,cy:14,r:8,fill:baseColor(p)},sample);else svg('path',{d:markerPath(shape,14,14,9),fill:baseColor(p)},sample);e.append(sample,document.createTextNode(pr));vendorLegend.append(e)}
  const modelLegend=makeLegend('models','Models');for(const [id,series] of groups){const p=series[0],e=document.createElement('span');e.className='legend-item';const sw=document.createElement('i');sw.style.background=baseColor(p);e.append(sw,document.createTextNode(p.model));modelLegend.append(e)}
 }
-function showTip(p,event){const el=$('tooltip');el.hidden=false;el.innerHTML=`<strong>${esc(p.model)} / ${esc(p.effort)}</strong><small>${esc(p.provider)} · ${esc(p.country||'Unknown')} · ${esc(p.harness||'benchmark reference')}</small><div>Score <b>${fmt(p.score)}%</b> · Cost <b>${money(p.cost)}</b></div><small>Estimate factor: ×${fmt(p.discount||1)}</small>`;moveTip(event)}
+function showTip(p,event){const el=$('tooltip');el.hidden=false;el.innerHTML=`<strong>${esc(p.model)} / ${esc(p.effort)}</strong><small>${esc(p.provider)} · ${esc(p.country||'Unknown')} · ${esc(p.harness||'benchmark reference')}</small><div>Score <b>${fmt(p.score)}%</b> · ${chart().cost_unit==='USD/full_submission_rounded'?'Total run cost (rounded)':'Cost / task'} <b>${money(p.cost)}</b></div><small>Estimate factor: ×${fmt(p.discount||1)}</small>`;moveTip(event)}
 function moveTip(event){const b=$('tooltip');if(b.hidden)return;const x=event.clientX??innerWidth/2,y=event.clientY??innerHeight/2;b.style.left=Math.max(5,Math.min(innerWidth-335,x+12))+'px';b.style.top=Math.max(5,Math.min(innerHeight-125,y+14))+'px'}
 function hideTip(){$('tooltip').hidden=true}
 function renderTables(points){const sorted=[...points].sort((a,b)=>a.cost-b.cost);
@@ -278,7 +278,7 @@ function renderTables(points){const sorted=[...points].sort((a,b)=>a.cost-b.cost
   if(!promo)promo=info.status||'—';for(const val of [m.provider+' · '+m.country,m.model,scoredKeys.has(key(m))?'Scored':'No score',price,promo]){const td=document.createElement('td');td.textContent=val;tr.append(td)}return tr}));$('catalog-meta').textContent=models.length+' models';
 }
 function renderContent(){if(!db)return;const ps=visible(),c=chart();graph(ps);$('point-count').textContent=`${ps.length} / ${scored().length} scored points visible`;$('axis-summary').textContent=`${money(bounds.xmin)}–${money(bounds.xmax)} (${costScale}) · ${pct(bounds.ymin)}–${pct(bounds.ymax)}%`;renderTables(ps);
- const src=c.cost_basis||'Benchmark task cost';$('platform-note').textContent=(platform==='Kiro'?'Kiro credits are model multipliers; plotted task costs use benchmark reference estimates.':platform==='Claude Code'?'Claude Code uses Anthropic models; plotted costs are AA benchmark estimates.':'Benchmark USD/task estimates; Fusion discount applied to available scored variants.')+' · '+src;
+ const src=c.cost_basis||'Benchmark task cost';$('platform-note').textContent=chart().cost_unit==='USD/full_submission_rounded'?'Terminal-Bench v4.1: official full-run cost rounded to $100; NOT USD/task. Agent may differ from selected platform.':(platform==='Kiro'?'Kiro credits are model multipliers; plotted task costs use benchmark reference estimates.':platform==='Claude Code'?'Claude Code uses Anthropic models; plotted costs are AA benchmark estimates.':'Benchmark USD/task estimates; Fusion discount applied to available scored variants.'))+' · '+src;
 }
 function renderBenchmarkOptions(){
  const benchmarks=[...new Set(charts().map(c=>c.benchmark))];const sel=$('benchmark-picker');sel.replaceChildren();
@@ -296,7 +296,7 @@ function renderSources(){const c=chart(),bs=$('benchmark-sources'),ps=$('pricing
  for(const entry of costs.links||[]){if(entry.url)ps.append(sourceLink(entry));}
  const meta=document.createElement('span');meta.className='source-meta';meta.textContent=`Saved price snapshot: ${costs.snapshot||'unknown'} · ${costs.update_method||'manual review required'}`;ps.append(meta);
 }
-function renderAll(){if(!db)return;renderTree();const c=chart();$('chart-title').textContent=c.label;$('benchmark-picker').value=c.benchmark;$('snapshot-picker').value=c.id;$('chart-meta').textContent=c.snapshot+' · '+c.benchmark+' · '+c.points.length+' scored records in this snapshot';
+function renderAll(){if(!db)return;renderTree();const c=chart();$('chart-title').textContent=c.label;$('benchmark-picker').value=c.benchmark;$('snapshot-picker').value=c.id;$('chart-meta').textContent=c.snapshot+' · '+c.benchmark+' · '+c.points.length+' scored records in this snapshot'+(c.coverage_note?' · '+c.coverage_note:'');
  const promos=platform==='Copilot'?db.promos:[];$('promo-line').textContent=promos.length?promos.map(x=>`${x.label}: ${x.discount} until ${x.until}`).join(' · '):platform==='Kiro'?'Kiro official credit multipliers shown in model catalog.':'Claude Code official API rates shown in model catalog.';
  const original=db.static_charts?.[c.id];for(const opt of $('export-kind').options)if(opt.value.startsWith('original'))opt.disabled=!original?.[opt.value.split('-')[1]];
  if(!original&&$('export-kind').value.startsWith('original'))$('export-kind').value='view-png';

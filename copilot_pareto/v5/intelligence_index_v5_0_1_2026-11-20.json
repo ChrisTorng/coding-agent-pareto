@@ -1,0 +1,290 @@
+{
+  "source_url": "https://artificialanalysis.ai/models",
+  "snapshot_date": "2026-11-20",
+  "benchmark": "AA Intelligence Index",
+  "version": "5.0.1",
+  "coverage_note": "28 featured models embedded in the public official page; not a claim of all scored models",
+  "source_featured_count": 28,
+  "rows": [
+    {
+      "provider": "Xiaomi",
+      "model": "MiMo-V2.6-Pro",
+      "variant_name": "MiMo-V2.6-Pro",
+      "effort": "default",
+      "score": 29.8897833093321,
+      "cost_usd_task": 0.25718036275876155,
+      "release_date": "2026-09-21",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Anthropic",
+      "model": "Claude Opus 5.5",
+      "variant_name": "Claude Opus 5.5 (Max, Default Fallback)",
+      "effort": "max",
+      "score": 59.1060336078904,
+      "cost_usd_task": 10.036409719512749,
+      "release_date": "2026-09-22",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "InclusionAI",
+      "model": "Ling 3.1 Flash 1019",
+      "variant_name": "Ling 3.1 Flash 1019",
+      "effort": "default",
+      "score": 29.570119369837,
+      "cost_usd_task": 3.185145018337793,
+      "release_date": "2026-10-22",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Anthropic",
+      "model": "Claude Fable 5.2",
+      "variant_name": "Claude Fable 5.2 (Max, Default Fallback)",
+      "effort": "max",
+      "score": 64.563595756626,
+      "cost_usd_task": 26.53855780398091,
+      "release_date": "2026-11-09",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "xAI",
+      "model": "Grok 4.7",
+      "variant_name": "Grok 4.7 (Xhigh)",
+      "effort": "xhigh",
+      "score": 35.4850117067196,
+      "cost_usd_task": 7.771539401587139,
+      "release_date": "2026-09-21",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Moonshot AI",
+      "model": "Kimi K3.1 Pro",
+      "variant_name": "Kimi K3.1 Pro",
+      "effort": "max",
+      "score": 46.4526236744189,
+      "cost_usd_task": 3.6812002895742055,
+      "release_date": "2026-10-23",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Reflection",
+      "model": "Beam 1.0",
+      "variant_name": "Beam 1.0",
+      "effort": "default",
+      "score": 17.7307282547205,
+      "cost_usd_task": 0.28440671352465285,
+      "release_date": "2026-10-16",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "OpenAI",
+      "model": "GPT-6 Luna",
+      "variant_name": "GPT-6 Luna (Max)",
+      "effort": "max",
+      "score": 27.8552004938153,
+      "cost_usd_task": 0.15195575732105837,
+      "release_date": "2026-09-22",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "OpenAI",
+      "model": "GPT-6.2 Astra",
+      "variant_name": "GPT-6.2 Astra (Max)",
+      "effort": "max",
+      "score": 62.1387990593969,
+      "cost_usd_task": 3.9979061566801852,
+      "release_date": "2026-11-17",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Google",
+      "model": "Gemini 4 Neon",
+      "variant_name": "Gemini 4 Neon (Xhigh)",
+      "effort": "xhigh",
+      "score": 61.3982491392674,
+      "cost_usd_task": 6.444838101104699,
+      "release_date": "2026-11-18",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Anthropic",
+      "model": "Claude Haiku 5.5",
+      "variant_name": "Claude Haiku 5.5 (Max)",
+      "effort": "max",
+      "score": 36.4845435880142,
+      "cost_usd_task": 0.41100741536816304,
+      "release_date": "2026-10-07",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Google",
+      "model": "Gemini 4 Carbon",
+      "variant_name": "Gemini 4 Carbon (High)",
+      "effort": "high",
+      "score": 60.025738829526,
+      "cost_usd_task": 7.755545745286556,
+      "release_date": "2026-10-28",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "OpenAI",
+      "model": "GPT-6.2 Sol",
+      "variant_name": "GPT-6.2 Sol (Max)",
+      "effort": "max",
+      "score": 57.2576209885477,
+      "cost_usd_task": 1.014379970300768,
+      "release_date": "2026-11-17",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Alibaba",
+      "model": "Qwen3.8 27B",
+      "variant_name": "Qwen3.8 27B (Xhigh)",
+      "effort": "xhigh",
+      "score": 20.1068756031705,
+      "cost_usd_task": 3.5295494751410654,
+      "release_date": "2026-08-14",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "OpenAI",
+      "model": "GPT-6.1 Terra",
+      "variant_name": "GPT-6.1 Terra (Max)",
+      "effort": "max",
+      "score": 51.3265188577015,
+      "cost_usd_task": 0.961108031081634,
+      "release_date": "2026-10-26",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Anthropic",
+      "model": "Claude Sonnet 5.5",
+      "variant_name": "Claude Sonnet 5.5 (Max, Default Fallback)",
+      "effort": "max",
+      "score": 54.54133407109,
+      "cost_usd_task": 10.020621343395753,
+      "release_date": "2026-09-28",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Institute of Foundation Models",
+      "model": "K2 Horizon 375B A23B",
+      "variant_name": "K2 Horizon 375B A23B",
+      "effort": "high",
+      "score": 17.8202731734027,
+      "cost_usd_task": 0,
+      "release_date": "2026-09-03",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Z.ai",
+      "model": "GLM-5.3",
+      "variant_name": "GLM-5.3 (Max)",
+      "effort": "max",
+      "score": 31.653381843882,
+      "cost_usd_task": 5.009264601719954,
+      "release_date": "2026-08-18",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Tencent",
+      "model": "Tencent Hy4",
+      "variant_name": "Tencent Hy4",
+      "effort": "default",
+      "score": 34.5552385392508,
+      "cost_usd_task": 1.0311060706397974,
+      "release_date": "2026-11-03",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Google",
+      "model": "Gemini 4 Hydrogen",
+      "variant_name": "Gemini 4 Hydrogen (Xhigh)",
+      "effort": "xhigh",
+      "score": 53.9192287317542,
+      "cost_usd_task": 3.1601590757006157,
+      "release_date": "2026-11-12",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Meta",
+      "model": "Muse Ember",
+      "variant_name": "Muse Ember (Max)",
+      "effort": "max",
+      "score": 36.0212987864912,
+      "cost_usd_task": 0.1359356168986363,
+      "release_date": "2026-11-09",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "NVIDIA",
+      "model": "Nemotron 3.5 Super VL",
+      "variant_name": "Nemotron 3.5 Super VL",
+      "effort": "high",
+      "score": 13.6203422723141,
+      "cost_usd_task": 0.48180884308185656,
+      "release_date": "2026-10-15",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Thinking Machines",
+      "model": "Inkling 2 Small",
+      "variant_name": "Inkling 2 Small",
+      "effort": "default",
+      "score": 30.6286781498958,
+      "cost_usd_task": 1.1784281349617984,
+      "release_date": "2026-11-05",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Meta",
+      "model": "Muse Wonder Full",
+      "variant_name": "Muse Wonder Full (Max)",
+      "effort": "max",
+      "score": 50.0772123627021,
+      "cost_usd_task": null,
+      "release_date": "2026-10-12",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Mistral",
+      "model": "Mistral Large 4",
+      "variant_name": "Mistral Large 4 (High)",
+      "effort": "high",
+      "score": 26.1249946754784,
+      "cost_usd_task": 2.0617306268126856,
+      "release_date": "2026-10-29",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "DeepSeek",
+      "model": "DeepSeek V4.1 Flash 1017",
+      "variant_name": "DeepSeek V4.1 Flash 1017 (Max)",
+      "effort": "max",
+      "score": 32.5896393532027,
+      "cost_usd_task": 0.60210514783598,
+      "release_date": "2026-10-17",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Alibaba",
+      "model": "Qwen4 Max",
+      "variant_name": "Qwen4 Max",
+      "effort": "xhigh",
+      "score": 42.8914543287565,
+      "cost_usd_task": 3.2681327300897323,
+      "release_date": "2026-11-16",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    },
+    {
+      "provider": "Meta",
+      "model": "Muse Wonder",
+      "variant_name": "Muse Wonder (Max)",
+      "effort": "max",
+      "score": 43.5748225998431,
+      "cost_usd_task": 6.9520364786062245,
+      "release_date": "2026-10-12",
+      "source": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index"
+    }
+  ]
+}

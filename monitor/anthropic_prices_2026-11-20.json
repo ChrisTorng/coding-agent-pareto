@@ -1,0 +1,197 @@
+{
+  "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "snapshot_date": "2026-11-20",
+  "platform": "Claude Code API pricing reference (availability checked separately)",
+  "rows": [
+    {
+      "model": "Claude Fable 5.2",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 8,
+      "output_usd_per_m": 40,
+      "cache_write_5m_usd_per_m": 10,
+      "cache_write_1h_usd_per_m": 16,
+      "cached_input_usd_per_m": 0.2
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 4,
+      "output_usd_per_m": 20,
+      "cache_write_5m_usd_per_m": 5,
+      "cache_write_1h_usd_per_m": 8,
+      "cached_input_usd_per_m": 0.2
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 2,
+      "output_usd_per_m": 10,
+      "cache_write_5m_usd_per_m": 2.5,
+      "cache_write_1h_usd_per_m": 4,
+      "cached_input_usd_per_m": 0.1
+    },
+    {
+      "model": "Claude Haiku 5.5",
+      "tier": "default",
+      "context_threshold": "<=100K",
+      "input_usd_per_m": 0.1,
+      "output_usd_per_m": 0.5,
+      "cache_write_5m_usd_per_m": 0.125,
+      "cache_write_1h_usd_per_m": 0.2,
+      "cached_input_usd_per_m": 0.01
+    },
+    {
+      "model": "Claude Haiku 5.5",
+      "tier": "long",
+      "context_threshold": ">100K",
+      "input_usd_per_m": 0.5,
+      "output_usd_per_m": 2.5,
+      "cache_write_5m_usd_per_m": 0.625,
+      "cache_write_1h_usd_per_m": 1,
+      "cached_input_usd_per_m": 0.05
+    },
+    {
+      "model": "Claude Fable 5.1",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 10,
+      "output_usd_per_m": 50,
+      "cache_write_5m_usd_per_m": 12.5,
+      "cache_write_1h_usd_per_m": 20,
+      "cached_input_usd_per_m": 0.25
+    },
+    {
+      "model": "Claude Fable 5",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 10,
+      "output_usd_per_m": 50,
+      "cache_write_5m_usd_per_m": 12.5,
+      "cache_write_1h_usd_per_m": 20,
+      "cached_input_usd_per_m": 1
+    },
+    {
+      "model": "Claude Opus 5",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 5,
+      "output_usd_per_m": 25,
+      "cache_write_5m_usd_per_m": 6.25,
+      "cache_write_1h_usd_per_m": 10,
+      "cached_input_usd_per_m": 0.5
+    },
+    {
+      "model": "Claude Opus 4.8",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 5,
+      "output_usd_per_m": 25,
+      "cache_write_5m_usd_per_m": 6.25,
+      "cache_write_1h_usd_per_m": 10,
+      "cached_input_usd_per_m": 0.5
+    },
+    {
+      "model": "Claude Opus 4.7",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 5,
+      "output_usd_per_m": 25,
+      "cache_write_5m_usd_per_m": 6.25,
+      "cache_write_1h_usd_per_m": 10,
+      "cached_input_usd_per_m": 0.5
+    },
+    {
+      "model": "Claude Opus 4.6",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 5,
+      "output_usd_per_m": 25,
+      "cache_write_5m_usd_per_m": 6.25,
+      "cache_write_1h_usd_per_m": 10,
+      "cached_input_usd_per_m": 0.5
+    },
+    {
+      "model": "Claude Opus 4.5",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 5,
+      "output_usd_per_m": 25,
+      "cache_write_5m_usd_per_m": 6.25,
+      "cache_write_1h_usd_per_m": 10,
+      "cached_input_usd_per_m": 0.5
+    },
+    {
+      "model": "Claude Opus 4.1",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 15,
+      "output_usd_per_m": 75,
+      "cache_write_5m_usd_per_m": 18.75,
+      "cache_write_1h_usd_per_m": 30,
+      "cached_input_usd_per_m": 1.5
+    },
+    {
+      "model": "Claude Opus 4",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 15,
+      "output_usd_per_m": 75,
+      "cache_write_5m_usd_per_m": 18.75,
+      "cache_write_1h_usd_per_m": 30,
+      "cached_input_usd_per_m": 1.5
+    },
+    {
+      "model": "Claude Sonnet 5",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 2,
+      "output_usd_per_m": 10,
+      "cache_write_5m_usd_per_m": 2.5,
+      "cache_write_1h_usd_per_m": 4,
+      "cached_input_usd_per_m": 0.2
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 3,
+      "output_usd_per_m": 15,
+      "cache_write_5m_usd_per_m": 3.75,
+      "cache_write_1h_usd_per_m": 6,
+      "cached_input_usd_per_m": 0.3
+    },
+    {
+      "model": "Claude Sonnet 4.5",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 3,
+      "output_usd_per_m": 15,
+      "cache_write_5m_usd_per_m": 3.75,
+      "cache_write_1h_usd_per_m": 6,
+      "cached_input_usd_per_m": 0.3
+    },
+    {
+      "model": "Claude Sonnet 4",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 3,
+      "output_usd_per_m": 15,
+      "cache_write_5m_usd_per_m": 3.75,
+      "cache_write_1h_usd_per_m": 6,
+      "cached_input_usd_per_m": 0.3
+    },
+    {
+      "model": "Claude Haiku 4.5",
+      "tier": "default",
+      "context_threshold": "all",
+      "input_usd_per_m": 1,
+      "output_usd_per_m": 5,
+      "cache_write_5m_usd_per_m": 1.25,
+      "cache_write_1h_usd_per_m": 2,
+      "cached_input_usd_per_m": 0.1
+    }
+  ]
+}

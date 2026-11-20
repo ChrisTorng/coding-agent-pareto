@@ -1,0 +1,25 @@
+{
+  "snapshot_date": "2026-11-20",
+  "model_selection_url": "https://code.claude.com/docs/en/model-config",
+  "pricing_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+  "active_default_models": [
+    "Claude Fable 5.2",
+    "Claude Opus 5.5",
+    "Claude Sonnet 5.5",
+    "Claude Haiku 5.5"
+  ],
+  "alias_map": {
+    "fable": "Claude Fable 5.2",
+    "opus": "Claude Opus 5.5",
+    "sonnet": "Claude Sonnet 5.5",
+    "haiku": "Claude Haiku 5.5"
+  },
+  "supported_effort_levels": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+  ],
+  "source_note": "Current Anthropic API default alias values documented for Claude Code CLI v2.1.321 and later. Historical explicit model IDs and third-party gateways may differ."
+}

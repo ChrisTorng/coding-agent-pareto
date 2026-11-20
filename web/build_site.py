@@ -98,6 +98,22 @@ for r in reviewed_delta:
    'input':num(r.get('input_usd_per_m')), 'cached_input':num(r.get('cached_input_usd_per_m')),
    'cache_write':num(r.get('cache_write_usd_per_m')), 'output':num(r.get('output_usd_per_m')),
    'promo_end':r.get('promo_end',''), 'tier':r.get('tier','default')})
+# Official complete Copilot token-rate tiers for this snapshot, replacing earlier partial defaults.
+copilot_official=json.loads((ROOT/'monitor/copilot_prices_2026-11-20.json').read_text(encoding='utf-8'))
+for r in copilot_official['rows']:
+    model=r['model']; provider=r['provider']; source=r['source_url']
+    addmodel(model,provider,source)
+    entry=catalog[(provider_for(model,provider),model)]
+    entry.setdefault('rate_tiers',[]).append({
+       'tier':r['tier'],'threshold':r['context_threshold'],
+       'input':r['input_usd_per_m'],'cached_input':r['cached_input_usd_per_m'],
+       'cache_write':r['cache_write_usd_per_m'],'output':r['output_usd_per_m'],
+       'promo_end':r['promo_end']})
+    if r['tier'].lower()=='default':
+       entry['rate']={'platform':'Copilot','input':r['input_usd_per_m'],
+           'cached_input':r['cached_input_usd_per_m'],'cache_write':r['cache_write_usd_per_m'],
+           'output':r['output_usd_per_m'],'promo_end':r['promo_end'] or '',
+           'tier':'promotional' if r['promo_end'] else 'default','source':source}
 for v, p in [('v2',SRC/'v2'/'coding_agent_data_2026-10-30.csv'),('v21',SRC/'v21'/'coding_agent_data_2026-11-18.csv')]:
     for r in readcsv(p):addmodel(r.get('model'),r.get('provider'),r.get('source',''))
 
@@ -140,22 +156,14 @@ KIRO_SOURCE='https://kiro.dev/docs/models/available-models/'
 KIRO_PRICES='https://kiro.dev/pricing/'
 CLAUDE_SOURCE='https://code.claude.com/docs/en/model-config'
 CLAUDE_PRICES='https://platform.claude.com/docs/en/about-claude/pricing'
-COPILOT_CURRENT={
- 'GPT-5 mini','GPT-5.3-Codex','GPT-5.4','GPT-5.4 mini','GPT-5.4 nano','GPT-5.5',
- 'GPT-5.6 Luna','GPT-5.6 Sol','GPT-5.6 Terra','GPT-6.1 Sol','GPT-6.1 Terra','GPT-6.2 Sol','GPT-6.2 Astra','GPT-6 Astra','GPT-6 Luna',
- 'Claude Fable 5','Claude Fable 5.2','Claude Opus 4.5','Claude Opus 4.6','Claude Opus 4.7','Claude Opus 4.8','Claude Opus 5','Claude Opus 5.5',
- 'Claude Sonnet 4.5','Claude Sonnet 4.6','Claude Sonnet 5','Claude Sonnet 5.5','Claude Haiku 4.5','Claude Haiku 5.5',
- 'Gemini 3.1 Pro','Gemini 3.5 Flash','Gemini 3.6 Flash','Gemini 3.8 Flash','Gemini 4 Argon','Gemini 4 Carbon','Gemini 4 Hydrogen','Gemini 4 Neon',
- 'Grok 4.5','Grok 4.7','Kimi K2.7 Code','Kimi K3','MAI-Code-1-Flash','MAI-Code-1.1-Flash','MAI Code 2','MAI Code 2 Flash','Raptor mini',
- 'Copilot Fusion', 'Qwen3-Coder','DeepSeek V3.2','GLM-4.7','MiniMax M2'
-}
-KIRO_CURRENT={'GPT-5.6 Sol','GPT-5.6 Terra','GPT-5.6 Luna','Claude Opus 5','Claude Opus 5.5','Claude Opus 4.8',
- 'Claude Opus 4.7','Claude Opus 4.6','Claude Opus 4.5','Claude Sonnet 5','Claude Sonnet 5.5','Claude Sonnet 4.6',
- 'Claude Sonnet 4.5','Claude Haiku 4.5','Claude Haiku 5.5','Claude Fable 5.1','Grok 4.7',
- 'DeepSeek V3.2','MiniMax M2','GLM-4.7','Qwen3-Coder','Kimi K3'}
-CLAUDE_CURRENT={'Claude Fable 5','Claude Fable 5.1','Claude Fable 5.2','Claude Opus 4.5','Claude Opus 4.6',
- 'Claude Opus 4.7','Claude Opus 4.8','Claude Opus 5','Claude Opus 5.5', 'Claude Sonnet 4.5','Claude Sonnet 4.6',
- 'Claude Sonnet 5','Claude Sonnet 5.5','Claude Haiku 4.5','Claude Haiku 5.5'}
+# Official dated inventories, not hand-maintained guesses about supported models.
+copilot_inventory=json.loads((ROOT/'monitor/copilot_available_2026-11-20.json').read_text(encoding='utf-8'))
+kiro_inventory=json.loads((ROOT/'monitor/kiro_available_2026-11-20.json').read_text(encoding='utf-8'))
+claude_inventory=json.loads((ROOT/'monitor/claude_code_models_2026-11-20.json').read_text(encoding='utf-8'))
+COPILOT_CURRENT={r['model'] for r in copilot_inventory['models'] if r['release_status'] in ('GA','Public preview')}
+kiro_status={r['model']:r['status'] for r in kiro_inventory['models']}
+KIRO_CURRENT={name for name,status in kiro_status.items() if status in ('Active','Experimental') and name!='Auto'}
+CLAUDE_CURRENT=set(claude_inventory['active_default_models'])
 for n in COPILOT_CURRENT:addmodel(n,source=COPILOT_SOURCE)
 for n in KIRO_CURRENT:addmodel(n,source=KIRO_SOURCE)
 for n in CLAUDE_CURRENT:addmodel(n,source=CLAUDE_SOURCE)
@@ -164,6 +172,12 @@ kiro_rates={}
 for r in readcsv(SRC/'v21'/'platform_rates_2026-11-18.csv'):
  if r.get('platform')=='Kiro' and r.get('tier') in ('default','enterprise'):
   kiro_rates[r['model']]={'credits_multiplier':num(r['credit_multiplier']), 'source':r['rate_source'], 'tier':r['tier']}
+# Date-reviewed Kiro credit multipliers (missing source values stay unknown).
+for r in json.loads((ROOT/'monitor/kiro_multipliers_2026-11-20.json').read_text(encoding='utf-8'))['rates']:
+ kiro_rates[r['model']]={'credits_multiplier':r['credit_multiplier'],
+    'long_credits_multiplier':r['long_credit_multiplier'],
+    'context_threshold_tokens':r['context_threshold_tokens'],
+    'tier':'default','source':KIRO_SOURCE}
 claude_prices={'Claude Fable 5':(10,50),'Claude Fable 5.1':(10,50),'Claude Opus 5':(5,25),
  'Claude Opus 5.5':(4,20),'Claude Opus 4.8':(5,25),'Claude Opus 4.7':(5,25),'Claude Opus 4.6':(5,25),
  'Claude Sonnet 5':(3,15),'Claude Sonnet 5.5':(2,10),'Claude Haiku 4.5':(1,5)}
@@ -171,6 +185,12 @@ claude_prices={'Claude Fable 5':(10,50),'Claude Fable 5.1':(10,50),'Claude Opus 
 for r in reviewed_delta:
  if r.get('platform')=='Claude Code':
   claude_prices[r['model']]=(num(r.get('input_usd_per_m')),num(r.get('output_usd_per_m')))
+# Complete current Anthropic API token-price tiers, not Copilot billable credit rates.
+claude_rate_tiers={}
+for r in json.loads((ROOT/'monitor/anthropic_prices_2026-11-20.json').read_text(encoding='utf-8'))['rows']:
+ claude_rate_tiers.setdefault(r['model'],[]).append(r)
+ if r['tier']=='default':
+  claude_prices[r['model']]=(r['input_usd_per_m'],r['output_usd_per_m'])
 for (pr,model),m in catalog.items():
  m['country']=COUNTRIES.get(pr,'Unknown')
  m['platforms']={}
@@ -178,13 +198,16 @@ for (pr,model),m in catalog.items():
   m['platforms']['Copilot']={'status':'documented / benchmark-era','source':COPILOT_SOURCE,'pricing_source':COPILOT_PRICES,
    'rate':m['rate'] if m.get('rate') and m['rate'].get('platform')=='Copilot' else None}
  if model in KIRO_CURRENT:
-  m['platforms']['Kiro']={'status':'documented' if model in kiro_rates else 'documented, credits unavailable',
+  m['platforms']['Kiro']={'status':kiro_status.get(model,'Unverified')+(' (multiplier available)' if model in kiro_rates else ' (multiplier unavailable)'),
    'source':KIRO_SOURCE,'pricing_source':KIRO_PRICES,'rate':kiro_rates.get(model)}
  if model in CLAUDE_CURRENT:
   inp,out=claude_prices.get(model,(None,None))
   m['platforms']['Claude Code']={'status':'documented / historical' if inp is None else 'documented',
    'source':CLAUDE_SOURCE,'pricing_source':CLAUDE_PRICES,
-   'rate':{'input':inp,'output':out,'tier':'API', 'platform':'Claude Code'} if inp is not None else None}
+   'rate':({'input':inp,'output':out,'tier':'API','platform':'Claude Code',
+       'cached_input':(claude_rate_tiers.get(model) or [{}])[0].get('cached_input_usd_per_m'),
+       'cache_write_5m':(claude_rate_tiers.get(model) or [{}])[0].get('cache_write_5m_usd_per_m'),
+       'rate_tiers':claude_rate_tiers.get(model,[])} if inp is not None else None)}
 
 # AA scored examples for Kiro and native Claude Code harness are preserved on separate platform tabs.
 for ver,srcfile in [('2.1',SRC/'v21'/'coding_agent_data_2026-11-18.csv'),('2.0',SRC/'v2'/'coding_agent_data_2026-10-30.csv')]:
@@ -205,6 +228,46 @@ for ver,srcfile in [('2.1',SRC/'v21'/'coding_agent_data_2026-11-18.csv'),('2.0',
      'snapshot':'2026-11-18' if ver=='2.1' else '2026-10-30', 'version':ver,
      'benchmark':'AA Coding Agent Index', 'platforms':[platform], 'cost_basis':'AA cross-harness reference, USD/task',
      'points':pts,'zoom_max':4.8 if ver=='2.1' else 3.2})
+# Append new, independently versioned datasets. Only current platform-verified models enter plots;
+# raw official tables retain every row and unscored vendor for future monitoring.
+v5_snapshot=json.loads((SRC/'v5'/'intelligence_index_v5_0_1_2026-11-20.json').read_text(encoding='utf-8'))
+tb41_snapshot=json.loads((SRC/'terminal_bench'/'terminal_bench_v4_1_2026-11-20.json').read_text(encoding='utf-8'))
+verified_platforms={'Copilot':COPILOT_CURRENT,'Kiro':KIRO_CURRENT,'Claude Code':CLAUDE_CURRENT}
+for platform,allowed in verified_platforms.items():
+    prefix={'Copilot':'','Kiro':'kiro_','Claude Code':'claude_code_'}[platform]
+    v5_points=[]
+    for r in v5_snapshot['rows']:
+        if r['model'] not in allowed:continue
+        point=record_to_point(r['model'],r['provider'],r['effort'],num(r['score']),
+            num(r['cost_usd_task']),r['source'],'Official AA model evaluation (not platform-native)')
+        if point:v5_points.append(point)
+    if v5_points:
+        charts.append({'id':prefix+'intelligence_v5_0_1_2026-11-20',
+          'label':'AA Intelligence Index v5.0.1 (official featured results)',
+          'snapshot':'2026-11-20','version':'5.0.1','benchmark':'AA Intelligence Index',
+          'platforms':[platform], 'cost_basis':'Official AA v5.0.1 API USD/task; featured selection, not all evaluated variants',
+          'coverage_note':'Featured public results only: '+str(len(v5_snapshot['rows']))+' source variants; other official results not verified',
+          'points':v5_points,'zoom_max':5})
+    tb_points=[]
+    for r in tb41_snapshot['records']:
+        if r['model'] not in allowed:continue
+        cost=num(r.get('cost_total_usd_rounded'))
+        # Official total is rounded to $0.1k; $0.0k is not a verified zero.
+        if cost is None or cost<=0:continue
+        p=record_to_point(r['model'],None,r['effort'],num(r['resolution_rate_pct']),
+            cost,r['source_url'],r['agent'])
+        if p:
+            p['official_cost_label']=r['cost_total_raw']
+            p['confidence_interval']=r['confidence_interval_raw']
+            tb_points.append(p)
+    if tb_points:
+        charts.append({'id':prefix+'terminal_bench_v4_1_2026-11-20',
+          'label':'Terminal-Bench 4.1 — official results (rounded total run cost)',
+          'snapshot':'2026-11-20','version':'4.1','benchmark':'Terminal-Bench',
+          'platforms':[platform], 'cost_basis':'Official total cost for entire submission, rounded to $100; NOT USD/task; agent/harness may differ from selected platform',
+          'cost_unit':'USD/full_submission_rounded','separate_agents':True,
+          'coverage_note':'Raw official leaderboard includes '+str(len(tb41_snapshot['records']))+' entries; display filters to current models with nonzero reported cost',
+          'points':tb_points,'zoom_max':3500})
 for c in charts:
  c.setdefault('platforms',['Copilot'])
  c.setdefault('cost_basis','Benchmark API estimate, USD/task')
@@ -220,7 +283,7 @@ def benchmark_sources(c):
         result=[source('Artificial Analysis: Coding Agent leaderboard','https://artificialanalysis.ai/agents/coding-agents'),
                 source('Official benchmark methodology','https://artificialanalysis.ai/methodology/coding-agents-benchmarking')]
     elif b=='AA Intelligence Index':
-        result=[source('Artificial Analysis: model Intelligence leaderboard','https://artificialanalysis.ai/'),
+        result=[source('Artificial Analysis: model Intelligence leaderboard','https://artificialanalysis.ai/models'),
                 source('Repository historical snapshot files',REPO+'/tree/main/copilot_pareto')]
     elif b=='DeepSWE':
         result=[source('GitHub Copilot benchmarks','https://benchmarks.github.com/')]
@@ -236,6 +299,10 @@ def benchmark_sources(c):
         result.append(source('Download frozen v2.0 CSV',RAW+'/copilot_pareto/v2/coding_agent_data_2026-10-30.csv'))
     elif id in ('fusion_deepswe_11','fusion_terminal_bench_40'):
         result.append(source('Download reviewed comparison CSV',RAW+'/copilot_pareto/four_charts_2026-11-18/four_chart_points_2026-11-18.csv'))
+    elif 'intelligence_v5_0_1' in id:
+        result.append(source('Official v5.0.1 featured raw snapshot',RAW+'/copilot_pareto/v5/intelligence_index_v5_0_1_2026-11-20.json'))
+    elif 'terminal_bench_v4_1' in id:
+        result.append(source('Official Terminal-Bench 4.1 full leaderboard',RAW+'/copilot_pareto/terminal_bench/terminal_bench_v4_1_2026-11-20.json'))
     elif id.startswith('intelligence_'):
         date=c['snapshot']; file='copilot_pareto_data.csv' if id.endswith('-csv') else 'source_snapshot_'+date+'.json'
         result.append(source('Download historical snapshot',RAW+'/copilot_pareto/'+file))
@@ -247,16 +314,20 @@ PLATFORM_SOURCES={
     source('GitHub: Model prices and promotions','https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing'),
     source('GitHub: Fusion discount and billing','https://docs.github.com/en/copilot/concepts/models/copilot-fusion'),
     source('Download reviewed platform rates (CSV)',RAW+'/copilot_pareto/v21/platform_rates_2026-11-18.csv'),
+    source('Official Nov 20 complete Copilot rates',RAW+'/monitor/copilot_prices_2026-11-20.json'),
      source('Download 2026-11-20 rate delta',RAW+'/copilot_pareto/v21/platform_rates_2026-11-20.csv')]},
- 'Kiro':{'snapshot':'2026-11-18','update_method':'Reviewed model multipliers; not automatically refreshed','links':[
+ 'Kiro':{'snapshot':'2026-11-20','update_method':'Reviewed model multipliers; not automatically refreshed','links':[
     source('Kiro: Available models and credit multipliers','https://kiro.dev/docs/models/available-models/'),
     source('Kiro: Pricing and plans','https://kiro.dev/pricing/'),
     source('Kiro: Model changes','https://kiro.dev/changelog/models/'),
+    source('Official Nov 20 model inventory',RAW+'/monitor/kiro_available_2026-11-20.json'),
+    source('Reviewed Nov 20 multipliers',RAW+'/monitor/kiro_multipliers_2026-11-20.json'),
     source('Download reviewed platform rates (CSV)',RAW+'/copilot_pareto/v21/platform_rates_2026-11-18.csv')]},
  'Claude Code':{'snapshot':'2026-11-20','update_method':'Reviewed documentation; not automatically refreshed','links':[
     source('Claude Code: Model selection','https://code.claude.com/docs/en/model-config'),
     source('Anthropic: API pricing','https://platform.claude.com/docs/en/about-claude/pricing'),
     source('Claude Code: Usage and costs','https://code.claude.com/docs/en/costs'),
+    source('Reviewed Nov 20 API price tiers',RAW+'/monitor/anthropic_prices_2026-11-20.json'),
     source('Download benchmark source CSV',RAW+'/copilot_pareto/v21/coding_agent_data_2026-11-18.csv'),
      source('Download 2026-11-20 rate delta',RAW+'/copilot_pareto/v21/platform_rates_2026-11-20.csv')]},
 }

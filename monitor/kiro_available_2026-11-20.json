@@ -1,0 +1,131 @@
+{
+  "source_url": "https://kiro.dev/docs/models/available-models/",
+  "snapshot_date": "2026-11-20",
+  "models": [
+    {
+      "model": "Grok 4.7",
+      "launched": "November 10, 2026",
+      "status": "Experimental"
+    },
+    {
+      "model": "Claude Haiku 5.5",
+      "launched": "October 23, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Kimi K3",
+      "launched": "October 15, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "launched": "September 28, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "launched": "October 2, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Opus 5",
+      "launched": "July 24, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Fable 5.1",
+      "launched": "September 16, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "GPT-5.6 Sol",
+      "launched": "July 13, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "GPT-5.6 Terra",
+      "launched": "July 13, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "GPT-5.6 Luna",
+      "launched": "July 13, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Sonnet 5",
+      "launched": "June 30, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Opus 4.8",
+      "launched": "May 28, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Opus 4.7",
+      "launched": "April 16, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "GLM-5",
+      "launched": "March 31, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "MiniMax M2.5",
+      "launched": "March 18, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "launched": "February 17, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "DeepSeek 3.2",
+      "launched": "February 10, 2026",
+      "status": "Experimental"
+    },
+    {
+      "model": "MiniMax M2.1",
+      "launched": "February 10, 2026",
+      "status": "Experimental"
+    },
+    {
+      "model": "Qwen3 Coder Next",
+      "launched": "February 10, 2026",
+      "status": "Experimental"
+    },
+    {
+      "model": "Claude Opus 4.6",
+      "launched": "February 5, 2026",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Opus 4.5",
+      "launched": "November 24, 2025",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Sonnet 4.5",
+      "launched": "September 29, 2025",
+      "status": "Active"
+    },
+    {
+      "model": "Auto",
+      "launched": "September 17, 2025",
+      "status": "Active"
+    },
+    {
+      "model": "Claude Sonnet 4.0",
+      "launched": "September 4, 2025",
+      "status": "EOL"
+    },
+    {
+      "model": "Claude Haiku 4.5",
+      "launched": "September 4, 2025",
+      "status": "Active"
+    }
+  ]
+}

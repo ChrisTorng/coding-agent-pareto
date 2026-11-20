@@ -12,7 +12,20 @@ const pct=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:1});
 const fmt=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:2});
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','"':'&quot;',"'":'&#39;'}[c]));
 const key=m=>m.provider+'\0'+m.model;
-function catalogs(){return db.catalog.filter(m=>m.platforms?.[platform]);}
+// Leave all models in data.json for price/promotion monitoring, but only
+// show models with valid benchmark score and task cost in the filter tree.
+const scoredModelCache=new Map();
+function eligibleScoredKeys(){
+ if(!scoredModelCache.has(platform)){
+  const keys=new Set();
+  for(const c of charts())for(const p of c.points){
+   if(Number.isFinite(p.score)&&Number.isFinite(p.cost))keys.add(key(p));
+  }
+  scoredModelCache.set(platform,keys);
+ }
+ return scoredModelCache.get(platform);
+}
+function catalogs(){const keys=eligibleScoredKeys();return db.catalog.filter(m=>m.platforms?.[platform]&&keys.has(key(m)));}
 function charts(){return db.charts.filter(c=>c.platforms?.includes(platform));}
 function chart(){return charts().find(c=>c.id===chartId)||charts()[0];}
 function scored(){return chart().points.filter(p=>chosen.has(key(p)));}

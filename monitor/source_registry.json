@@ -2,7 +2,7 @@
   "schema_version": 1,
   "source_of_truth": "GitHub Copilot / Kiro / Claude Code primary official sources; benchmark primary leaderboards; checked comparison/model pages only when a primary page indicates new data",
   "source_snapshot_date": "2026-11-20",
-  "policy": "Compare prior saved source content/ETag and structured facts. Fetch secondary complete model/effort/score/cost data when a primary source contains a material update. Preserve history, include all vendor countries, do not fabricate missing scores. A markup-only change is not a model price or benchmark change. The monitoring ChatGPT automation is responsible for interpretation and committing; GitHub Actions only builds/redeploys committed data.",
+  "policy": "Each run: compare all three coding-agent platforms' full model/effort inventories, tiered token prices, credit multipliers, promotions and deadlines, and all tracked benchmark leaderboard rows including score/cost changes within unchanged versions. Check direct official versioned Terminal-Bench leaderboard and release news. Use per-source row hashes and ETags to reduce unchanged requests but never interpret a homepage/version-only check as full verification. Follow affected detail sources when rows change; inaccessible sources mean incomplete check, not no change. Preserve all unscored model/pricing metadata, historical benchmarks, provider countries including China, and never fabricate missing scored values. Only reviewed committed data is built by GHA.",
   "primary_sources": [
     {
       "category": "platform_models_prices_promos",
@@ -101,6 +101,20 @@
       "label": "Terminal-Bench project",
       "url": "https://www.tbench.ai/",
       "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "Terminal-Bench current v4.1 independent leaderboard",
+      "url": "https://www.tbench.ai/?efforts=all&version=4.1",
+      "check_on_every_run": true
+    },
+    {
+      "category": "benchmarks",
+      "platform": "cross-platform",
+      "label": "Terminal-Bench release and correction news",
+      "url": "https://www.tbench.ai/news",
+      "check_on_every_run": true
     }
   ],
   "conditional_detail_sources": [
@@ -173,7 +187,9 @@
     "https://artificialanalysis.ai/models/releases/gpt-5-6-luna",
     "https://artificialanalysis.ai/models/releases/gpt-5-6-sol",
     "https://artificialanalysis.ai/models/releases/gpt-6-sol",
-    "https://artificialanalysis.ai/models/releases/grok-4-6"
+    "https://artificialanalysis.ai/models/releases/grok-4-6",
+    "https://www.tbench.ai/?efforts=all&version=4.0",
+    "https://www.tbench.ai/news/terminal-bench-4-1"
   ],
   "private_or_repo_sources_are_not_external_checks": true
 }

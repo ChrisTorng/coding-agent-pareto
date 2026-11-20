@@ -16,6 +16,8 @@ with sync_playwright() as pw:
     assert p.locator('#snapshot-picker option:checked').inner_text()=='v2.1 (2026-11-18)'
     assert p.locator('#benchmark-sources a').count()>=2
     assert p.locator('#pricing-sources a').count()>=3
+    assert 'Microsoft' not in p.locator('#providers .company-name').all_inner_texts(), 'Unscored Microsoft models must not occupy sidebar'
+    assert p.locator('#filter-total').inner_text()=='22/22'
     p.locator('#expand-all').click()
     assert p.locator('#providers .children:visible').count()>=3
     p.locator('input[aria-label="Model GPT-6.2 Sol"]').uncheck()
@@ -23,7 +25,7 @@ with sync_playwright() as pw:
     p.locator('#collapse-all').click()
     assert p.locator('#providers .children:visible').count()==0
     p.locator('#select-all').click();p.locator('#exclude-china').click()
-    assert '44/' in p.locator('#filter-total').inner_text()
+    assert p.locator('#filter-total').inner_text()=='21/22'
     p.locator('#select-all').click()
     p.locator('#cost-scale').select_option('log')
     assert 'log' in p.locator('#axis-summary').inner_text()

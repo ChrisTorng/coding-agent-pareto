@@ -26,6 +26,7 @@ for chartid,files in d['static_charts'].items():
         assert fmt in files, (chartid,fmt)
         assert (p/files[fmt].replace('./','')).is_file(), (chartid,fmt)
 js=(p/'app.js').read_text(encoding='utf-8')
+assert 'eligibleScoredKeys' in js and 'keys.has(key(m))' in js, 'Unscored models must be hidden from left selector'
 for text in ('exclude-china','select-all','benchmark-picker','snapshot-picker','range-mode','point-mode','collapse-all','expand-all','hide-filters','sidebar-resizer','model-search','svg','export-action','catalog-rows','fullscreen-toggle'):
     assert text in js, f'Missing control: {text}'
 assert 'https://github.com/ChrisTorng/coding-agent-pareto' in (p/'index.html').read_text(encoding='utf-8')
@@ -63,7 +64,9 @@ for token in ('writeQuery','restoreQuery','saveExclusions','logFloor','niceStep'
 registry=Path('monitor/source_registry.json')
 assert registry.exists(), 'Missing external source monitoring registry'
 watch=json.loads(registry.read_text(encoding='utf-8'))
-assert len(watch['primary_sources'])>=12 and len(watch['conditional_detail_sources'])>=30
+assert len(watch['primary_sources'])>=16 and len(watch['conditional_detail_sources'])>=72
+assert any('version=4.1' in x['url'] for x in watch['primary_sources'])
+assert any(x['url']=='https://www.tbench.ai/news' for x in watch['primary_sources'])
 assert all(x['url'].startswith('https://') for x in watch['primary_sources'])
 assert not any('raw.githubusercontent.com/ChrisTorng' in x['url'] for x in watch['primary_sources'])
 print('Source-monitor registry:',len(watch['primary_sources']),'primary /',len(watch['conditional_detail_sources']),'conditional')

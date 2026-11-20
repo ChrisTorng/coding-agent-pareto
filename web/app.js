@@ -292,6 +292,7 @@ function sourceLink(x){const a=document.createElement('a');a.href=x.url;a.textCo
 function renderSources(){const c=chart(),bs=$('benchmark-sources'),ps=$('pricing-sources');bs.replaceChildren();ps.replaceChildren();
  const bSources=c.sources||[],costs=(db.platform_sources||{})[platform]||{};
  for(const entry of bSources){if(entry.url)bs.append(sourceLink(entry));}
+ if(c.id==='fusion_terminal_bench_40')bs.append(sourceLink({label:'Newer official independent Terminal-Bench 4.1 leaderboard (historical chart remains v4.0)',url:'https://www.tbench.ai/?efforts=all&version=4.1'}));
  for(const entry of costs.links||[]){if(entry.url)ps.append(sourceLink(entry));}
  const meta=document.createElement('span');meta.className='source-meta';meta.textContent=`Saved price snapshot: ${costs.snapshot||'unknown'} · ${costs.update_method||'manual review required'}`;ps.append(meta);
 }

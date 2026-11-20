@@ -1,0 +1,176 @@
+{
+  "snapshot_date": "2026-11-20",
+  "timezone": "Asia/Taipei",
+  "registry_primary_count": 18,
+  "conditional_registered_count": 72,
+  "scope": "This is a partial directly verified run; unchecked sources are explicitly reported, not silently treated as unchanged.",
+  "source_checks": [
+    {
+      "url": "https://docs.github.com/en/copilot/reference/ai-models/supported-models",
+      "verified_this_run": true,
+      "structured_baseline": {
+        "path": "monitor/copilot_available_2026-11-20.json",
+        "blob": "e501dc86bf8b7b0812487df6636ee2ea9f7b75e4",
+        "records": 34
+      }
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing",
+      "verified_this_run": true,
+      "structured_baseline": {
+        "path": "monitor/copilot_prices_2026-11-20.json",
+        "blob": "c543552ad9eb34e8c62bad1af0c401701b339fac",
+        "records": 48
+      }
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/concepts/models/copilot-fusion",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://kiro.dev/docs/models/available-models/",
+      "verified_this_run": true,
+      "structured_baseline": {
+        "path": "monitor/kiro_available_2026-11-20.json",
+        "blob": "f425ecd06c05c0b46090a0d9b6ffd923f63b3b6d",
+        "records": 25
+      }
+    },
+    {
+      "url": "https://kiro.dev/pricing/",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://kiro.dev/changelog/models/",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://code.claude.com/docs/en/model-config",
+      "verified_this_run": true,
+      "structured_baseline": {
+        "path": "monitor/claude_code_models_2026-11-20.json",
+        "blob": "66fa3f92c95bf2bbd8b9e3e4e33133d5331fde3a",
+        "records": 4
+      }
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "verified_this_run": true,
+      "structured_baseline": {
+        "path": "monitor/anthropic_prices_2026-11-20.json",
+        "blob": "10de2768ec951575d3346c22c7bf05a5c284b29b",
+        "records": 19
+      }
+    },
+    {
+      "url": "https://code.claude.com/docs/en/costs",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://artificialanalysis.ai/agents/coding-agents",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://artificialanalysis.ai/",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://artificialanalysis.ai/methodology/coding-agents-benchmarking",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://benchmarks.github.com/",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://www.tbench.ai/",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://www.tbench.ai/?efforts=all&version=4.1",
+      "verified_this_run": true,
+      "structured_baseline": {
+        "path": "copilot_pareto/terminal_bench/terminal_bench_v4_1_2026-11-20.json",
+        "records": 66
+      }
+    },
+    {
+      "url": "https://www.tbench.ai/news",
+      "verified_this_run": false,
+      "structured_baseline": null
+    },
+    {
+      "url": "https://artificialanalysis.ai/models?cost=cost-per-task&intelligence=artificial-analysis-intelligence-index",
+      "verified_this_run": true,
+      "structured_baseline": {
+        "path": "copilot_pareto/v5/intelligence_index_v5_0_1_2026-11-20.json",
+        "blob": "c8554ad555a6350e2695d3c3195934e21f7deab5",
+        "records": 28
+      }
+    },
+    {
+      "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index",
+      "verified_this_run": true,
+      "structured_baseline": null
+    }
+  ],
+  "additional_structured_baselines": [
+    {
+      "url": "https://kiro.dev/docs/models/available-models/",
+      "path": "monitor/kiro_multipliers_2026-11-20.json",
+      "records": 15,
+      "blob": "a47c734ecca89e387a82f677c5f0b552d34f2d45"
+    }
+  ],
+  "benchmark_checks": [
+    {
+      "benchmark": "AA Intelligence Index",
+      "version": "5.0.1",
+      "status": "partial",
+      "raw_official_featured_rows": 28,
+      "reason": "Official public landing page embeds only 28 featured variants, not every evaluated model/effort; cannot claim complete."
+    },
+    {
+      "benchmark": "Terminal-Bench",
+      "version": "4.1",
+      "status": "complete_for_public_html_table",
+      "rows": 66,
+      "cost_unit": "USD/total_run_rounded_to_100_not_task"
+    },
+    {
+      "benchmark": "AA Coding Agent Index",
+      "version": "2.1",
+      "status": "not_fully_reaudited_this_run",
+      "reason": "Existing reviewed snapshot retained; a new full per-row comparison is pending."
+    },
+    {
+      "benchmark": "GitHub Benchmarks DeepSWE",
+      "status": "not_fully_reaudited_this_run",
+      "reason": "Existing historical data retained; live full table unavailable for numeric diff."
+    }
+  ],
+  "model_price_checks": {
+    "copilot_supported": 34,
+    "copilot_rate_rows": 48,
+    "kiro_inventory": 25,
+    "kiro_credit_multipliers_verified": 15,
+    "claude_current_aliases": 4,
+    "claude_api_price_rows": 19
+  },
+  "known_gaps": [
+    "AA v5.0.1: only 28 featured records, not entire model/effort leaderboard",
+    "All GitHub Benchmarks source rows and AA Coding Agent v2.1 values not fully rechecked",
+    "Kiro: not every active model has a publicly verified credit multiplier",
+    "No reliable direct per-task Terminal-Bench 4.1 cost; use rounded total cost only",
+    "Missing persistent HTTP response hash/ETag baseline for every URL; structured Git blob baselines available for verified datasets"
+  ]
+}

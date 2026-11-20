@@ -197,7 +197,10 @@ for (pr,model),m in catalog.items():
  m['country']=COUNTRIES.get(pr,'Unknown')
  m['platforms']={}
  if model in COPILOT_CURRENT:
-  m['platforms']['Copilot']={'status':'documented / benchmark-era','source':COPILOT_SOURCE,'pricing_source':COPILOT_PRICES,
+  is_fusion=(model=='Copilot Fusion')
+  m['platforms']['Copilot']={'status':'Official Copilot agent mode' if is_fusion else 'documented / benchmark-era',
+   'source':'https://docs.github.com/en/copilot/concepts/models/copilot-fusion' if is_fusion else COPILOT_SOURCE,
+   'pricing_source':COPILOT_PRICES,
    'rate':m['rate'] if m.get('rate') and m['rate'].get('platform')=='Copilot' else None}
  if model in KIRO_CURRENT:
   m['platforms']['Kiro']={'status':kiro_status.get(model,'Unverified')+(' (multiplier available)' if model in kiro_rates else ' (multiplier unavailable)'),

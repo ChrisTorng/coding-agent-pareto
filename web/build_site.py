@@ -161,6 +161,8 @@ copilot_inventory=json.loads((ROOT/'monitor/copilot_available_2026-11-20.json').
 kiro_inventory=json.loads((ROOT/'monitor/kiro_available_2026-11-20.json').read_text(encoding='utf-8'))
 claude_inventory=json.loads((ROOT/'monitor/claude_code_models_2026-11-20.json').read_text(encoding='utf-8'))
 COPILOT_CURRENT={r['model'] for r in copilot_inventory['models'] if r['release_status'] in ('GA','Public preview')}
+# Copilot Fusion is an official agent/model mode and is absent from the base-model support table.
+COPILOT_CURRENT.add('Copilot Fusion')
 kiro_status={r['model']:r['status'] for r in kiro_inventory['models']}
 KIRO_CURRENT={name for name,status in kiro_status.items() if status in ('Active','Experimental') and name!='Auto'}
 CLAUDE_CURRENT=set(claude_inventory['active_default_models'])
@@ -194,7 +196,7 @@ for r in json.loads((ROOT/'monitor/anthropic_prices_2026-11-20.json').read_text(
 for (pr,model),m in catalog.items():
  m['country']=COUNTRIES.get(pr,'Unknown')
  m['platforms']={}
- if model in COPILOT_CURRENT or m.get('rate',{} ) and m['rate'].get('platform')=='Copilot':
+ if model in COPILOT_CURRENT:
   m['platforms']['Copilot']={'status':'documented / benchmark-era','source':COPILOT_SOURCE,'pricing_source':COPILOT_PRICES,
    'rate':m['rate'] if m.get('rate') and m['rate'].get('platform')=='Copilot' else None}
  if model in KIRO_CURRENT:

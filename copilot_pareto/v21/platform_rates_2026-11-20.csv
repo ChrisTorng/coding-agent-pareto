@@ -1,0 +1,3 @@
+platform,model,tier,context_threshold,input_usd_per_m,cached_input_usd_per_m,cache_write_usd_per_m,output_usd_per_m,credit_multiplier,promo_end,rate_source,checked_at
+Copilot,Gemini 4 Neon,default,all,3,0.15,,15,,,https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing,2026-11-20
+Claude Code,Claude Fable 5.2,API,all,8,0.2,10,40,,,https://platform.claude.com/docs/en/about-claude/pricing,2026-11-20

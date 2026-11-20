@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_of_truth": "GitHub Copilot / Kiro / Claude Code primary official sources; benchmark primary leaderboards; checked comparison/model pages only when a primary page indicates new data",
-  "source_snapshot_date": "2026-11-18",
+  "source_snapshot_date": "2026-11-20",
   "policy": "Compare prior saved source content/ETag and structured facts. Fetch secondary complete model/effort/score/cost data when a primary source contains a material update. Preserve history, include all vendor countries, do not fabricate missing scores. A markup-only change is not a model price or benchmark change. The monitoring ChatGPT automation is responsible for interpretation and committing; GitHub Actions only builds/redeploys committed data.",
   "primary_sources": [
     {
@@ -134,6 +134,7 @@
     "https://artificialanalysis.ai/models/gemini-3-8-flash",
     "https://artificialanalysis.ai/models/gemini-3-8-flash-medium",
     "https://artificialanalysis.ai/models/gemini-4-argon",
+    "https://artificialanalysis.ai/models/gemini-4-neon",
     "https://artificialanalysis.ai/models/gpt-5-6-terra",
     "https://artificialanalysis.ai/models/gpt-5-6-terra-high",
     "https://artificialanalysis.ai/models/gpt-5-6-terra-low",

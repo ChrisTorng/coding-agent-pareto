@@ -9,6 +9,10 @@ assert len(d['charts']) >= 7, 'Missing historical benchmark snapshots'
 assert len(d['catalog']) >= 50, 'Model catalog too small'
 assert any(m['model'].startswith('MAI Code 2') for m in d['catalog']), 'Missing new MAI models'
 assert all(next(m for m in d['catalog'] if m['model']==name)['rate']['output'] == output for name,output in [('MAI Code 2',2.5),('MAI Code 2 Flash',0.25)]), 'Missing promotional MAI rates'
+neon=next(m for m in d['catalog'] if m['model']=='Gemini 4 Neon')
+assert neon['platforms']['Copilot']['rate']['input']==3 and neon['platforms']['Copilot']['rate']['cached_input']==0.15 and neon['platforms']['Copilot']['rate']['output']==15
+fable=next(m for m in d['catalog'] if m['model']=='Claude Fable 5.2')
+assert fable['platforms']['Claude Code']['rate']['input']==8 and fable['platforms']['Claude Code']['rate']['output']==40
 assert any(m['china'] for m in d['catalog']), 'China models must exist for default-all and exclusion controls'
 assert any(not m['china'] for m in d['catalog']), 'Missing non-China models'
 assert set(['Copilot','Kiro','Claude Code']).issubset({p for c in d['charts'] for p in c['platforms']})

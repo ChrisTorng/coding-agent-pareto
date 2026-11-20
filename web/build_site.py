@@ -90,12 +90,20 @@ if legacy:
 # Preserve full Copilot/Kiro model pricing catalog, including all models lacking scored benchmarks.
 for r in readcsv(SRC/'v21'/'platform_rates_2026-11-18.csv'):
     addmodel(r.get('model'),None,r.get('rate_source',''),{'platform':r.get('platform'),'input':num(r.get('input_usd_per_m')),'output':num(r.get('output_usd_per_m')),'promo_end':r.get('promo_end',''),'tier':r.get('tier')})
+# Incremental rates reviewed on 2026-11-20; preserve the 2026-11-18 baseline.
+reviewed_delta=readcsv(SRC/'v21'/'platform_rates_2026-11-20.csv')
+for r in reviewed_delta:
+ if r.get('platform')=='Copilot':
+  addmodel(r['model'],None,r['rate_source'],{'platform':'Copilot',
+   'input':num(r.get('input_usd_per_m')), 'cached_input':num(r.get('cached_input_usd_per_m')),
+   'cache_write':num(r.get('cache_write_usd_per_m')), 'output':num(r.get('output_usd_per_m')),
+   'promo_end':r.get('promo_end',''), 'tier':r.get('tier','default')})
 for v, p in [('v2',SRC/'v2'/'coding_agent_data_2026-10-30.csv'),('v21',SRC/'v21'/'coding_agent_data_2026-11-18.csv')]:
     for r in readcsv(p):addmodel(r.get('model'),r.get('provider'),r.get('source',''))
 
 # Add current published GitHub Copilot catalog models that do not yet have a benchmark record.
 # Input prices are promotional where indicated. They will NOT be plotted until a measured score is present.
-current={'Microsoft':['MAI Code 2','MAI Code 2 Flash','MAI-Code-1.1-Flash'],'Google':['Gemini 3.8 Flash','Gemini 4 Argon','Gemini 4 Carbon','Gemini 4 Hydrogen'],'OpenAI':['GPT-6.2 Astra','GPT-6.2 Sol','GPT-6.1 Terra','GPT-6 Luna'],'Anthropic':['Claude Opus 5.5','Claude Fable 5.2','Claude Sonnet 5.5'],'Moonshot AI':['Kimi K2.7 Code','Kimi K3'],'Alibaba':['Qwen3-Coder'],'DeepSeek':['DeepSeek V3.2'],'Z.ai':['GLM-4.7'],'MiniMax':['MiniMax M2']}
+current={'Microsoft':['MAI Code 2','MAI Code 2 Flash','MAI-Code-1.1-Flash'],'Google':['Gemini 3.8 Flash','Gemini 4 Argon','Gemini 4 Carbon','Gemini 4 Hydrogen','Gemini 4 Neon'],'OpenAI':['GPT-6.2 Astra','GPT-6.2 Sol','GPT-6.1 Terra','GPT-6 Luna'],'Anthropic':['Claude Opus 5.5','Claude Fable 5.2','Claude Sonnet 5.5'],'Moonshot AI':['Kimi K2.7 Code','Kimi K3'],'Alibaba':['Qwen3-Coder'],'DeepSeek':['DeepSeek V3.2'],'Z.ai':['GLM-4.7'],'MiniMax':['MiniMax M2']}
 for pr,models in current.items():
     for model in models:addmodel(model,pr,'https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing')
 # Official promotional GitHub Copilot token pricing for new, not-yet-benchmarked MAI models.
@@ -137,7 +145,7 @@ COPILOT_CURRENT={
  'GPT-5.6 Luna','GPT-5.6 Sol','GPT-5.6 Terra','GPT-6.1 Sol','GPT-6.1 Terra','GPT-6.2 Sol','GPT-6.2 Astra','GPT-6 Astra','GPT-6 Luna',
  'Claude Fable 5','Claude Fable 5.2','Claude Opus 4.5','Claude Opus 4.6','Claude Opus 4.7','Claude Opus 4.8','Claude Opus 5','Claude Opus 5.5',
  'Claude Sonnet 4.5','Claude Sonnet 4.6','Claude Sonnet 5','Claude Sonnet 5.5','Claude Haiku 4.5','Claude Haiku 5.5',
- 'Gemini 3.1 Pro','Gemini 3.5 Flash','Gemini 3.6 Flash','Gemini 3.8 Flash','Gemini 4 Argon','Gemini 4 Carbon','Gemini 4 Hydrogen',
+ 'Gemini 3.1 Pro','Gemini 3.5 Flash','Gemini 3.6 Flash','Gemini 3.8 Flash','Gemini 4 Argon','Gemini 4 Carbon','Gemini 4 Hydrogen','Gemini 4 Neon',
  'Grok 4.5','Grok 4.7','Kimi K2.7 Code','Kimi K3','MAI-Code-1-Flash','MAI-Code-1.1-Flash','MAI Code 2','MAI Code 2 Flash','Raptor mini',
  'Copilot Fusion', 'Qwen3-Coder','DeepSeek V3.2','GLM-4.7','MiniMax M2'
 }
@@ -159,6 +167,10 @@ for r in readcsv(SRC/'v21'/'platform_rates_2026-11-18.csv'):
 claude_prices={'Claude Fable 5':(10,50),'Claude Fable 5.1':(10,50),'Claude Opus 5':(5,25),
  'Claude Opus 5.5':(4,20),'Claude Opus 4.8':(5,25),'Claude Opus 4.7':(5,25),'Claude Opus 4.6':(5,25),
  'Claude Sonnet 5':(3,15),'Claude Sonnet 5.5':(2,10),'Claude Haiku 4.5':(1,5)}
+# Keep Claude Code API prices separate from the Copilot rate layer.
+for r in reviewed_delta:
+ if r.get('platform')=='Claude Code':
+  claude_prices[r['model']]=(num(r.get('input_usd_per_m')),num(r.get('output_usd_per_m')))
 for (pr,model),m in catalog.items():
  m['country']=COUNTRIES.get(pr,'Unknown')
  m['platforms']={}
@@ -230,24 +242,26 @@ def benchmark_sources(c):
     return result
 for c in charts: c['sources']=benchmark_sources(c)
 PLATFORM_SOURCES={
- 'Copilot':{'snapshot':'2026-11-18','update_method':'Reviewed CSV; not automatically refreshed', 'links':[
+ 'Copilot':{'snapshot':'2026-11-20','update_method':'Reviewed CSV; not automatically refreshed', 'links':[
     source('GitHub: Supported Copilot models','https://docs.github.com/en/copilot/reference/ai-models/supported-models'),
     source('GitHub: Model prices and promotions','https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing'),
     source('GitHub: Fusion discount and billing','https://docs.github.com/en/copilot/concepts/models/copilot-fusion'),
-    source('Download reviewed platform rates (CSV)',RAW+'/copilot_pareto/v21/platform_rates_2026-11-18.csv')]},
+    source('Download reviewed platform rates (CSV)',RAW+'/copilot_pareto/v21/platform_rates_2026-11-18.csv'),
+     source('Download 2026-11-20 rate delta',RAW+'/copilot_pareto/v21/platform_rates_2026-11-20.csv')]},
  'Kiro':{'snapshot':'2026-11-18','update_method':'Reviewed model multipliers; not automatically refreshed','links':[
     source('Kiro: Available models and credit multipliers','https://kiro.dev/docs/models/available-models/'),
     source('Kiro: Pricing and plans','https://kiro.dev/pricing/'),
     source('Kiro: Model changes','https://kiro.dev/changelog/models/'),
     source('Download reviewed platform rates (CSV)',RAW+'/copilot_pareto/v21/platform_rates_2026-11-18.csv')]},
- 'Claude Code':{'snapshot':'2026-11-18','update_method':'Reviewed documentation; not automatically refreshed','links':[
+ 'Claude Code':{'snapshot':'2026-11-20','update_method':'Reviewed documentation; not automatically refreshed','links':[
     source('Claude Code: Model selection','https://code.claude.com/docs/en/model-config'),
     source('Anthropic: API pricing','https://platform.claude.com/docs/en/about-claude/pricing'),
     source('Claude Code: Usage and costs','https://code.claude.com/docs/en/costs'),
-    source('Download benchmark source CSV',RAW+'/copilot_pareto/v21/coding_agent_data_2026-11-18.csv')]},
+    source('Download benchmark source CSV',RAW+'/copilot_pareto/v21/coding_agent_data_2026-11-18.csv'),
+     source('Download 2026-11-20 rate delta',RAW+'/copilot_pareto/v21/platform_rates_2026-11-20.csv')]},
 }
 # Deduplicate models but preserve multiple effort points and all snapshots.
-D={'generated_from':'Versioned Copilot Pareto repository snapshots','catalog':sorted(catalog.values(),key=lambda r:(r['provider'],r['model'])),'charts':charts,'static_charts':static,'promos':promos,'last_snapshot':'2026-11-18','repository':'https://github.com/ChrisTorng/coding-agent-pareto','platform_sources':PLATFORM_SOURCES,'data_update_mode':'frozen-reviewed-snapshots'}
+D={'generated_from':'Versioned Copilot Pareto repository snapshots','catalog':sorted(catalog.values(),key=lambda r:(r['provider'],r['model'])),'charts':charts,'static_charts':static,'promos':promos,'last_snapshot':'2026-11-20','repository':'https://github.com/ChrisTorng/coding-agent-pareto','platform_sources':PLATFORM_SOURCES,'data_update_mode':'frozen-reviewed-snapshots'}
 (DEST/'data.json').write_text(json.dumps(D,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 for name in ('index.html','app.js','style.css'):
     shutil.copy2(WEB/name,DEST/name)

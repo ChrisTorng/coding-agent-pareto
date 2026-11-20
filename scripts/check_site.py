@@ -50,6 +50,7 @@ for x in ('x-max-value','y-min-value','platform-full','fullscreen-toggle','expor
     assert f'id="{x}"' in html, f'Missing UI: {x}'
 
 assert d.get('data_update_mode') == 'frozen-reviewed-snapshots', 'Never describe reviewed 2026 snapshots as live price polling'
+assert d['audit']['primary_total']>=18 and d['audit']['directly_checked']<d['audit']['primary_total'], 'Audit must disclose incomplete source coverage'
 assert set(d.get('platform_sources',{})) == {'Copilot','Kiro','Claude Code'}
 for platform,info in d['platform_sources'].items():
     assert len(info['links']) >= 2 and all(link['url'].startswith('https://') for link in info['links']), platform

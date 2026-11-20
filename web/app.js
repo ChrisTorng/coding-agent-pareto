@@ -295,6 +295,12 @@ function renderSources(){const c=chart(),bs=$('benchmark-sources'),ps=$('pricing
  if(c.id==='fusion_terminal_bench_40')bs.append(sourceLink({label:'Newer official independent Terminal-Bench 4.1 leaderboard (historical chart remains v4.0)',url:'https://www.tbench.ai/?efforts=all&version=4.1'}));
  for(const entry of costs.links||[]){if(entry.url)ps.append(sourceLink(entry));}
  const meta=document.createElement('span');meta.className='source-meta';meta.textContent=`Saved price snapshot: ${costs.snapshot||'unknown'} · ${costs.update_method||'manual review required'}`;ps.append(meta);
+ const audit=db.audit;
+ if(audit){
+  const note=document.createElement('span');note.className='source-meta';
+  note.textContent=`Verification: ${audit.directly_checked}/${audit.primary_total} first-stage sources directly checked (${audit.snapshot_date}); incomplete coverage, not a full-source certification. `;
+  ps.append(note,sourceLink({label:'Source-by-source audit and limits',url:audit.source}));
+ }
 }
 function renderAll(){if(!db)return;renderTree();const c=chart();$('chart-title').textContent=c.label;$('benchmark-picker').value=c.benchmark;$('snapshot-picker').value=c.id;$('chart-meta').textContent=c.snapshot+' · '+c.benchmark+' · '+c.points.length+' scored records in this snapshot'+(c.coverage_note?' · '+c.coverage_note:'');
  const promos=platform==='Copilot'?db.promos:[];$('promo-line').textContent=promos.length?promos.map(x=>`${x.label}: ${x.discount} until ${x.until}`).join(' · '):platform==='Kiro'?'Kiro official credit multipliers shown in model catalog.':'Claude Code official API rates shown in model catalog.';

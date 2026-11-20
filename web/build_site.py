@@ -337,7 +337,11 @@ PLATFORM_SOURCES={
      source('Download 2026-11-20 rate delta',RAW+'/copilot_pareto/v21/platform_rates_2026-11-20.csv')]},
 }
 # Deduplicate models but preserve multiple effort points and all snapshots.
-D={'generated_from':'Versioned Copilot Pareto repository snapshots','catalog':sorted(catalog.values(),key=lambda r:(r['provider'],r['model'])),'charts':charts,'static_charts':static,'promos':promos,'last_snapshot':'2026-11-20','repository':'https://github.com/ChrisTorng/coding-agent-pareto','platform_sources':PLATFORM_SOURCES,'data_update_mode':'frozen-reviewed-snapshots'}
+audit=json.loads((ROOT/'monitor/audit_2026-11-20.json').read_text(encoding='utf-8'))
+D={'audit':{'snapshot_date':audit['snapshot_date'],'primary_total':audit['registry_primary_count'],
+     'directly_checked':sum(1 for x in audit['source_checks'] if x['verified_this_run']),
+     'limitations':audit['known_gaps'],'source':RAW+'/monitor/audit_2026-11-20.json'},
+   'generated_from':'Versioned Copilot Pareto repository snapshots','catalog':sorted(catalog.values(),key=lambda r:(r['provider'],r['model'])),'charts':charts,'static_charts':static,'promos':promos,'last_snapshot':'2026-11-20','repository':'https://github.com/ChrisTorng/coding-agent-pareto','platform_sources':PLATFORM_SOURCES,'data_update_mode':'frozen-reviewed-snapshots'}
 (DEST/'data.json').write_text(json.dumps(D,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 for name in ('index.html','app.js','style.css'):
     shutil.copy2(WEB/name,DEST/name)
